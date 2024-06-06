@@ -3,6 +3,3 @@
 ## Grupo
 ### Integrantes
 - 
-
-## Descripción del Proyecto
-...
