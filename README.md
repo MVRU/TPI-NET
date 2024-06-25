@@ -4,8 +4,8 @@
 
 ## Grupo
 ### Integrantes
-- `...` - Gustavo Giampietro
-- `...` - Santiago Liveratore
+- `50671` - Gustavo Giampietro
+- `47889` - Santiago Liveratore
 -  `48042` - Marina Milo
 
 ## Descripción del Proyecto
