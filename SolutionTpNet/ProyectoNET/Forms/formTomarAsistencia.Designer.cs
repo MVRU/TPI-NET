@@ -117,6 +117,7 @@
             MdiChildrenMinimizedAnchorBottom = false;
             MinimizeBox = false;
             Name = "frmTomarAsistencia";
+            ShowIcon = false;
             WindowState = FormWindowState.Maximized;
             Load += frmTomarAsistencia_Load;
             pnlTomarAsistencia.ResumeLayout(false);

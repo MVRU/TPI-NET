@@ -45,3 +45,4 @@ D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\P
 D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ssy\ProyectoNET.resources.dll
 D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\LogIn.frmLogIn.resources
 D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\Signin.frmSignIn.resources
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.Forms.frmDashboard.resources

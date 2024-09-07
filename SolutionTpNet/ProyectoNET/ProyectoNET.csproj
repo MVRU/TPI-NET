@@ -15,7 +15,7 @@
     <Compile Update="Forms\formSignin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\tomarAsistencia.cs">
+    <Compile Update="Forms\formTomarAsistencia.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Properties\Resources.Designer.cs">

@@ -9,6 +9,14 @@
       "ProyectoNET/1.0.0": {
         "runtime": {
           "ProyectoNET.dll": {}
+        },
+        "resources": {
+          "es-AR/ProyectoNET.resources.dll": {
+            "locale": "es-AR"
+          },
+          "ssy/ProyectoNET.resources.dll": {
+            "locale": "ssy"
+          }
         }
       }
     }
