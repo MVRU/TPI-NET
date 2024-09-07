@@ -1,6 +1,6 @@
 ﻿namespace ProyectoNET
 {
-    partial class formMain
+    partial class frmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -28,84 +28,93 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             msnMainMenu = new MenuStrip();
-            cuentaToolStripMenuItem = new ToolStripMenuItem();
-            mnuAsistencia = new ToolStripMenuItem();
+            menuToolStripMenuItem = new ToolStripMenuItem();
             ingresarToolStripMenuItem = new ToolStripMenuItem();
             crearCuentaToolStripMenuItem = new ToolStripMenuItem();
-            mnuQuit = new ToolStripMenuItem();
+            asistenciaCuentaToolStripMenuItem = new ToolStripMenuItem();
+            salirToolStripMenuItem = new ToolStripMenuItem();
             msnMainMenu.SuspendLayout();
             SuspendLayout();
             // 
             // msnMainMenu
             // 
+            msnMainMenu.AutoSize = false;
             msnMainMenu.ImageScalingSize = new Size(24, 24);
-            msnMainMenu.Items.AddRange(new ToolStripItem[] { cuentaToolStripMenuItem });
+            msnMainMenu.Items.AddRange(new ToolStripItem[] { menuToolStripMenuItem });
             msnMainMenu.Location = new Point(0, 0);
             msnMainMenu.Name = "msnMainMenu";
-            msnMainMenu.Size = new Size(800, 33);
+            msnMainMenu.Padding = new Padding(4, 1, 0, 1);
+            msnMainMenu.Size = new Size(797, 24);
+            msnMainMenu.Stretch = false;
             msnMainMenu.TabIndex = 1;
             msnMainMenu.Text = "menuStrip1";
             // 
-            // cuentaToolStripMenuItem
+            // menuToolStripMenuItem
             // 
-            cuentaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mnuAsistencia, ingresarToolStripMenuItem, crearCuentaToolStripMenuItem, mnuQuit });
-            cuentaToolStripMenuItem.Name = "cuentaToolStripMenuItem";
-            cuentaToolStripMenuItem.Size = new Size(83, 29);
-            cuentaToolStripMenuItem.Text = "Cuenta";
-            // 
-            // mnuAsistencia
-            // 
-            mnuAsistencia.Name = "mnuAsistencia";
-            mnuAsistencia.Size = new Size(270, 34);
-            mnuAsistencia.Text = "Asistencia";
-            mnuAsistencia.Click += mnuAsistencia_Click;
+            menuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ingresarToolStripMenuItem, crearCuentaToolStripMenuItem, asistenciaCuentaToolStripMenuItem, salirToolStripMenuItem });
+            menuToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            menuToolStripMenuItem.Size = new Size(51, 22);
+            menuToolStripMenuItem.Text = "Menú";
             // 
             // ingresarToolStripMenuItem
             // 
             ingresarToolStripMenuItem.Name = "ingresarToolStripMenuItem";
-            ingresarToolStripMenuItem.Size = new Size(270, 34);
+            ingresarToolStripMenuItem.Size = new Size(144, 22);
             ingresarToolStripMenuItem.Text = "Ingresar";
             ingresarToolStripMenuItem.Click += mnuLogIn_Click;
             // 
             // crearCuentaToolStripMenuItem
             // 
             crearCuentaToolStripMenuItem.Name = "crearCuentaToolStripMenuItem";
-            crearCuentaToolStripMenuItem.Size = new Size(270, 34);
+            crearCuentaToolStripMenuItem.Size = new Size(144, 22);
             crearCuentaToolStripMenuItem.Text = "Crear cuenta";
             crearCuentaToolStripMenuItem.Click += mnuSignIn_Click;
             // 
-            // mnuQuit
+            // asistenciaCuentaToolStripMenuItem
             // 
-            mnuQuit.Name = "mnuQuit";
-            mnuQuit.Size = new Size(270, 34);
-            mnuQuit.Text = "Salir";
-            mnuQuit.Click += mnuSalir_Click;
+            asistenciaCuentaToolStripMenuItem.Name = "asistenciaCuentaToolStripMenuItem";
+            asistenciaCuentaToolStripMenuItem.Size = new Size(144, 22);
+            asistenciaCuentaToolStripMenuItem.Text = "Asistencia";
+            asistenciaCuentaToolStripMenuItem.Click += mnuAsistencia_Click;
             // 
-            // formMain
+            // salirToolStripMenuItem
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            salirToolStripMenuItem.Size = new Size(144, 22);
+            salirToolStripMenuItem.Text = "Salir";
+            salirToolStripMenuItem.Click += mnuSalir_Click;
+            // 
+            // frmMain
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.FromArgb(247, 250, 250);
+            ClientSize = new Size(797, 403);
             Controls.Add(msnMainMenu);
+            Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             MainMenuStrip = msnMainMenu;
-            Name = "formMain";
-            Text = "Sysacad";
+            Margin = new Padding(2);
+            Name = "frmMain";
+            Text = "CheckInU";
             WindowState = FormWindowState.Maximized;
+            Load += formMain_Load;
             msnMainMenu.ResumeLayout(false);
             msnMainMenu.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private MenuStrip msnMainMenu;
-        private ToolStripMenuItem cuentaToolStripMenuItem;
-        private ToolStripMenuItem mnuQuit;
+        private ToolStripMenuItem menuToolStripMenuItem;
+        private ToolStripMenuItem salirToolStripMenuItem;
         private ToolStripMenuItem ingresarToolStripMenuItem;
         private ToolStripMenuItem crearCuentaToolStripMenuItem;
-        private ToolStripMenuItem mnuAsistencia;
+        private ToolStripMenuItem asistenciaCuentaToolStripMenuItem;
     }
 }

@@ -51,5 +51,41 @@ namespace tomarAsistencia
         {
 
         }
+
+        private void lblFecha_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlScroll_Paint(object sender, PaintEventArgs e)
+        {
+
+            // Obtén todos los controles dentro del panel
+            Control[] controles = pnlTomarAsistencia.Controls.Cast<Control>().ToArray();
+
+            if (controles.Length == 0)
+                return; // No hay controles, salir de la función
+
+            // Encuentra los límites de todos los controles (es decir, el área total que ocupan)
+            int leftMost = controles.Min(c => c.Left);
+            int topMost = controles.Min(c => c.Top);
+            int rightMost = controles.Max(c => c.Right);
+            int bottomMost = controles.Max(c => c.Bottom);
+
+            // Calcula el tamaño total ocupado por los controles
+            int totalWidth = rightMost - leftMost;
+            int totalHeight = bottomMost - topMost;
+
+            // Calcula las nuevas coordenadas para centrar el área total ocupada por los controles
+            int offsetX = (pnlTomarAsistencia.ClientSize.Width - totalWidth) / 2 - leftMost;
+            int offsetY = (pnlTomarAsistencia.ClientSize.Height - totalHeight) / 2 - topMost;
+
+            // Desplaza cada control según los cálculos
+            foreach (var control in controles)
+            {
+                control.Location = new Point(control.Left + offsetX, control.Top + offsetY);
+            }
+
+        }
     }
 }

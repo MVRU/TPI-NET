@@ -14,9 +14,9 @@ using static System.Windows.Forms.DataFormats;
 
 namespace ProyectoNET
 {
-    public partial class formMain : Form
+    public partial class frmMain : Form
     {
-        public formMain()
+        public frmMain()
         {
             InitializeComponent();
         }
@@ -34,17 +34,21 @@ namespace ProyectoNET
 
         private void mnuSignIn_Click(object sender, EventArgs e)
         {
-            formSignin formX = new formSignin();
+            frmSignIn formX = new frmSignIn();
             formX.MdiParent = this;
             formX.Show();
         }
 
         private void mnuLogIn_Click(object sender, EventArgs e)
         {
-            formLogin formX = new formLogin();
+            frmLogIn formX = new frmLogIn();
             formX.MdiParent = this;
             formX.Show();
         }
 
+        private void formMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

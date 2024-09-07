@@ -117,4 +117,281 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pnlTomarAsistencia.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnTerminarClase.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnTerminarClase.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="btnTerminarClase.Location" type="System.Drawing.Point, System.Drawing">
+    <value>678, 476</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnTerminarClase.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="btnTerminarClase.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 41</value>
+  </data>
+  <data name="btnTerminarClase.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="btnTerminarClase.Text" xml:space="preserve">
+    <value>Terminar clase</value>
+  </data>
+  <data name="&gt;&gt;btnTerminarClase.Name" xml:space="preserve">
+    <value>btnTerminarClase</value>
+  </data>
+  <data name="&gt;&gt;btnTerminarClase.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnTerminarClase.Parent" xml:space="preserve">
+    <value>pnlTomarAsistencia</value>
+  </data>
+  <data name="&gt;&gt;btnTerminarClase.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnGuardarAsistencia.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnGuardarAsistencia.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="btnGuardarAsistencia.Location" type="System.Drawing.Point, System.Drawing">
+    <value>642, 428</value>
+  </data>
+  <data name="btnGuardarAsistencia.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="btnGuardarAsistencia.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 41</value>
+  </data>
+  <data name="btnGuardarAsistencia.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="btnGuardarAsistencia.Text" xml:space="preserve">
+    <value>Guardar asistencia</value>
+  </data>
+  <data name="&gt;&gt;btnGuardarAsistencia.Name" xml:space="preserve">
+    <value>btnGuardarAsistencia</value>
+  </data>
+  <data name="&gt;&gt;btnGuardarAsistencia.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnGuardarAsistencia.Parent" xml:space="preserve">
+    <value>pnlTomarAsistencia</value>
+  </data>
+  <data name="&gt;&gt;btnGuardarAsistencia.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblFecha.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblFecha.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15.75pt</value>
+  </data>
+  <data name="lblFecha.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 68</value>
+  </data>
+  <data name="lblFecha.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="lblFecha.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 25</value>
+  </data>
+  <data name="lblFecha.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="lblFecha.Text" xml:space="preserve">
+    <value>Jue, 4 Jul 2024</value>
+  </data>
+  <data name="&gt;&gt;lblFecha.Name" xml:space="preserve">
+    <value>lblFecha</value>
+  </data>
+  <data name="&gt;&gt;lblFecha.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblFecha.Parent" xml:space="preserve">
+    <value>pnlTomarAsistencia</value>
+  </data>
+  <data name="&gt;&gt;lblFecha.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblNombreAsignatura.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblNombreAsignatura.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 18pt, style=Bold</value>
+  </data>
+  <data name="lblNombreAsignatura.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 24</value>
+  </data>
+  <data name="lblNombreAsignatura.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="lblNombreAsignatura.Size" type="System.Drawing.Size, System.Drawing">
+    <value>679, 29</value>
+  </data>
+  <data name="lblNombreAsignatura.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="lblNombreAsignatura.Text" xml:space="preserve">
+    <value>NET 3EK01 - Tecnologías de Desarrollo de Software IDE</value>
+  </data>
+  <data name="&gt;&gt;lblNombreAsignatura.Name" xml:space="preserve">
+    <value>lblNombreAsignatura</value>
+  </data>
+  <data name="&gt;&gt;lblNombreAsignatura.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblNombreAsignatura.Parent" xml:space="preserve">
+    <value>pnlTomarAsistencia</value>
+  </data>
+  <data name="&gt;&gt;lblNombreAsignatura.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="dgvEstudiantes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 33</value>
+  </data>
+  <data name="dgvEstudiantes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="dgvEstudiantes.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>62</value>
+  </data>
+  <data name="dgvEstudiantes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>756, 275</value>
+  </data>
+  <data name="dgvEstudiantes.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;dgvEstudiantes.Name" xml:space="preserve">
+    <value>dgvEstudiantes</value>
+  </data>
+  <data name="&gt;&gt;dgvEstudiantes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvEstudiantes.Parent" xml:space="preserve">
+    <value>pnlEstudiantes</value>
+  </data>
+  <data name="&gt;&gt;dgvEstudiantes.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtBusquedaEstudiantes.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="txtBusquedaEstudiantes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 4</value>
+  </data>
+  <data name="txtBusquedaEstudiantes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="txtBusquedaEstudiantes.PlaceholderText" xml:space="preserve">
+    <value>Buscar estudiantes</value>
+  </data>
+  <data name="txtBusquedaEstudiantes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>755, 26</value>
+  </data>
+  <data name="txtBusquedaEstudiantes.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="txtBusquedaEstudiantes.Text" xml:space="preserve">
+    <value>Buscar estudiantes</value>
+  </data>
+  <data name="&gt;&gt;txtBusquedaEstudiantes.Name" xml:space="preserve">
+    <value>txtBusquedaEstudiantes</value>
+  </data>
+  <data name="&gt;&gt;txtBusquedaEstudiantes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtBusquedaEstudiantes.Parent" xml:space="preserve">
+    <value>pnlEstudiantes</value>
+  </data>
+  <data name="&gt;&gt;txtBusquedaEstudiantes.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlEstudiantes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 108</value>
+  </data>
+  <data name="pnlEstudiantes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="pnlEstudiantes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>766, 312</value>
+  </data>
+  <data name="pnlEstudiantes.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;pnlEstudiantes.Name" xml:space="preserve">
+    <value>pnlEstudiantes</value>
+  </data>
+  <data name="&gt;&gt;pnlEstudiantes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlEstudiantes.Parent" xml:space="preserve">
+    <value>pnlTomarAsistencia</value>
+  </data>
+  <data name="&gt;&gt;pnlEstudiantes.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="pnlTomarAsistencia.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pnlTomarAsistencia.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlTomarAsistencia.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="pnlTomarAsistencia.Size" type="System.Drawing.Size, System.Drawing">
+    <value>956, 529</value>
+  </data>
+  <data name="pnlTomarAsistencia.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pnlTomarAsistencia.Name" xml:space="preserve">
+    <value>pnlTomarAsistencia</value>
+  </data>
+  <data name="&gt;&gt;pnlTomarAsistencia.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlTomarAsistencia.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlTomarAsistencia.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>956, 529</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Tomar Asistencia</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmTomarAsistencia</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
