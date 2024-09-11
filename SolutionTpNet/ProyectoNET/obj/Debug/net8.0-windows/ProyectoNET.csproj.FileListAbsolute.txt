@@ -18,3 +18,31 @@ C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\Proyec
 C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\LogIn.formLogin.resources
 C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\Signin.formSignin.resources
 C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.formMain.resources
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\ProyectoNET.exe
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\ProyectoNET.deps.json
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\ProyectoNET.runtimeconfig.json
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\ProyectoNET.dll
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\ProyectoNET.pdb
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\tomarAsistencia.frmTomarAsistencia.resources
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.csproj.GenerateResource.cache
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.GeneratedMSBuildEditorConfig.editorconfig
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.AssemblyInfoInputs.cache
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.AssemblyInfo.cs
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.csproj.CoreCompileInputs.cache
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.sourcelink.json
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.dll
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\refint\ProyectoNET.dll
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.pdb
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.genruntimeconfig.cache
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ref\ProyectoNET.dll
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.Properties.Resources.resources
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.frmMain.resources
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\es-AR\ProyectoNET.resources.dll
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\ssy\ProyectoNET.resources.dll
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\tomarAsistencia.frmTomarAsistencia.es-AR.resources
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\tomarAsistencia.frmTomarAsistencia.ssy.resources
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\es-AR\ProyectoNET.resources.dll
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ssy\ProyectoNET.resources.dll
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\LogIn.frmLogIn.resources
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\Signin.frmSignIn.resources
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.Forms.frmDashboard.resources
