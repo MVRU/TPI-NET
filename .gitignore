@@ -1,4 +1,4 @@
 
-SolutionTpNet/.vs
-SolutionTpNet/ProyectoNET/bin
-SolutionTpNet/ProyectoNET/obj
+SolutionTpNet/.vs/*
+SolutionTpNet/ProyectoNET/bin/*
+SolutionTpNet/ProyectoNET/obj/*

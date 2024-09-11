@@ -28,21 +28,23 @@ namespace LogIn
             }
 
             // Validar que el nombre de usuario sea un email válido
-            if (!EsEmailValido(txtUsuario.Text))
-            {
-                MessageBox.Show("Por favor, ingresa un correo electrónico válido.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (!EsEmailValido(txtUsuario.Text))
+            //{
+            //    MessageBox.Show("Por favor, ingresa un correo electrónico válido.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
             // Validar la longitud de la contraseña (mínimo 6 caracteres)
-            if (txtPassword.Text.Length < 6)
-            {
-                MessageBox.Show("La contraseña debe tener al menos 6 caracteres.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (txtPassword.Text.Length < 6)
+            //{
+            //    MessageBox.Show("La contraseña debe tener al menos 6 caracteres.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
+            
+            Boolean operation = new Operation().userlogIn(txtUsuario.Text, txtPassword.Text);
             // Validación de credenciales de inicio de sesión
-            if (txtUsuario.Text == "admin@example.com" && txtPassword.Text == "admin123")
+            if (operation)
             {
                 MessageBox.Show("Usted ha ingresado al sistema correctamente.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

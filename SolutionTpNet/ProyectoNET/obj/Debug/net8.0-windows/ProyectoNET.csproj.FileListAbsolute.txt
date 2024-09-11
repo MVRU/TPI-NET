@@ -15,9 +15,6 @@ C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\Proyec
 C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.pdb
 C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.genruntimeconfig.cache
 C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ref\ProyectoNET.dll
-C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\LogIn.formLogin.resources
-C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\Signin.formSignin.resources
-C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.formMain.resources
 D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\ProyectoNET.exe
 D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\ProyectoNET.deps.json
 D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\ProyectoNET.runtimeconfig.json
@@ -46,3 +43,62 @@ D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\P
 D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\LogIn.frmLogIn.resources
 D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\Signin.frmSignIn.resources
 D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.Forms.frmDashboard.resources
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\es-AR\ProyectoNET.resources.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\ssy\ProyectoNET.resources.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.Forms.frmDashboard.resources
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\LogIn.frmLogIn.resources
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.frmMain.resources
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\Signin.frmSignIn.resources
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.Properties.Resources.resources
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\tomarAsistencia.frmTomarAsistencia.es-AR.resources
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\tomarAsistencia.frmTomarAsistencia.ssy.resources
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\es-AR\ProyectoNET.resources.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ssy\ProyectoNET.resources.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Azure.Core.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Azure.Identity.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Data.SqlClient.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Identity.Client.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Identity.Client.NativeInterop.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Logging.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Protocols.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Tokens.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.SqlServer.Server.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Core.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.WinForms.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Wpf.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\System.Memory.Data.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\System.Runtime.Caching.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\runtimes\win-arm64\native\msalruntime_arm64.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\runtimes\win-x64\native\msalruntime.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\runtimes\win-x86\native\msalruntime_x86.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\runtimes\win-arm64\native\WebView2Loader.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\runtimes\win-x64\native\WebView2Loader.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\runtimes\win-x86\native\WebView2Loader.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\ProyectoNET.csproj.AssemblyReference.cache
+C:\Users\gustg\Documents\Facu\3er Año\NET\Proyecto\TPI-NET\SolutionTpNet\ProyectoNET\obj\Debug\net8.0-windows\Proyecto.6BF6AF8E.Up2Date

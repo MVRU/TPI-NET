@@ -1,6 +1,7 @@
 using tomarAsistencia;
 using LogIn;
 using Signin;
+using System.Xml.Serialization;
 
 namespace ProyectoNET
 
@@ -13,8 +14,7 @@ namespace ProyectoNET
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            Operation oper = new Operation();
             ApplicationConfiguration.Initialize();
             Application.Run(new frmMain());
         }

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OneDrive - frro.utn.edu.ar\\Documents\\GitHub\\repos\\UTN\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj": {}
+    "C:\\Users\\gustg\\Documents\\Facu\\3er Año\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj": {}
   },
   "projects": {
-    "D:\\OneDrive - frro.utn.edu.ar\\Documents\\GitHub\\repos\\UTN\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj": {
+    "C:\\Users\\gustg\\Documents\\Facu\\3er Año\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive - frro.utn.edu.ar\\Documents\\GitHub\\repos\\UTN\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj",
+        "projectUniqueName": "C:\\Users\\gustg\\Documents\\Facu\\3er Año\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj",
         "projectName": "ProyectoNET",
-        "projectPath": "D:\\OneDrive - frro.utn.edu.ar\\Documents\\GitHub\\repos\\UTN\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj",
-        "packagesPath": "C:\\Users\\hp_i3\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive - frro.utn.edu.ar\\Documents\\GitHub\\repos\\UTN\\TPI-NET\\SolutionTpNet\\ProyectoNET\\obj\\",
+        "projectPath": "C:\\Users\\gustg\\Documents\\Facu\\3er Año\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj",
+        "packagesPath": "C:\\Users\\gustg\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gustg\\Documents\\Facu\\3er Año\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\ProyectoNET\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hp_i3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gustg\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -49,6 +48,16 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -68,7 +77,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
