@@ -10,7 +10,24 @@ namespace LogIn
         public frmLogIn()
         {
             InitializeComponent();
+            // Asociar el evento KeyDown a todos los TextBox
+            txtUsuario.KeyDown += new KeyEventHandler(txtKeyDown);
+            txtPassword.KeyDown += new KeyEventHandler(txtKeyDown);
         }
+
+        // Activar botón btnIngresar al presionar Enter
+        private void txtKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Evitar el beep cuando se presiona Enter
+                e.SuppressKeyPress = true;
+
+                // Simular un clic en el botón btnIngresar
+                btnIngresar.PerformClick();
+            }
+        }
+
         private void btnIngresar_Click(object sender, EventArgs e)
         {
 
@@ -41,7 +58,7 @@ namespace LogIn
             //    return;
             //}
 
-            
+
             Boolean operation = new Operation().userlogIn(txtUsuario.Text, txtPassword.Text);
             // Validación de credenciales de inicio de sesión
             if (operation)
@@ -93,6 +110,11 @@ namespace LogIn
         }
 
         private void pnlLogIn_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnIngresar_Click_1(object sender, EventArgs e)
         {
 
         }

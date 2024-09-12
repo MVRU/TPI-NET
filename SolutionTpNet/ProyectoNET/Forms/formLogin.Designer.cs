@@ -65,6 +65,7 @@
             btnIngresar.TabIndex = 3;
             btnIngresar.Text = "Iniciar sesión";
             btnIngresar.UseVisualStyleBackColor = false;
+            btnIngresar.Click += btnIngresar_Click_1;
             // 
             // linkOlvidaPassword
             // 

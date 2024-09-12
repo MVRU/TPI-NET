@@ -7,6 +7,26 @@ namespace Signin
         public frmSignIn()
         {
             InitializeComponent();
+            // Asociar el evento KeyDown a todos los TextBox
+            txtName.KeyDown += new KeyEventHandler(txtKeyDown);
+            txtLastName.KeyDown += new KeyEventHandler(txtKeyDown);
+            txtId.KeyDown += new KeyEventHandler(txtKeyDown);
+            txtDir.KeyDown += new KeyEventHandler(txtKeyDown);
+            txtPwd.KeyDown += new KeyEventHandler(txtKeyDown);
+            txtPwdConfirm.KeyDown += new KeyEventHandler(txtKeyDown);
+    }
+
+        // Activar botón btnRegistrarse al presionar Enter
+        private void txtKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Evitar el beep cuando se presiona Enter
+                e.SuppressKeyPress = true;
+                
+                // Simular un clic en el botón btnRegistrarse
+                btnRegistrarse.PerformClick();
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -49,7 +69,6 @@ namespace Signin
             Operation oper = new Operation();
             if (checkSignIn(oper))
             {
-                
                 User user = new User();
                 user.Name = txtName.Text;
                 user.LastName = txtLastName.Text;
