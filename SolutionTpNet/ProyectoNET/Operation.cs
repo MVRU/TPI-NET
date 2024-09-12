@@ -10,39 +10,94 @@ namespace ProyectoNET
     {
         public void addUser(User user)
         {
-            using (var context = new UniversityContext())
+            try
             {
-                    User nwUser = new User()
+                using (var context = new UniversityContext())
+                {
+                    if (context.Users.Any(u => u.Id == user.Id))
                     {
-                        Id = user.Id,
-                        Name = user.Name,
-                        LastName = user.LastName,
-                        Dir = user.Dir,
-                        Password = user.Password
-                    };
-                    context.Users.Add(nwUser);
+                        throw new Exception("El email ya está registrado.");
+                    }
+
+                    context.Users.Add(user);
                     context.SaveChanges();
                 }
             }
-        
-
-        public User getUser(string id)
-        {
-            using (var context = new UniversityContext())
+            catch (Exception ex)
             {
-                User user = context.Users.FirstOrDefault(a => a.Id == id);
-                if (user == null)
-                {
-                    //return user = new User();
-                }
-                return user;
+                Console.WriteLine($"Error al agregar usuario: {ex.Message}");
             }
         }
 
-        public Boolean userlogIn(string id, string pwd)
+
+        public User getUserById(string id)
+            {
+                using (var context = new UniversityContext())
+                {
+                    return context.Users.Find(id); // Encuentra el usuario por su Id (Email)
+                }
+            }
+
+            public Boolean userlogIn(string id, string pwd)
         {
-            return (getUser(id).Password == pwd);
+            return (getUserById(id).Password == pwd);
         }
 
+    public void updateUser(User updatedUser)
+    {
+        try
+        {
+            using (var context = new UniversityContext())
+            {
+                var user = context.Users.Find(updatedUser.Id);
+
+                if (user != null)
+                {
+                    user.Name = updatedUser.Name;
+                    user.LastName = updatedUser.LastName;
+                    user.Id = updatedUser.Id;
+                    user.Password = updatedUser.Password;
+                    
+                    context.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("Usuario no encontrado.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al actualizar usuario: {ex.Message}");
+        }
     }
+
+        public void deleteUser(int id)
+        {
+            try
+            {
+                using (var context = new UniversityContext())
+                {
+                    var user = context.Users.Find(id);
+
+                    if (user != null)
+                    {
+                        context.Users.Remove(user);
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        throw new Exception("Usuario no encontrado.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al eliminar usuario: {ex.Message}");
+            }
+        }
+
+
+    }
+
 }

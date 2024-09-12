@@ -104,7 +104,7 @@ namespace Signin
             if (txtDir.Text.Length == 0) { error = "El campo de texto Direccion no puede estar vacio."; }
             if (txtPwd.Text.Length < 8) { error = "El campo de texto Password no puede estar vacio."; }
             if (txtPwd.Text != txtPwdConfirm.Text) { error = "Las contraseñas no coinciden."; }
-            if (o.getUser(txtId.Text) != null) { error = "Ya hay un usuario registrado con ese mail."; }
+            if (o.getUserById(txtId.Text) != null) { error = "Ya hay un usuario registrado con ese mail."; }
             //Si el registro esta OK
             if (error == "")
             {
