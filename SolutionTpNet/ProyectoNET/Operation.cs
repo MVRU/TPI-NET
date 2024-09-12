@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -134,7 +134,5 @@ namespace ProyectoNET
                 Console.WriteLine($"Error al eliminar usuario: {ex.Message}");
             }
         }
-
-
     }
 }

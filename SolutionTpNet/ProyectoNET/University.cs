@@ -11,13 +11,8 @@ namespace ProyectoNET
 {
     internal class UniversityContext : DbContext
     {
-<<<<<<< HEAD
         public DbSet<User> Users { get; set; }
 
-=======
-        public DbSet<User> Users{ get; set; }
-        public DbSet<Course> Courses { get; set; }
->>>>>>> origin/main
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=University;Integrated Security=true");
