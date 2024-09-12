@@ -66,7 +66,7 @@ namespace Signin
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            Operation oper = new Operation();
+            UserController oper = new UserController();
 
             if (checkSignIn(oper))
             {
@@ -117,7 +117,7 @@ namespace Signin
             txtPwdConfirm.Text = "";
         }
 
-        private bool checkSignIn(Operation o)
+        private bool checkSignIn(UserController o)
         {
             bool state = false;
             string error = "";

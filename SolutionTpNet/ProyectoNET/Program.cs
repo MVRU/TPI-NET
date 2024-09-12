@@ -14,7 +14,7 @@ namespace ProyectoNET
         [STAThread]
         static void Main()
         {
-            Operation oper = new Operation();
+            UserController oper = new UserController();
             ApplicationConfiguration.Initialize();
             Application.Run(new frmMain());
         }

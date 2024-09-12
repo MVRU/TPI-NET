@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoNET
 {
-    internal class Operation
+    internal class UserController
     {
         public void addUser(User user)
         {

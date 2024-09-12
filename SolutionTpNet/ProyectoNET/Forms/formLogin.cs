@@ -59,7 +59,7 @@ namespace LogIn
             //}
 
 
-            Boolean operation = new Operation().userlogIn(txtUsuario.Text, txtPassword.Text);
+            Boolean operation = new UserController().userlogIn(txtUsuario.Text, txtPassword.Text);
             // Validación de credenciales de inicio de sesión
             if (operation)
             {
