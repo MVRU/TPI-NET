@@ -12,11 +12,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using tomarAsistencia;
 using static System.Windows.Forms.DataFormats;
+using ProyectoNET.Classes;
 
 namespace ProyectoNET
 {
     public partial class frmMain : Form
     {
+        internal User currentUser;
 
         private bool sesionIniciada = false;  // Variable para verificar si la sesión está iniciada
 
@@ -30,21 +32,22 @@ namespace ProyectoNET
             cursosToolStripMenuItem.Visible = false;
             configuraciónToolStripMenuItem.Visible = false;
             cuentaToolStripMenuItem.Visible = false;
+
         }
 
-    // Método para habilitar los menús después de iniciar sesión correctamente
-    public void HabilitarMenus()
-    {
-        dashboardToolStripMenuItem.Enabled = true;
-        asistenciaToolStripMenuItem.Visible = true;
-        cursosToolStripMenuItem.Visible = true;
-        configuraciónToolStripMenuItem.Visible = true;
-        cuentaToolStripMenuItem.Visible = true;
-        iniciarSesionToolStripMenuItem.Visible = false;
-        registrarseToolStripMenuItem.Visible = false;
-    }
+        // Método para habilitar los menús después de iniciar sesión correctamente
+        public void HabilitarMenus()
+        {
+            dashboardToolStripMenuItem.Enabled = true;
+            asistenciaToolStripMenuItem.Visible = true;
+            cursosToolStripMenuItem.Visible = true;
+            configuraciónToolStripMenuItem.Visible = true;
+            cuentaToolStripMenuItem.Visible = true;
+            iniciarSesionToolStripMenuItem.Visible = false;
+            registrarseToolStripMenuItem.Visible = false;
+        }
 
-    private void mnuSalir_Click(object sender, EventArgs e)
+        private void mnuSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -61,6 +64,8 @@ namespace ProyectoNET
             frmLogIn formX = new frmLogIn();
             formX.MdiParent = this;
             formX.Show();
+            currentUser = formX.returnUser();
+            
         }
 
         private void formMain_Load(object sender, EventArgs e)
@@ -94,6 +99,13 @@ namespace ProyectoNET
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmDashboard formX = new frmDashboard();
+            formX.MdiParent = this;
+            formX.Show();
+        }
+
+        private void cuentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formAccount formX = new formAccount(currentUser);
             formX.MdiParent = this;
             formX.Show();
         }

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProyectoNET.Classes;
 
-namespace ProyectoNET
+namespace ProyectoNET.Operations
 {
     internal class Operation
     {
@@ -31,46 +32,46 @@ namespace ProyectoNET
 
 
         public User getUserById(string id)
-            {
-                using (var context = new UniversityContext())
-                {
-                    return context.Users.Find(id); // Encuentra el usuario por su Id (Email)
-                }
-            }
-
-            public Boolean userlogIn(string id, string pwd)
-        {
-            return (getUserById(id).Password == pwd);
-        }
-
-    public void updateUser(User updatedUser)
-    {
-        try
         {
             using (var context = new UniversityContext())
             {
-                var user = context.Users.Find(updatedUser.Id);
-
-                if (user != null)
-                {
-                    user.Name = updatedUser.Name;
-                    user.LastName = updatedUser.LastName;
-                    user.Id = updatedUser.Id;
-                    user.Password = updatedUser.Password;
-                    
-                    context.SaveChanges();
-                }
-                else
-                {
-                    throw new Exception("Usuario no encontrado.");
-                }
+                return context.Users.Find(id); // Encuentra el usuario por su Id (Email)
             }
         }
-        catch (Exception ex)
+
+        public bool userlogIn(string id, string pwd)
         {
-            Console.WriteLine($"Error al actualizar usuario: {ex.Message}");
+            return getUserById(id).Password == pwd;
         }
-    }
+
+        public void updateUser(User updatedUser)
+        {
+            try
+            {
+                using (var context = new UniversityContext())
+                {
+                    var user = context.Users.Find(updatedUser.Id);
+
+                    if (user != null)
+                    {
+                        user.Name = updatedUser.Name;
+                        user.LastName = updatedUser.LastName;
+                        user.Password = updatedUser.Password;
+                        user.Dir = updatedUser.Dir;
+
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        throw new Exception("Usuario no encontrado.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al actualizar usuario: {ex.Message}");
+            }
+        }
 
         public void deleteUser(int id)
         {

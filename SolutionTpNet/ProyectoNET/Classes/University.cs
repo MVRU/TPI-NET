@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.Extensions.Logging;
 
-namespace ProyectoNET
+namespace ProyectoNET.Classes
 {
     internal class UniversityContext : DbContext
     {
-        public DbSet<User> Users{ get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Course> Courses { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -21,7 +21,7 @@ namespace ProyectoNET
         }
         public UniversityContext()
         {
-            this.Database.EnsureCreated();
+            Database.EnsureCreated();
         }
     }
 }

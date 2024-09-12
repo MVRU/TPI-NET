@@ -1,4 +1,5 @@
-using ProyectoNET;
+using ProyectoNET.Classes;
+using ProyectoNET.Operations;
 
 namespace Signin
 {
@@ -114,7 +115,6 @@ namespace Signin
 
         private bool checkSignIn(Operation o)
         {
-            bool state = false;
             string error = "";
             //Validando datos
             if (txtName.Text.Length == 0) { error = "El campo de texto Nombre no puede estar vacio."; }

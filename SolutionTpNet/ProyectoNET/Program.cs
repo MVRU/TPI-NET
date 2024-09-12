@@ -2,6 +2,7 @@ using tomarAsistencia;
 using LogIn;
 using Signin;
 using System.Xml.Serialization;
+using ProyectoNET.Operations;
 
 namespace ProyectoNET
 

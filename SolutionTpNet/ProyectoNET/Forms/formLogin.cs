@@ -1,12 +1,16 @@
 using System.Text.RegularExpressions; // Para validar el email
 using ProyectoNET;
+using ProyectoNET.Classes;
+using ProyectoNET.Operations;
 using ProyectoNET.Forms;
 using Signin;
+
 
 namespace LogIn
 {
     public partial class frmLogIn : Form
     {
+        private User currentUser;
         public frmLogIn()
         {
             InitializeComponent();
@@ -58,15 +62,19 @@ namespace LogIn
             //    return;
             //}
 
-
-            Boolean operation = new Operation().userlogIn(txtUsuario.Text, txtPassword.Text);
+            Operation operation = new Operation();
+            Boolean check = operation.userlogIn(txtUsuario.Text, txtPassword.Text);
             // Validación de credenciales de inicio de sesión
-            if (operation)
+            if (check)
             {
                 MessageBox.Show("Usted ha ingresado al sistema correctamente.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Obtener el formulario principal abierto
                 frmMain mainForm = (frmMain)this.MdiParent;
+
+                User user = operation.getUserById(txtUsuario.Text);
+                MessageBox.Show(user.Name, "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                currentUser = user;
 
                 if (mainForm != null)
                 {
@@ -117,6 +125,11 @@ namespace LogIn
         private void btnIngresar_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        public User returnUser()
+        {
+            return currentUser;
         }
     }
 }

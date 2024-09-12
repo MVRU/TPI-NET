@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoNET
+namespace ProyectoNET.Classes
 {
-    internal class User
+    public class User
     {
         [Key]
         [EmailAddress]
-        public string Id {  get; set; }
-        
+        public string Id { get; set; }
+
         [Required]
         public string Password { get; set; }
 
