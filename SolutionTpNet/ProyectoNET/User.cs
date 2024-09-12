@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace ProyectoNET
 {
-    internal class User
+    internal abstract class User
     {
         [Key]
         [EmailAddress]
-        public string Id {  get; set; }
-        
+        public string Id { get; set; }
+
         [Required]
         public string Password { get; set; }
 
@@ -24,6 +24,30 @@ namespace ProyectoNET
         public string Name { get; set; }
 
         // Dirección
-        public string Dir { get; set; }
+        public string Address { get; set; }
+
+        [Required]
+        [RegularExpression(@"^(Professor|Admin|Student)$", ErrorMessage = "El rol debe ser 'Professor', 'Admin' o 'Student'.")]
+        public string Role { get; set; }
+    }
+
+    // Clase Student
+    internal class Student : User
+    {
+        public int StudentFile { get; set; }
+    }
+
+    // Clase Professor
+    internal class Professor : User
+    {
+        public int ProfessorFile { get; set; }
+
+        public string Specialization { get; set; }
+    }
+
+    // Clase Admin
+    internal class Admin : User
+    {
+        public string Position { get; set; }
     }
 }

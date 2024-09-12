@@ -67,15 +67,20 @@ namespace Signin
         private void btnSignIn_Click(object sender, EventArgs e)
         {
             Operation oper = new Operation();
+
             if (checkSignIn(oper))
             {
-                User user = new User();
-                user.Name = txtName.Text;
-                user.LastName = txtLastName.Text;
-                user.Id = txtId.Text;
-                user.Password = txtPwd.Text;
-                user.Dir = txtDir.Text;
-                oper.addUser(user);
+                // Crear un usuario del tipo Student por defecto
+                Student student = new Student();
+                student.Name = txtName.Text;
+                student.LastName = txtLastName.Text;
+                student.Id = txtId.Text;
+                student.Password = txtPwd.Text;
+                student.Address = txtDir.Text;
+                // Asignar el rol como Student
+                student.Role = "Student";
+                // Agregar el student a la base de datos
+                oper.addUser(student);
             }
         }
 

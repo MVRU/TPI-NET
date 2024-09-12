@@ -14,12 +14,35 @@ namespace ProyectoNET
             {
                 using (var context = new UniversityContext())
                 {
+                    // Validar el rol
+                    if (!new[] { "Professor", "Admin", "Student" }.Contains(user.Role))
+                    {
+                        throw new Exception("Rol inválido. Debe ser 'Professor', 'Admin' o 'Student'.");
+                    }
+
                     if (context.Users.Any(u => u.Id == user.Id))
                     {
                         throw new Exception("El email ya está registrado.");
                     }
 
-                    context.Users.Add(user);
+                    // Guardar según el tipo de usuario
+                    if (user is Student student)
+                    {
+                        context.Users.Add(student);
+                    }
+                    else if (user is Professor professor)
+                    {
+                        context.Users.Add(professor);
+                    }
+                    else if (user is Admin admin)
+                    {
+                        context.Users.Add(admin);
+                    }
+                    else
+                    {
+                        throw new Exception("Tipo de usuario desconocido.");
+                    }
+
                     context.SaveChanges();
                 }
             }
@@ -34,45 +57,60 @@ namespace ProyectoNET
             {
                 using (var context = new UniversityContext())
                 {
-                    return context.Users.Find(id); // Encuentra el usuario por su Id (Email)
+                    return context.Users.Find(id); // Encontrar al usuario por su Id (Email)
                 }
             }
 
-            public Boolean userlogIn(string id, string pwd)
+        public Boolean userlogIn(string id, string pwd)
         {
             return (getUserById(id).Password == pwd);
         }
 
-    public void updateUser(User updatedUser)
-    {
-        try
+        public void updateUser(User updatedUser)
         {
-            using (var context = new UniversityContext())
+            try
             {
-                var user = context.Users.Find(updatedUser.Id);
+                using (var context = new UniversityContext())
+                {
+                    var user = context.Users.Find(updatedUser.Id);
 
-                if (user != null)
-                {
-                    user.Name = updatedUser.Name;
-                    user.LastName = updatedUser.LastName;
-                    user.Id = updatedUser.Id;
-                    user.Password = updatedUser.Password;
-                    
-                    context.SaveChanges();
-                }
-                else
-                {
-                    throw new Exception("Usuario no encontrado.");
+                    if (user != null)
+                    {
+                        user.Name = updatedUser.Name;
+                        user.LastName = updatedUser.LastName;
+                        user.Id = updatedUser.Id;
+                        user.Password = updatedUser.Password;
+
+                        // Actualizar atributos específicos según el tipo de usuario
+                        if (user is Student student && updatedUser is Student updatedStudent)
+                        {
+                            student.StudentFile = updatedStudent.StudentFile;
+                        }
+                        else if (user is Professor professor && updatedUser is Professor updatedProfessor)
+                        {
+                            professor.ProfessorFile = updatedProfessor.ProfessorFile;
+                            professor.Specialization = updatedProfessor.Specialization;
+                        }
+                        else if (user is Admin admin && updatedUser is Admin updatedAdmin)
+                        {
+                            admin.Position = updatedAdmin.Position;
+                        }
+
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        throw new Exception("Usuario no encontrado.");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al actualizar usuario: {ex.Message}");
+            }
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error al actualizar usuario: {ex.Message}");
-        }
-    }
 
-        public void deleteUser(int id)
+        public void deleteUser(string id)
         {
             try
             {
@@ -96,8 +134,5 @@ namespace ProyectoNET
                 Console.WriteLine($"Error al eliminar usuario: {ex.Message}");
             }
         }
-
-
     }
-
 }
