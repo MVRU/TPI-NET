@@ -2,16 +2,8 @@
 using ProyectoNET.Forms;
 using Signin;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using tomarAsistencia;
-using static System.Windows.Forms.DataFormats;
 
 namespace ProyectoNET
 {
@@ -53,7 +45,21 @@ namespace ProyectoNET
         {
             frmSignIn formX = new frmSignIn();
             formX.MdiParent = this;
+
+            // Suscribirse al evento de registro exitoso
+            formX.RegistroExitoso += FrmSignIn_RegistroExitoso;
+
             formX.Show();
+        }
+
+        private void FrmSignIn_RegistroExitoso(object sender, EventArgs e)
+        {
+            ((frmSignIn)sender).Close();
+
+            // Mostrar el formulario de inicio de sesión
+            frmLogIn loginForm = new frmLogIn();
+            loginForm.MdiParent = this;
+            loginForm.Show();
         }
 
         private void mnuLogIn_Click(object sender, EventArgs e)

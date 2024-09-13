@@ -1,12 +1,19 @@
-using ProyectoNET;
+using ProyectoNET.Controllers;
+using ProyectoNET.Models;
+using System;
+using System.Text.RegularExpressions;
 
 namespace Signin
 {
     public partial class frmSignIn : Form
     {
+        // Definir el evento que será lanzado cuando el registro sea exitoso
+        public event EventHandler RegistroExitoso;
+
         public frmSignIn()
         {
             InitializeComponent();
+
             // Asociar el evento KeyDown a todos los TextBox
             txtName.KeyDown += new KeyEventHandler(txtKeyDown);
             txtLastName.KeyDown += new KeyEventHandler(txtKeyDown);
@@ -16,16 +23,13 @@ namespace Signin
             txtPwdConfirm.KeyDown += new KeyEventHandler(txtKeyDown);
     }
 
-        // Activar botón btnRegistrarse al presionar Enter
+        // Simular clic en el botón btnRegistrarse al presionar Enter
         private void txtKeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                // Evitar el beep cuando se presiona Enter
-                e.SuppressKeyPress = true;
-                
-                // Simular un clic en el botón btnRegistrarse
-                btnRegistrarse.PerformClick();
+                e.SuppressKeyPress = true; // Evitar el beep cuando se presiona Enter
+                btnRegistrarse.PerformClick(); // Simular un clic en el botón btnRegistrarse
             }
         }
 
@@ -68,75 +72,106 @@ namespace Signin
         {
             UserController oper = new UserController();
 
-            if (checkSignIn(oper))
+            // Validar todos los campos antes de agregar al usuario
+            if (ValidateSignIn(oper))
             {
                 // Crear un usuario del tipo Student por defecto
-                Student student = new Student();
-                student.Name = txtName.Text;
-                student.LastName = txtLastName.Text;
-                student.Id = txtId.Text;
-                student.Password = txtPwd.Text;
-                student.Address = txtDir.Text;
-                // Asignar el rol como Student
-                student.Role = "Student";
-                // Agregar el student a la base de datos
-                oper.addUser(student);
+                Student student = new Student
+                {
+                    Name = txtName.Text,
+                    LastName = txtLastName.Text,
+                    Id = txtId.Text,
+                    Password = txtPwd.Text,
+                    Address = txtDir.Text,
+                    Role = "Student"
+                };
+
+                oper.AddUser(student);
+                MessageBox.Show("Se ha registrado exitosamente.", "Felicitaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Lanzar el evento RegistroExitoso
+                RegistroExitoso?.Invoke(this, EventArgs.Empty);
             }
         }
 
+        // Validar los campos del formulario de registro
+        private bool ValidateSignIn(UserController userController)
+        {
+            string error = "";
+
+            // Validar nombre
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                error = "El campo de texto Nombre no puede estar vacío.";
+            }
+
+            // Validar apellido
+            else if (string.IsNullOrWhiteSpace(txtLastName.Text))
+            {
+                error = "El campo de texto Apellido no puede estar vacío.";
+            }
+
+            // Validar dirección de correo electrónico
+            else if (string.IsNullOrWhiteSpace(txtId.Text) || !Regex.IsMatch(txtId.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                error = "El campo de texto Email no puede estar vacío y debe tener un formato válido.";
+            }
+
+            // Validar dirección
+            else if (string.IsNullOrWhiteSpace(txtDir.Text))
+            {
+                error = "El campo de texto Dirección no puede estar vacío.";
+            }
+
+            // Validar contraseña
+            else if (string.IsNullOrWhiteSpace(txtPwd.Text) || !IsValidPassword(txtPwd.Text))
+            {
+                error = "La contraseña debe tener al menos 8 caracteres, incluir letras, números y símbolos.";
+            }
+
+            // Validar confirmación de contraseña
+            else if (txtPwd.Text != txtPwdConfirm.Text)
+            {
+                error = "Las contraseñas no coinciden.";
+            }
+
+            // Verificar si el usuario ya existe
+            else if (userController.GetUserById(txtId.Text) != null)
+            {
+                error = "Ya existe un usuario registrado con ese email.";
+            }
+
+            // Si no hay errores, devolver verdadero
+            if (string.IsNullOrEmpty(error))
+            {
+                return true;
+            }
+
+            // Si hay errores, mostrar mensaje de error
+            MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
+
+        // Validar si la contraseña cumple con los requisitos
+        private bool IsValidPassword(string password)
+        {
+            // La contraseña debe tener al menos 8 caracteres, incluyendo letras, dígitos y símbolos
+            return password.Length >= 8 &&
+                   Regex.IsMatch(password, @"[A-Za-z]") &&
+                   Regex.IsMatch(password, @"[0-9]") &&
+                   Regex.IsMatch(password, @"[\W_]"); // \W busca caracteres no alfanuméricos
+        }
+
+        // Manejar eventos de clic en los cuadros de texto para limpiar el contenido
+        private void txtName_Click(object sender, EventArgs e) => txtName.Text = "";
+        private void txtLastName_Click(object sender, EventArgs e) => txtLastName.Text = "";
+        private void txtId_Click(object sender, EventArgs e) => txtId.Text = "";
+        private void txtDir_Click(object sender, EventArgs e) => txtDir.Text = "";
+        private void txtPwd_Click(object sender, EventArgs e) => txtPwd.Text = "";
+        private void txtPwdConfirm_Click(object sender, EventArgs e) => txtPwdConfirm.Text = "";
         private void label2_Click_1(object sender, EventArgs e)
         {
 
-        }
-
-        private void txtName_Click(object sender, EventArgs e)
-        {
-            txtName.Text = "";
-        }
-
-        private void txtLastName_Click(object sender, EventArgs e)
-        {
-            txtLastName.Text = "";
-        }
-
-        private void txtId_Click(object sender, EventArgs e)
-        {
-            txtId.Text = "";
-        }
-        private void txtDir_Click(object sender, EventArgs e)
-        {
-            txtDir.Text = "";
-        }
-
-        private void txtPwd_Click(object sender, EventArgs e)
-        {
-            txtPwd.Text = "";
-        }
-        private void txtPwdCondirm_Click(object sender, EventArgs e)
-        {
-            txtPwdConfirm.Text = "";
-        }
-
-        private bool checkSignIn(UserController o)
-        {
-            bool state = false;
-            string error = "";
-            //Validando datos
-            if (txtName.Text.Length == 0) { error = "El campo de texto Nombre no puede estar vacio."; }
-            if (txtLastName.Text.Length == 0) { error = "El campo de texto Apellido no puede estar vacio."; }
-            if (txtId.Text.Length == 0) { error = "El campo de texto Email no puede estar vacio."; }
-            if (txtDir.Text.Length == 0) { error = "El campo de texto Direccion no puede estar vacio."; }
-            if (txtPwd.Text.Length < 8) { error = "El campo de texto Password no puede estar vacio."; }
-            if (txtPwd.Text != txtPwdConfirm.Text) { error = "Las contraseñas no coinciden."; }
-            if (o.getUserById(txtId.Text) != null) { error = "Ya hay un usuario registrado con ese mail."; }
-            //Si el registro esta OK
-            if (error == "")
-            {
-                MessageBox.Show("Se ha registrado exitosamente.", "Felicitaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return false;
         }
     }
 }

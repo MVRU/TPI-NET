@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions; // Para validar el email
 using ProyectoNET;
 using ProyectoNET.Forms;
+using ProyectoNET.Controllers;
 using Signin;
 
 namespace LogIn
@@ -59,7 +60,7 @@ namespace LogIn
             //}
 
 
-            Boolean operation = new UserController().userlogIn(txtUsuario.Text, txtPassword.Text);
+            Boolean operation = new UserController().UserLogIn(txtUsuario.Text, txtPassword.Text);
             // Validación de credenciales de inicio de sesión
             if (operation)
             {

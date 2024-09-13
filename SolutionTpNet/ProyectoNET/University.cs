@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.Extensions.Logging;
+using ProyectoNET.Models;
 
 namespace ProyectoNET
 {
@@ -13,6 +14,8 @@ namespace ProyectoNET
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Schedule> Schedules { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,9 +32,18 @@ namespace ProyectoNET
                 .HasValue<Professor>("Professor")
                 .HasValue<Admin>("Admin");
 
-            // Agregar restricciones adicionales: Legajo es requerido (ver más adelante)
-            // modelBuilder.Entity<Alumno>().Property(a => a.Legajo).IsRequired();
-            // modelBuilder.Entity<Profesor>().Property(p => p.Legajo).IsRequired();
+            // Definir la relación entre Course y Schedule
+            modelBuilder.Entity<Course>()
+                .HasOne(c => c.Subject)
+                .WithMany(s => s.Courses)
+                .HasForeignKey(c => c.SubjectId);
+
+            modelBuilder.Entity<Schedule>()
+                .HasOne(s => s.Course)
+                .WithMany(c => c.Schedules)
+                .HasForeignKey(s => s.CourseId);
+
+            base.OnModelCreating(modelBuilder);
         }
 
         public UniversityContext()

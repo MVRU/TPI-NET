@@ -1,26 +1,23 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ProyectoNET
+namespace ProyectoNET.Models
 {
     internal abstract class User
     {
         [Key]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "El email debe tener un formato válido.")]
         public string Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "La contraseña es obligatoria")]
+        [StringLength(200, MinimumLength = 8, ErrorMessage = "La contraseña debe tener al menos 8 caracteres.")]
         public string Password { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El apellido es obligatorio")]
         public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El nombre es obligatorio")]
         public string Name { get; set; }
 
         // Dirección

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Desktop\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj": {}
+    "D:\\OneDrive - frro.utn.edu.ar\\Documents\\GitHub\\repos\\UTN\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Desktop\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj": {
+    "D:\\OneDrive - frro.utn.edu.ar\\Documents\\GitHub\\repos\\UTN\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj",
+        "projectUniqueName": "D:\\OneDrive - frro.utn.edu.ar\\Documents\\GitHub\\repos\\UTN\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj",
         "projectName": "ProyectoNET",
-        "projectPath": "C:\\Users\\HP\\Desktop\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\TPI-NET\\SolutionTpNet\\ProyectoNET\\obj\\",
+        "projectPath": "D:\\OneDrive - frro.utn.edu.ar\\Documents\\GitHub\\repos\\UTN\\TPI-NET\\SolutionTpNet\\ProyectoNET\\ProyectoNET.csproj",
+        "packagesPath": "C:\\Users\\hp_i3\\.nuget\\packages\\",
+        "outputPath": "D:\\OneDrive - frro.utn.edu.ar\\Documents\\GitHub\\repos\\UTN\\TPI-NET\\SolutionTpNet\\ProyectoNET\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hp_i3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -52,6 +57,12 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.8, )"
             }
           },
           "imports": [
@@ -73,7 +84,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

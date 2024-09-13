@@ -227,7 +227,7 @@
             txtPwdConfirm.Size = new Size(393, 19);
             txtPwdConfirm.TabIndex = 5;
             txtPwdConfirm.Text = "Introduce tu contraseña";
-            txtPwdConfirm.Click += txtPwdCondirm_Click;
+            txtPwdConfirm.Click += txtPwdConfirm_Click;
             // 
             // lblRequisitosContraseña
             // 
