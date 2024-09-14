@@ -1,118 +1,90 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
 using ProyectoNET.Models;
-using System;
-using System.Linq;
+using ProyectoNET.Repositories;
 
 namespace ProyectoNET.Controllers
 {
     internal class ScheduleController
     {
-        // Crear un nuevo Schedule
-        static void CreateSchedule(string day, TimeSpan startTime, TimeSpan endTime, int courseId)
+        private readonly ScheduleRepository _scheduleRepository;
+
+        public ScheduleController(ScheduleRepository scheduleRepository)
         {
-            using (var context = new UniversityContext())
+            _scheduleRepository = scheduleRepository;
+        }
+
+        public void CreateSchedule(string day, TimeSpan startTime, TimeSpan endTime, int courseId)
+        {
+            var schedule = new Schedule
             {
-                var schedule = new Schedule
-                {
-                    Day = day,
-                    StartTime = startTime,
-                    EndTime = endTime,
-                    CourseId = courseId
-                };
+                Day = day,
+                StartTime = startTime,
+                EndTime = endTime,
+                CourseId = courseId
+            };
 
-                context.Schedules.Add(schedule);
-                context.SaveChanges();
+            _scheduleRepository.CreateSchedule(schedule);
+            Console.WriteLine($"Horario para el curso {courseId} creado con éxito.");
+        }
 
-                Console.WriteLine($"Horario para el curso {courseId} creado con éxito.");
+        public void GetScheduleById(int id)
+        {
+            var schedule = _scheduleRepository.GetScheduleById(id);
+
+            if (schedule != null)
+            {
+                Console.WriteLine($"Horario encontrado: Día {schedule.Day}");
+                Console.WriteLine($"Hora de inicio: {schedule.StartTime}");
+                Console.WriteLine($"Hora de fin: {schedule.EndTime}");
+                Console.WriteLine($"Curso asociado: {schedule.CourseId}");
+            }
+            else
+            {
+                Console.WriteLine("Horario no encontrado.");
             }
         }
 
-        // Método para leer un Schedule por su Id
-        static void GetScheduleById(int id)
+        public void UpdateSchedule(int id, string newDay, TimeSpan newStartTime, TimeSpan newEndTime)
         {
-            using (var context = new UniversityContext())
-            {
-                var schedule = context.Schedules.FirstOrDefault(s => s.Id == id);
+            var schedule = _scheduleRepository.GetScheduleById(id);
 
-                if (schedule != null)
-                {
-                    Console.WriteLine($"Horario encontrado: Día {schedule.Day}");
-                    Console.WriteLine($"Hora de inicio: {schedule.StartTime}");
-                    Console.WriteLine($"Hora de fin: {schedule.EndTime}");
-                    Console.WriteLine($"Curso asociado: {schedule.CourseId}");
-                }
-                else
-                {
-                    Console.WriteLine("Horario no encontrado.");
-                }
+            if (schedule != null)
+            {
+                schedule.Day = newDay;
+                schedule.StartTime = newStartTime;
+                schedule.EndTime = newEndTime;
+                _scheduleRepository.UpdateSchedule(schedule);
+
+                Console.WriteLine($"Horario con Id {id} actualizado con éxito.");
+            }
+            else
+            {
+                Console.WriteLine("Horario no encontrado.");
             }
         }
 
-        // Actualizar un Schedule existente
-        static void UpdateSchedule(int id, string newDay, TimeSpan newStartTime, TimeSpan newEndTime)
+        public void DeleteSchedule(int id)
         {
-            using (var context = new UniversityContext())
-            {
-                var schedule = context.Schedules.FirstOrDefault(s => s.Id == id);
-
-                if (schedule != null)
-                {
-                    schedule.Day = newDay;
-                    schedule.StartTime = newStartTime;
-                    schedule.EndTime = newEndTime;
-                    context.SaveChanges();
-
-                    Console.WriteLine($"Horario con Id {id} actualizado con éxito.");
-                }
-                else
-                {
-                    Console.WriteLine("Horario no encontrado.");
-                }
-            }
+            _scheduleRepository.DeleteSchedule(id);
+            Console.WriteLine($"Horario con Id {id} eliminado con éxito.");
         }
 
-        // Eliminar un Schedule por su Id
-        static void DeleteSchedule(int id)
+        public void GetSchedulesByCourseId(int courseId)
         {
-            using (var context = new UniversityContext())
+            var schedules = _scheduleRepository.GetSchedulesByCourseId(courseId);
+
+            if (schedules.Any())
             {
-                var schedule = context.Schedules.FirstOrDefault(s => s.Id == id);
-
-                if (schedule != null)
+                Console.WriteLine($"Horarios para el curso {courseId}:");
+                foreach (var schedule in schedules)
                 {
-                    context.Schedules.Remove(schedule);
-                    context.SaveChanges();
-
-                    Console.WriteLine($"Horario con Id {id} eliminado con éxito.");
-                }
-                else
-                {
-                    Console.WriteLine("Horario no encontrado.");
+                    Console.WriteLine($"Día: {schedule.Day}, Hora de inicio: {schedule.StartTime}, Hora de fin: {schedule.EndTime}");
                 }
             }
-        }
-
-        // Obtener todos los horarios de un curso específico
-        static void GetSchedulesByCourseId(int courseId)
-        {
-            using (var context = new UniversityContext())
+            else
             {
-                var course = context.Courses
-                    .Include(c => c.Schedules) // Incluir la lista de Schedules
-                    .FirstOrDefault(c => c.Id == courseId);
-
-                if (course != null && course.Schedules.Count > 0)
-                {
-                    Console.WriteLine($"Horarios para el curso {courseId}:");
-                    foreach (var schedule in course.Schedules)
-                    {
-                        Console.WriteLine($"Día: {schedule.Day}, Hora de inicio: {schedule.StartTime}, Hora de fin: {schedule.EndTime}");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine($"No se encontraron horarios para el curso {courseId}.");
-                }
+                Console.WriteLine($"No se encontraron horarios para el curso {courseId}.");
             }
         }
     }

@@ -6,11 +6,15 @@ using Signin;
 
 namespace LogIn
 {
-    public partial class frmLogIn : Form
+    internal partial class frmLogIn : Form
     {
-        public frmLogIn()
+        private readonly UserController _userController;
+
+        public frmLogIn(UserController userController)
         {
             InitializeComponent();
+            _userController = userController;
+
             // Asociar el evento KeyDown a todos los TextBox
             txtUsuario.KeyDown += new KeyEventHandler(txtKeyDown);
             txtPassword.KeyDown += new KeyEventHandler(txtKeyDown);
@@ -29,9 +33,8 @@ namespace LogIn
             }
         }
 
-        private void btnIngresar_Click(object sender, EventArgs e)
+        private async void btnIngresar_Click(object sender, EventArgs e)
         {
-
             // Verificar si los campos no están vacíos
             if (string.IsNullOrWhiteSpace(txtUsuario.Text))
             {
@@ -59,8 +62,8 @@ namespace LogIn
             //    return;
             //}
 
+            bool operation = await _userController.UserLogInAsync(txtUsuario.Text, txtPassword.Text);
 
-            Boolean operation = new UserController().UserLogIn(txtUsuario.Text, txtPassword.Text);
             // Validación de credenciales de inicio de sesión
             if (operation)
             {

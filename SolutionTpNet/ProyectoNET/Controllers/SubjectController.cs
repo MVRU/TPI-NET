@@ -1,13 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
 using ProyectoNET.Models;
-using System;
-using System.Linq;
+using ProyectoNET.Repositories;
 
 namespace ProyectoNET.Controllers
 {
     internal class SubjectController
+    {
+        private readonly SubjectRepository _subjectRepository;
+
+        public SubjectController(SubjectRepository subjectRepository)
         {
-        public static void CreateSubject(string description, float requiredAttendancePercentage, float averageAttendancePercentage)
+            _subjectRepository = subjectRepository;
+        }
+
+        public void CreateSubject(string description, float requiredAttendancePercentage, float averageAttendancePercentage)
         {
             if (requiredAttendancePercentage < 0 || requiredAttendancePercentage > 100 ||
                 averageAttendancePercentage < 0 || averageAttendancePercentage > 100)
@@ -16,41 +23,34 @@ namespace ProyectoNET.Controllers
                 return;
             }
 
-            using (var context = new UniversityContext())
+            var subject = new Subject
             {
-                var subject = new Subject
-                {
-                    Description = description,
-                    RequiredAttendancePercentage = requiredAttendancePercentage,
-                    AverageAttendancePercentage = averageAttendancePercentage
-                };
+                Description = description,
+                RequiredAttendancePercentage = requiredAttendancePercentage,
+                AverageAttendancePercentage = averageAttendancePercentage
+            };
 
-                context.Subjects.Add(subject);
-                context.SaveChanges();
-                Console.WriteLine($"Asignatura '{description}' fue creada con éxito.");
-            }
+            _subjectRepository.CreateSubject(subject);
+            Console.WriteLine($"Asignatura '{description}' fue creada con éxito.");
         }
 
-        public static void GetSubjectById(int id)
+        public void GetSubjectById(int id)
         {
-            using (var context = new UniversityContext())
-            {
-                var subject = context.Subjects.FirstOrDefault(s => s.Id == id);
+            var subject = _subjectRepository.GetSubjectById(id);
 
-                if (subject != null)
-                {
-                    Console.WriteLine($"Asignatura encontrada: {subject.Description}");
-                    Console.WriteLine($"Porcentaje de asistencia requerido: {subject.RequiredAttendancePercentage}%");
-                    Console.WriteLine($"Promedio de asistencia: {subject.AverageAttendancePercentage}%");
-                }
-                else
-                {
-                    Console.WriteLine("Asignatura no encontrada.");
-                }
+            if (subject != null)
+            {
+                Console.WriteLine($"Asignatura encontrada: {subject.Description}");
+                Console.WriteLine($"Porcentaje de asistencia requerido: {subject.RequiredAttendancePercentage}%");
+                Console.WriteLine($"Promedio de asistencia: {subject.AverageAttendancePercentage}%");
+            }
+            else
+            {
+                Console.WriteLine("Asignatura no encontrada.");
             }
         }
 
-        public static void UpdateSubject(int id, string newDescription, float newRequiredAttendancePercentage, float newAverageAttendancePercentage)
+        public void UpdateSubject(int id, string newDescription, float newRequiredAttendancePercentage, float newAverageAttendancePercentage)
         {
             if (newRequiredAttendancePercentage < 0 || newRequiredAttendancePercentage > 100 ||
                 newAverageAttendancePercentage < 0 || newAverageAttendancePercentage > 100)
@@ -59,65 +59,44 @@ namespace ProyectoNET.Controllers
                 return;
             }
 
-            using (var context = new UniversityContext())
-            {
-                var subject = context.Subjects.FirstOrDefault(s => s.Id == id);
+            var subject = _subjectRepository.GetSubjectById(id);
 
-                if (subject != null)
-                {
-                    subject.Description = newDescription;
-                    subject.RequiredAttendancePercentage = newRequiredAttendancePercentage;
-                    subject.AverageAttendancePercentage = newAverageAttendancePercentage;
-                    context.SaveChanges();
-                    Console.WriteLine($"Asignatura con Id {id} fue actualizada con éxito.");
-                }
-                else
-                {
-                    Console.WriteLine("Asignatura no encontrada.");
-                }
+            if (subject != null)
+            {
+                subject.Description = newDescription;
+                subject.RequiredAttendancePercentage = newRequiredAttendancePercentage;
+                subject.AverageAttendancePercentage = newAverageAttendancePercentage;
+                _subjectRepository.UpdateSubject(subject);
+
+                Console.WriteLine($"Asignatura con Id {id} fue actualizada con éxito.");
+            }
+            else
+            {
+                Console.WriteLine("Asignatura no encontrada.");
             }
         }
 
-        public static void DeleteSubject(int id)
+        public void DeleteSubject(int id)
         {
-            using (var context = new UniversityContext())
-            {
-                var subject = context.Subjects.FirstOrDefault(s => s.Id == id);
-
-                if (subject != null)
-                {
-                    context.Subjects.Remove(subject);
-                    context.SaveChanges();
-                    Console.WriteLine($"Asignatura con Id {id} fue eliminada con éxito.");
-                }
-                else
-                {
-                    Console.WriteLine("Asignatura no encontrada.");
-                }
-            }
+            _subjectRepository.DeleteSubject(id);
+            Console.WriteLine($"Asignatura con Id {id} fue eliminada con éxito.");
         }
 
-        // Obtener todos los cursos asociados a una asignatura específica
-        public static void GetCoursesBySubjectId(int subjectId)
+        public void GetCoursesBySubjectId(int subjectId)
         {
-            using (var context = new UniversityContext())
-            {
-                var subject = context.Subjects
-                    .Include(s => s.Courses)
-                    .FirstOrDefault(s => s.Id == subjectId);
+            var courses = _subjectRepository.GetCoursesBySubjectId(subjectId);
 
-                if (subject != null && subject.Courses.Any())
+            if (courses.Any())
+            {
+                Console.WriteLine($"Cursos para la asignatura con Id {subjectId}:");
+                foreach (var course in courses)
                 {
-                    Console.WriteLine($"Cursos para la asignatura '{subject.Description}':");
-                    foreach (var course in subject.Courses)
-                    {
-                        Console.WriteLine($"Año: {course.Year}, Fecha Inicio: {course.StartDate}, Fecha Fin: {course.EndDate}, Cupo: {course.Quota}");
-                    }
+                    Console.WriteLine($"Año: {course.Year}, Fecha Inicio: {course.StartDate}, Fecha Fin: {course.EndDate}, Cupo: {course.Quota}");
                 }
-                else
-                {
-                    Console.WriteLine($"No se encontraron cursos para la asignatura con Id {subjectId}.");
-                }
+            }
+            else
+            {
+                Console.WriteLine($"No se encontraron cursos para la asignatura con Id {subjectId}.");
             }
         }
     }

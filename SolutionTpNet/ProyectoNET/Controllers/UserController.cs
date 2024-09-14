@@ -1,59 +1,36 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Threading.Tasks;
 using ProyectoNET.Models;
-using System;
-using System.Linq;
+using ProyectoNET.Repositories;
 
 namespace ProyectoNET.Controllers
 {
     internal class UserController
     {
-        public bool AddUser(User user)
+        private readonly UserRepository _userRepository;
+
+        public UserController(UserRepository userRepository)
         {
-            try
-            {
-                using (var context = new UniversityContext())
-                {
-                    // Validar si el rol es válido
-                    if (!new[] { "Professor", "Admin", "Student" }.Contains(user.Role))
-                    {
-                        Console.WriteLine("Error: Rol inválido. Debe ser 'Professor', 'Admin' o 'Student'.");
-                        return false;
-                    }
-
-                    // Verificar si el email ya está registrado
-                    if (context.Users.Any(u => u.Id == user.Id))
-                    {
-                        Console.WriteLine("Error: El email ya está registrado.");
-                        return false;
-                    }
-
-                    // Guardar el usuario según su tipo
-                    context.Users.Add(user);
-                    context.SaveChanges();
-                    Console.WriteLine("Usuario agregado exitosamente.");
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al agregar usuario: {ex.Message}");
-                return false;
-            }
+            _userRepository = userRepository;
         }
 
-        public User GetUserById(string id)
+        public async Task<bool> AddUserAsync(User user)
         {
-            using (var context = new UniversityContext())
-            {
-                return context.Users.Find(id);
-            }
+            // Hashear la contraseña antes de guardarla
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            return await _userRepository.AddUserAsync(user);
         }
 
-        public bool UserLogIn(string id, string pwd)
+        public async Task<User> GetUserByIdAsync(string id)
         {
-            var user = GetUserById(id);
+            return await _userRepository.GetUserByIdAsync(id);
+        }
 
-            // Comparación de contraseñas usando hash
+        public async Task<bool> UserLogInAsync(string id, string pwd)
+        {
+            var user = await _userRepository.GetUserByIdAsync(id);
+
+            // Comparación de contraseñas usando BCrypt
             if (user != null && VerifyPassword(user.Password, pwd))
             {
                 Console.WriteLine("Inicio de sesión exitoso.");
@@ -64,84 +41,20 @@ namespace ProyectoNET.Controllers
             return false;
         }
 
-        // Método para verificar contraseñas (usando hashing)
         private bool VerifyPassword(string storedPassword, string inputPassword)
         {
-            // Acá se debería usar un algoritmo de hashing (ej: BCrypt)
-            return storedPassword == inputPassword; // Simplificado por ahora
+            // Verificar la contraseña usando BCrypt
+            return BCrypt.Net.BCrypt.Verify(inputPassword, storedPassword);
         }
 
-        public bool UpdateUser(User updatedUser)
+        public async Task<bool> UpdateUserAsync(User updatedUser)
         {
-            try
-            {
-                using (var context = new UniversityContext())
-                {
-                    var user = context.Users.Find(updatedUser.Id);
-
-                    if (user != null)
-                    {
-                        user.Name = updatedUser.Name;
-                        user.LastName = updatedUser.LastName;
-                        user.Password = updatedUser.Password;
-                        user.Address = updatedUser.Address;
-
-                        // Actualizar campos específicos según el tipo de usuario
-                        if (user is Student student && updatedUser is Student updatedStudent)
-                        {
-                            student.StudentFile = updatedStudent.StudentFile;
-                        }
-                        else if (user is Professor professor && updatedUser is Professor updatedProfessor)
-                        {
-                            professor.ProfessorFile = updatedProfessor.ProfessorFile;
-                            professor.Specialization = updatedProfessor.Specialization;
-                        }
-                        else if (user is Admin admin && updatedUser is Admin updatedAdmin)
-                        {
-                            admin.Position = updatedAdmin.Position;
-                        }
-
-                        context.SaveChanges();
-                        Console.WriteLine("Usuario actualizado exitosamente.");
-                        return true;
-                    }
-
-                    Console.WriteLine("Error: Usuario no encontrado.");
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al actualizar usuario: {ex.Message}");
-                return false;
-            }
+            return await _userRepository.UpdateUserAsync(updatedUser);
         }
 
-        public bool DeleteUser(string id)
+        public async Task<bool> DeleteUserAsync(string id)
         {
-            try
-            {
-                using (var context = new UniversityContext())
-                {
-                    var user = context.Users.Find(id);
-
-                    if (user != null)
-                    {
-                        context.Users.Remove(user);
-                        context.SaveChanges();
-                        Console.WriteLine("Usuario eliminado exitosamente.");
-                        return true;
-                    }
-
-                    Console.WriteLine("Error: Usuario no encontrado.");
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al eliminar usuario: {ex.Message}");
-                return false;
-            }
+            return await _userRepository.DeleteUserAsync(id);
         }
     }
 }

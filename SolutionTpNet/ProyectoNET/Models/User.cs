@@ -20,7 +20,6 @@ namespace ProyectoNET.Models
         [Required(ErrorMessage = "El nombre es obligatorio")]
         public string Name { get; set; }
 
-        // Dirección
         public string Address { get; set; }
 
         [Required]
@@ -28,21 +27,22 @@ namespace ProyectoNET.Models
         public string Role { get; set; }
     }
 
-    // Clase Student
+    // Subclase Student
     internal class Student : User
     {
-        public int StudentFile { get; set; }
+        public string StudentFile { get; set; }
+        public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
     }
 
-    // Clase Professor
+    // Subclase Professor
     internal class Professor : User
     {
-        public int ProfessorFile { get; set; }
-
+        public string ProfessorFile { get; set; }
         public string Specialization { get; set; }
+        public ICollection<Course> Courses { get; set; } = new List<Course>(); // Relación muchos a muchos con Course
     }
 
-    // Clase Admin
+    // Subclase Admin
     internal class Admin : User
     {
         public string Position { get; set; }

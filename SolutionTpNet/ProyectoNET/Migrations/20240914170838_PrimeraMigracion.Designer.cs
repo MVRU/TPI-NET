@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProyectoNET.Data;
 
@@ -11,9 +12,11 @@ using ProyectoNET.Data;
 namespace ProyectoNET.Migrations
 {
     [DbContext(typeof(UniversityContext))]
-    partial class UniversityContextModelSnapshot : ModelSnapshot
+    [Migration("20240914170838_PrimeraMigracion")]
+    partial class PrimeraMigracion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,8 +78,7 @@ namespace ProyectoNET.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("SubjectId")
-                        .IsRequired()
+                    b.Property<int>("SubjectId")
                         .HasColumnType("int");
 
                     b.Property<int>("Year")
@@ -241,9 +243,8 @@ namespace ProyectoNET.Migrations
                 {
                     b.HasBaseType("ProyectoNET.Models.User");
 
-                    b.Property<string>("ProfessorFile")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ProfessorFile")
+                        .HasColumnType("int");
 
                     b.Property<string>("Specialization")
                         .IsRequired()
@@ -256,9 +257,8 @@ namespace ProyectoNET.Migrations
                 {
                     b.HasBaseType("ProyectoNET.Models.User");
 
-                    b.Property<string>("StudentFile")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("StudentFile")
+                        .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("Student");
                 });
