@@ -1,10 +1,10 @@
 ﻿/* DATOS DE PRUEBA
- 
+
 ADMIN:
 admin@example.com
 @Password123
 
- */
+*/
 
 using ProyectoNET.Models;
 using ProyectoNET.Data;
