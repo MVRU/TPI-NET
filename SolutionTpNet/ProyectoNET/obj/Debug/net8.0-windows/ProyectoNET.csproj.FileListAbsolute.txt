@@ -313,3 +313,4 @@ D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\P
 D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.EventSource.dll
 D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\BCrypt.Net-Next.dll
+D:\OneDrive - frro.utn.edu.ar\Documents\GitHub\repos\UTN\TPI-NET\SolutionTpNet\ProyectoNET\bin\Debug\net8.0-windows\ProyectoNET.dll.config

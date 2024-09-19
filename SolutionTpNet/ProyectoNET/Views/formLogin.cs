@@ -56,33 +56,45 @@ namespace LogIn
                 return;
             }
 
-            bool operation = await _userController.UserLogInAsync(txtLegajo.Text, txtPassword.Text);
+            var user = await _userController.UserLogInAsync(txtLegajo.Text, txtPassword.Text);
 
-            // Validación de credenciales de inicio de sesión
-            if (operation)
+            if (user != null)
             {
+                if (chkRememberMe.Checked)
+                {
+                    ProyectoNET.Properties.Settings.Default.RememberMe = true;
+                    ProyectoNET.Properties.Settings.Default.LastLegajo = txtLegajo.Text;
+                    ProyectoNET.Properties.Settings.Default.Name = user.Name;
+                    ProyectoNET.Properties.Settings.Default.LastName = user.LastName;
+                    ProyectoNET.Properties.Settings.Default.Role = user.Role;
+                    ProyectoNET.Properties.Settings.Default.Save();
+                }
+                else
+                {
+                    ProyectoNET.Properties.Settings.Default.RememberMe = false;
+                    ProyectoNET.Properties.Settings.Default.LastLegajo = string.Empty;
+                    ProyectoNET.Properties.Settings.Default.Name = string.Empty;
+                    ProyectoNET.Properties.Settings.Default.LastName = string.Empty;
+                    ProyectoNET.Properties.Settings.Default.Role = string.Empty;
+                    ProyectoNET.Properties.Settings.Default.Save();
+                }
+
                 MessageBox.Show("Usted ha ingresado al sistema correctamente.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Obtener el formulario principal abierto
-                frmMain mainForm = (frmMain)this.MdiParent;
-
+                var mainForm = (frmMain)this.MdiParent;
                 if (mainForm != null)
                 {
-                    // Habilitar el Dashboard en el menú principal
                     mainForm.HabilitarMenus();
                 }
 
-                // Redirigir al frmMain y mostrar frmDashboard dentro del mismo
-                frmDashboard dashboard = new frmDashboard();  // Crear el formulario de dashboard
+                var dashboardForm = new frmDashboard(user.Name, user.LastName, user.Role);
+                dashboardForm.MdiParent = mainForm;
+                dashboardForm.WindowState = FormWindowState.Maximized;
+                dashboardForm.Show();
 
-                // Configurar frmDashboard como hijo de frmMain
-                dashboard.MdiParent = mainForm;
-                dashboard.WindowState = FormWindowState.Maximized;
-                dashboard.Show();
-
-                // Cerrar el formulario de login actual
                 this.Close();
             }
+
             else
             {
                 MessageBox.Show("Legajo y/o contraseña incorrectos.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -112,5 +124,10 @@ namespace LogIn
 
         private void lblLegajo_Click(object sender, EventArgs e)
         { }
+
+        private void chkRememberMe_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace ProyectoNET
             cursosToolStripMenuItem.Visible = false;
             configuraciónToolStripMenuItem.Visible = false;
             cuentaToolStripMenuItem.Visible = false;
+            cerrarSesiónToolStripMenuItem.Visible = false;
         }
 
         // Método para habilitar los menús después de iniciar sesión correctamente
@@ -37,6 +38,7 @@ namespace ProyectoNET
             cursosToolStripMenuItem.Visible = true;
             configuraciónToolStripMenuItem.Visible = true;
             cuentaToolStripMenuItem.Visible = true;
+            cerrarSesiónToolStripMenuItem .Visible = true;
             iniciarSesionToolStripMenuItem.Visible = false;
             registrarseToolStripMenuItem.Visible = false;
         }
@@ -60,23 +62,48 @@ namespace ProyectoNET
         private void FrmSignIn_RegistroExitoso(object sender, EventArgs e)
         {
             ((frmSignIn)sender).Close();
+            MostrarFormularioLogin();
+        }
 
-            // Mostrar el formulario de inicio de sesión
+        private void mnuLogIn_Click(object sender, EventArgs e)
+        {
+            MostrarFormularioLogin();
+        }
+
+        private void formMain_Load(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.RememberMe)
+            {
+                HabilitarMenus();
+                MostrarDashboard();
+            }
+            else
+            {
+                MostrarFormularioLogin();
+            }
+        }
+        private void MostrarFormularioSignin()
+        {
+            MostrarFormularioSignin();
+        }
+
+        private void MostrarFormularioLogin()
+        {
             var loginForm = Program.ServiceProvider.GetRequiredService<frmLogIn>();
             loginForm.MdiParent = this;
             loginForm.Show();
         }
 
-        private void mnuLogIn_Click(object sender, EventArgs e)
+        private void MostrarDashboard()
         {
-            var formX = Program.ServiceProvider.GetRequiredService<frmLogIn>();
-            formX.MdiParent = this;
-            formX.Show();
-        }
+            var name = Properties.Settings.Default.Name;
+            var lastName = Properties.Settings.Default.LastName;
+            var role = Properties.Settings.Default.Role;
 
-        private void formMain_Load(object sender, EventArgs e)
-        {
-            // Manejar la carga del formulario
+            var formX = new frmDashboard(name, lastName, role);
+            formX.MdiParent = this;
+            formX.WindowState = FormWindowState.Maximized;
+            formX.Show();
         }
 
         private void menúToolStripMenuItem_Click(object sender, EventArgs e)
@@ -107,5 +134,15 @@ namespace ProyectoNET
             formX.MdiParent = this;
             formX.Show();
         }
+        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.RememberMe = false;
+            Properties.Settings.Default.LastLegajo = string.Empty;
+            Properties.Settings.Default.Save();
+
+            // Mostrar el formulario de inicio de sesión
+            MostrarFormularioLogin();
+        }
+
     }
 }

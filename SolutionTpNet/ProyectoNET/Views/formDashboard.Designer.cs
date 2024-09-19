@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             pnlDashboard = new Panel();
-            lblBienvenida = new Label();
-            lblResumenCursos = new Label();
-            lblProximosCursos = new Label();
-            dgvProximosCursos = new DataGridView();
             dgvEstudiantesProblemas = new DataGridView();
             lblEstudiantesProblemas = new Label();
+            dgvProximosCursos = new DataGridView();
+            lblProximosCursos = new Label();
+            lblResumenCursos = new Label();
+            lblBienvenida = new Label();
             pnlDashboard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvProximosCursos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvEstudiantesProblemas).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProximosCursos).BeginInit();
             SuspendLayout();
             // 
             // pnlDashboard
@@ -53,48 +53,6 @@
             pnlDashboard.Name = "pnlDashboard";
             pnlDashboard.Size = new Size(800, 602);
             pnlDashboard.TabIndex = 1;
-            // 
-            // lblBienvenida
-            // 
-            lblBienvenida.AutoSize = true;
-            lblBienvenida.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblBienvenida.ForeColor = Color.FromArgb(13, 23, 28);
-            lblBienvenida.Location = new Point(70, 42);
-            lblBienvenida.Name = "lblBienvenida";
-            lblBienvenida.Size = new Size(365, 31);
-            lblBienvenida.TabIndex = 2;
-            lblBienvenida.Text = "Bienvenido de vuelta, Prof.";
-            // 
-            // lblResumenCursos
-            // 
-            lblResumenCursos.AutoSize = true;
-            lblResumenCursos.Font = new Font("Microsoft Sans Serif", 12F);
-            lblResumenCursos.ForeColor = Color.FromArgb(79, 122, 148);
-            lblResumenCursos.Location = new Point(70, 85);
-            lblResumenCursos.Name = "lblResumenCursos";
-            lblResumenCursos.Size = new Size(274, 20);
-            lblResumenCursos.TabIndex = 3;
-            lblResumenCursos.Text = "Aquí tiene un resumen de sus cursos.";
-            // 
-            // lblProximosCursos
-            // 
-            lblProximosCursos.AutoSize = true;
-            lblProximosCursos.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblProximosCursos.ForeColor = Color.FromArgb(13, 23, 28);
-            lblProximosCursos.Location = new Point(70, 126);
-            lblProximosCursos.Name = "lblProximosCursos";
-            lblProximosCursos.Size = new Size(139, 20);
-            lblProximosCursos.TabIndex = 4;
-            lblProximosCursos.Text = "Próximos cursos";
-            // 
-            // dgvProximosCursos
-            // 
-            dgvProximosCursos.BackgroundColor = Color.FromArgb(247, 250, 250);
-            dgvProximosCursos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProximosCursos.Location = new Point(70, 149);
-            dgvProximosCursos.Name = "dgvProximosCursos";
-            dgvProximosCursos.Size = new Size(660, 212);
-            dgvProximosCursos.TabIndex = 5;
             // 
             // dgvEstudiantesProblemas
             // 
@@ -117,6 +75,49 @@
             lblEstudiantesProblemas.Text = "Estudiantes con problemas de asistencia";
             lblEstudiantesProblemas.Click += label1_Click;
             // 
+            // dgvProximosCursos
+            // 
+            dgvProximosCursos.BackgroundColor = Color.FromArgb(247, 250, 250);
+            dgvProximosCursos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProximosCursos.Location = new Point(70, 149);
+            dgvProximosCursos.Name = "dgvProximosCursos";
+            dgvProximosCursos.Size = new Size(660, 212);
+            dgvProximosCursos.TabIndex = 5;
+            // 
+            // lblProximosCursos
+            // 
+            lblProximosCursos.AutoSize = true;
+            lblProximosCursos.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblProximosCursos.ForeColor = Color.FromArgb(13, 23, 28);
+            lblProximosCursos.Location = new Point(70, 126);
+            lblProximosCursos.Name = "lblProximosCursos";
+            lblProximosCursos.Size = new Size(139, 20);
+            lblProximosCursos.TabIndex = 4;
+            lblProximosCursos.Text = "Próximos cursos";
+            // 
+            // lblResumenCursos
+            // 
+            lblResumenCursos.AutoSize = true;
+            lblResumenCursos.Font = new Font("Microsoft Sans Serif", 12F);
+            lblResumenCursos.ForeColor = Color.FromArgb(79, 122, 148);
+            lblResumenCursos.Location = new Point(70, 85);
+            lblResumenCursos.Name = "lblResumenCursos";
+            lblResumenCursos.Size = new Size(274, 20);
+            lblResumenCursos.TabIndex = 3;
+            lblResumenCursos.Text = "Aquí tiene un resumen de sus cursos.";
+            // 
+            // lblBienvenida
+            // 
+            lblBienvenida.AutoSize = true;
+            lblBienvenida.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblBienvenida.ForeColor = Color.FromArgb(13, 23, 28);
+            lblBienvenida.Location = new Point(70, 42);
+            lblBienvenida.Name = "lblBienvenida";
+            lblBienvenida.Size = new Size(365, 31);
+            lblBienvenida.TabIndex = 2;
+            lblBienvenida.Text = "Bienvenido de vuelta, Prof.";
+            lblBienvenida.Click += lblBienvenida_Click;
+            // 
             // frmDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -132,8 +133,8 @@
             Load += frmDashboard_Load;
             pnlDashboard.ResumeLayout(false);
             pnlDashboard.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvProximosCursos).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvEstudiantesProblemas).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProximosCursos).EndInit();
             ResumeLayout(false);
         }
 

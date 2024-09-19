@@ -26,7 +26,7 @@ namespace ProyectoNET.Controllers
             return await _userRepository.GetUserByIdAsync(id);
         }
 
-        public async Task<bool> UserLogInAsync(string id, string pwd)
+        public async Task<User> UserLogInAsync(string id, string pwd)
         {
             var user = await _userRepository.GetUserByIdAsync(id);
 
@@ -34,11 +34,11 @@ namespace ProyectoNET.Controllers
             if (user != null && VerifyPassword(user.Password, pwd))
             {
                 Console.WriteLine("Inicio de sesión exitoso.");
-                return true;
+                return user; // Devolver el objeto User si las credenciales son correctas
             }
 
             Console.WriteLine("Credenciales incorrectas.");
-            return false;
+            return null; // Retornar null si las credenciales son incorrectas
         }
 
         private bool VerifyPassword(string storedPassword, string inputPassword)

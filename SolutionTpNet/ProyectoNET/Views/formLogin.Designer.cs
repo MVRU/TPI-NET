@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogIn));
-            checkBoxMantenerSesion = new CheckBox();
+            chkRememberMe = new CheckBox();
             btnIngresar = new Button();
             linkOlvidaPassword = new LinkLabel();
             lblPassword = new Label();
@@ -40,17 +40,18 @@
             txtPassword = new TextBox();
             SuspendLayout();
             // 
-            // checkBoxMantenerSesion
+            // chkRememberMe
             // 
-            checkBoxMantenerSesion.AutoSize = true;
-            checkBoxMantenerSesion.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            checkBoxMantenerSesion.ForeColor = Color.FromArgb(13, 23, 28);
-            checkBoxMantenerSesion.Location = new Point(196, 329);
-            checkBoxMantenerSesion.Name = "checkBoxMantenerSesion";
-            checkBoxMantenerSesion.Size = new Size(180, 20);
-            checkBoxMantenerSesion.TabIndex = 2;
-            checkBoxMantenerSesion.Text = "Manten mi sesión iniciada";
-            checkBoxMantenerSesion.UseVisualStyleBackColor = true;
+            chkRememberMe.AutoSize = true;
+            chkRememberMe.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chkRememberMe.ForeColor = Color.FromArgb(13, 23, 28);
+            chkRememberMe.Location = new Point(196, 329);
+            chkRememberMe.Name = "chkRememberMe";
+            chkRememberMe.Size = new Size(180, 20);
+            chkRememberMe.TabIndex = 2;
+            chkRememberMe.Text = "Manten mi sesión iniciada";
+            chkRememberMe.UseVisualStyleBackColor = true;
+            chkRememberMe.CheckedChanged += chkRememberMe_CheckedChanged;
             // 
             // btnIngresar
             // 
@@ -160,7 +161,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(247, 250, 250);
             ClientSize = new Size(800, 502);
-            Controls.Add(checkBoxMantenerSesion);
+            Controls.Add(chkRememberMe);
             Controls.Add(btnIngresar);
             Controls.Add(linkOlvidaPassword);
             Controls.Add(lblPassword);
@@ -184,7 +185,7 @@
 
         #endregion
 
-        private CheckBox checkBoxMantenerSesion;
+        private CheckBox chkRememberMe;
         private Button btnIngresar;
         private LinkLabel linkOlvidaPassword;
         private Label lblPassword;
