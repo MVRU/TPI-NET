@@ -32,11 +32,11 @@
             checkBoxMantenerSesion = new CheckBox();
             btnIngresar = new Button();
             linkOlvidaPassword = new LinkLabel();
-            lblContraseña = new Label();
-            lblEmail = new Label();
+            lblPassword = new Label();
+            lblLegajo = new Label();
             lblDescripcionBienvenida = new Label();
             lblBienvenida = new Label();
-            txtUsuario = new TextBox();
+            txtLegajo = new TextBox();
             txtPassword = new TextBox();
             SuspendLayout();
             // 
@@ -82,27 +82,28 @@
             linkOlvidaPassword.Text = "¿Olvidó su contaseña?";
             linkOlvidaPassword.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // lblContraseña
+            // lblPassword
             // 
-            lblContraseña.AutoSize = true;
-            lblContraseña.Font = new Font("Microsoft Sans Serif", 12F);
-            lblContraseña.ForeColor = Color.FromArgb(13, 23, 28);
-            lblContraseña.Location = new Point(196, 265);
-            lblContraseña.Name = "lblContraseña";
-            lblContraseña.Size = new Size(92, 20);
-            lblContraseña.TabIndex = 23;
-            lblContraseña.Text = "Contraseña";
+            lblPassword.AutoSize = true;
+            lblPassword.Font = new Font("Microsoft Sans Serif", 12F);
+            lblPassword.ForeColor = Color.FromArgb(13, 23, 28);
+            lblPassword.Location = new Point(196, 265);
+            lblPassword.Name = "lblPassword";
+            lblPassword.Size = new Size(92, 20);
+            lblPassword.TabIndex = 23;
+            lblPassword.Text = "Contraseña";
             // 
-            // lblEmail
+            // lblLegajo
             // 
-            lblEmail.AutoSize = true;
-            lblEmail.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblEmail.ForeColor = Color.FromArgb(13, 23, 28);
-            lblEmail.Location = new Point(196, 200);
-            lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(48, 20);
-            lblEmail.TabIndex = 22;
-            lblEmail.Text = "Email";
+            lblLegajo.AutoSize = true;
+            lblLegajo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblLegajo.ForeColor = Color.FromArgb(13, 23, 28);
+            lblLegajo.Location = new Point(196, 200);
+            lblLegajo.Name = "lblLegajo";
+            lblLegajo.Size = new Size(57, 20);
+            lblLegajo.TabIndex = 22;
+            lblLegajo.Text = "Legajo";
+            lblLegajo.Click += lblLegajo_Click;
             // 
             // lblDescripcionBienvenida
             // 
@@ -127,17 +128,17 @@
             lblBienvenida.TabIndex = 20;
             lblBienvenida.Text = "Bienvenido a la UTN";
             // 
-            // txtUsuario
+            // txtLegajo
             // 
-            txtUsuario.BackColor = Color.FromArgb(232, 237, 242);
-            txtUsuario.BorderStyle = BorderStyle.None;
-            txtUsuario.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUsuario.ForeColor = Color.FromArgb(79, 122, 148);
-            txtUsuario.Location = new Point(196, 223);
-            txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(420, 19);
-            txtUsuario.TabIndex = 0;
-            txtUsuario.Text = "Introduce tu email";
+            txtLegajo.BackColor = Color.FromArgb(232, 237, 242);
+            txtLegajo.BorderStyle = BorderStyle.None;
+            txtLegajo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtLegajo.ForeColor = Color.FromArgb(79, 122, 148);
+            txtLegajo.Location = new Point(196, 223);
+            txtLegajo.Name = "txtLegajo";
+            txtLegajo.Size = new Size(420, 19);
+            txtLegajo.TabIndex = 0;
+            txtLegajo.Text = "Introduce tu legajo";
             // 
             // txtPassword
             // 
@@ -162,11 +163,11 @@
             Controls.Add(checkBoxMantenerSesion);
             Controls.Add(btnIngresar);
             Controls.Add(linkOlvidaPassword);
-            Controls.Add(lblContraseña);
-            Controls.Add(lblEmail);
+            Controls.Add(lblPassword);
+            Controls.Add(lblLegajo);
             Controls.Add(lblDescripcionBienvenida);
             Controls.Add(lblBienvenida);
-            Controls.Add(txtUsuario);
+            Controls.Add(txtLegajo);
             Controls.Add(txtPassword);
             Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -186,11 +187,11 @@
         private CheckBox checkBoxMantenerSesion;
         private Button btnIngresar;
         private LinkLabel linkOlvidaPassword;
-        private Label lblContraseña;
-        private Label lblEmail;
+        private Label lblPassword;
+        private Label lblLegajo;
         private Label lblDescripcionBienvenida;
         private Label lblBienvenida;
-        private TextBox txtUsuario;
+        private TextBox txtLegajo;
         private TextBox txtPassword;
     }
 }

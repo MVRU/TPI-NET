@@ -20,9 +20,10 @@ namespace Signin
             _userController = userController;
 
             // Asociar el evento KeyDown a todos los TextBox
+            txtLegajo.KeyDown += new KeyEventHandler(txtKeyDown);
             txtName.KeyDown += new KeyEventHandler(txtKeyDown);
             txtLastName.KeyDown += new KeyEventHandler(txtKeyDown);
-            txtId.KeyDown += new KeyEventHandler(txtKeyDown);
+            txtEmail.KeyDown += new KeyEventHandler(txtKeyDown);
             txtDir.KeyDown += new KeyEventHandler(txtKeyDown);
             txtPwd.KeyDown += new KeyEventHandler(txtKeyDown);
             txtPwdConfirm.KeyDown += new KeyEventHandler(txtKeyDown);
@@ -44,11 +45,12 @@ namespace Signin
             if (await ValidateSignInAsync())
             {
                 // Crear un usuario del tipo Student por defecto
-                Student student = new Student
+                User student = new User
                 {
+                    File = txtLegajo.Text,
                     Name = txtName.Text,
                     LastName = txtLastName.Text,
-                    Id = txtId.Text,
+                    Email = txtEmail.Text,
                     Password = txtPwd.Text,
                     Address = txtDir.Text,
                     Role = "Student"
@@ -75,28 +77,33 @@ namespace Signin
         {
             string error = "";
 
-            // Validar nombre
-            if (string.IsNullOrWhiteSpace(txtName.Text))
+            // Validar legajo
+            if (string.IsNullOrWhiteSpace(txtLegajo.Text) || !IsValidLegajo(txtLegajo.Text))
             {
-                error = "El campo de texto Nombre no puede estar vacío.";
+                error = "El campo Legajo no puede estar vacío, debe contener al menos un número y tener un máximo de 10 caracteres.";
+            }
+            // Validar nombre
+            else if (IsPlaceholderText(txtName.Text) || string.IsNullOrWhiteSpace(txtName.Text) || ContainsNumbers(txtName.Text))
+            {
+                error = "El campo de texto Nombre no puede estar vacío y no debe contener números.";
             }
             // Validar apellido
-            else if (string.IsNullOrWhiteSpace(txtLastName.Text))
+            else if (IsPlaceholderText(txtLastName.Text) || string.IsNullOrWhiteSpace(txtLastName.Text) || ContainsNumbers(txtLastName.Text))
             {
-                error = "El campo de texto Apellido no puede estar vacío.";
+                error = "El campo de texto Apellido no puede estar vacío y no debe contener números.";
             }
             // Validar dirección de correo electrónico
-            else if (string.IsNullOrWhiteSpace(txtId.Text) || !Regex.IsMatch(txtId.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            else if (IsPlaceholderText(txtEmail.Text) || string.IsNullOrWhiteSpace(txtEmail.Text) || !Regex.IsMatch(txtEmail.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
             {
                 error = "El campo de texto Email no puede estar vacío y debe tener un formato válido.";
             }
             // Validar dirección
-            else if (string.IsNullOrWhiteSpace(txtDir.Text))
+            else if (IsPlaceholderText(txtDir.Text) || string.IsNullOrWhiteSpace(txtDir.Text))
             {
                 error = "El campo de texto Dirección no puede estar vacío.";
             }
             // Validar contraseña
-            else if (string.IsNullOrWhiteSpace(txtPwd.Text) || !IsValidPassword(txtPwd.Text))
+            else if (IsPlaceholderText(txtPwd.Text) || string.IsNullOrWhiteSpace(txtPwd.Text) || !IsValidPassword(txtPwd.Text))
             {
                 error = "La contraseña debe tener al menos 8 caracteres, incluir letras, números y símbolos.";
             }
@@ -106,9 +113,9 @@ namespace Signin
                 error = "Las contraseñas no coinciden.";
             }
             // Verificar si el usuario ya existe
-            else if (await _userController.GetUserByIdAsync(txtId.Text) != null)
+            else if (await _userController.GetUserByIdAsync(txtLegajo.Text) != null)
             {
-                error = "Ya existe un usuario registrado con ese email.";
+                error = "Ya existe un usuario registrado con ese Legajo.";
             }
 
             // Si no hay errores, devolver verdadero
@@ -122,6 +129,24 @@ namespace Signin
             return false;
         }
 
+        // Verificar si el texto en el TextBox es el texto de marcador de posición
+        private bool IsPlaceholderText(string text)
+        {
+            // Compara con el texto predeterminado para cada campo
+            return text == "Introduce tu nombre" || text == "Introduce tu apellido" ||
+                   text == "Introduce tu email" || text == "Introduce tu dirección" ||
+                   text == "Introduce tu contraseña" || text == "Confirma tu contraseña";
+        }
+
+        // Validar si el legajo cumple con los requisitos
+        private bool IsValidLegajo(string legajo)
+        {
+            // El legajo debe tener al menos un número, y puede tener letras (opcionales), y debe tener un máximo de 10 caracteres
+            return legajo.Length <= 10 &&
+                   Regex.IsMatch(legajo, @"[0-9]") &&
+                   Regex.IsMatch(legajo, @"^[a-zA-Z0-9]+$"); // Solo letras y números
+        }
+
         // Validar si la contraseña cumple con los requisitos
         private bool IsValidPassword(string password)
         {
@@ -132,10 +157,16 @@ namespace Signin
                    Regex.IsMatch(password, @"[\W_]"); // \W busca caracteres no alfanuméricos
         }
 
+        // Verificar si el texto contiene números
+        private bool ContainsNumbers(string text)
+        {
+            return Regex.IsMatch(text, @"\d");
+        }
+
         // Manejar eventos de clic en los cuadros de texto para limpiar el contenido
         private void txtName_Click(object sender, EventArgs e) => txtName.Text = "";
         private void txtLastName_Click(object sender, EventArgs e) => txtLastName.Text = "";
-        private void txtId_Click(object sender, EventArgs e) => txtId.Text = "";
+        private void txtLegajo_Click(object sender, EventArgs e) => txtLegajo.Text = "";
         private void txtDir_Click(object sender, EventArgs e) => txtDir.Text = "";
         private void txtPwd_Click(object sender, EventArgs e) => txtPwd.Text = "";
         private void txtPwdConfirm_Click(object sender, EventArgs e) => txtPwdConfirm.Text = "";
@@ -164,6 +195,9 @@ namespace Signin
         {
         }
 
-    }
+        private void txtId_TextChanged(object sender, EventArgs e)
+        {
 
+        }
+    }
 }

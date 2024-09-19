@@ -1,8 +1,8 @@
 ﻿/* DATOS DE PRUEBA
 
 ADMIN:
-admin@example.com
-@Password123
+File: 00000
+Password: @Password123
 
 */
 
@@ -24,9 +24,10 @@ namespace ProyectoNET.Data
             if (!context.Users.Any())
             {
                 // Crear usuarios de prueba
-                var admin = new Admin
+                var admin = new User
                 {
-                    Id = "admin@example.com",
+                    File = "00000",
+                    Email = "admin@example.com",
                     Password = BCrypt.Net.BCrypt.HashPassword("@Password123"),
                     Name = "Admin",
                     LastName = "User",

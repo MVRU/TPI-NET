@@ -27,6 +27,7 @@ namespace ProyectoNET.Repositories
                 .Include(e => e.Course)
                 .Include(e => e.Attendances)
                 .Include(e => e.Status)
+                .Include(e => e.Student) // Incluye el estudiante (User)
                 .FirstOrDefault(e => e.Id == id);
         }
 

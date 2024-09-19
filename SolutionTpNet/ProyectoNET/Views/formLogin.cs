@@ -1,8 +1,9 @@
-using System.Text.RegularExpressions; // Para validar el email
 using ProyectoNET;
 using ProyectoNET.Forms;
 using ProyectoNET.Controllers;
-using Signin;
+using System;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LogIn
 {
@@ -16,7 +17,7 @@ namespace LogIn
             _userController = userController;
 
             // Asociar el evento KeyDown a todos los TextBox
-            txtUsuario.KeyDown += new KeyEventHandler(txtKeyDown);
+            txtLegajo.KeyDown += new KeyEventHandler(txtKeyDown);
             txtPassword.KeyDown += new KeyEventHandler(txtKeyDown);
         }
 
@@ -36,9 +37,9 @@ namespace LogIn
         private async void btnIngresar_Click(object sender, EventArgs e)
         {
             // Verificar si los campos no están vacíos
-            if (string.IsNullOrWhiteSpace(txtUsuario.Text))
+            if (string.IsNullOrWhiteSpace(txtLegajo.Text))
             {
-                MessageBox.Show("El campo de usuario no puede estar vacío.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El campo legajo no puede estar vacío.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -48,21 +49,14 @@ namespace LogIn
                 return;
             }
 
-            // Validar que el nombre de usuario sea un email válido
-            //if (!EsEmailValido(txtUsuario.Text))
-            //{
-            //    MessageBox.Show("Por favor, ingresa un correo electrónico válido.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
+            // Validar la longitud de la contraseña (mínimo 8 caracteres)
+            if (txtPassword.Text.Length < 8)
+            {
+                MessageBox.Show("La contraseña debe tener al menos 8 caracteres.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            // Validar la longitud de la contraseña (mínimo 6 caracteres)
-            //if (txtPassword.Text.Length < 6)
-            //{
-            //    MessageBox.Show("La contraseña debe tener al menos 6 caracteres.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-
-            bool operation = await _userController.UserLogInAsync(txtUsuario.Text, txtPassword.Text);
+            bool operation = await _userController.UserLogInAsync(txtLegajo.Text, txtPassword.Text);
 
             // Validación de credenciales de inicio de sesión
             if (operation)
@@ -91,15 +85,8 @@ namespace LogIn
             }
             else
             {
-                MessageBox.Show("Usuario y/o contraseñas incorrectos.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Legajo y/o contraseña incorrectos.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        // Método para validar si el email tiene un formato correcto
-        private bool EsEmailValido(string email)
-        {
-            string patronEmail = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            return Regex.IsMatch(email, patronEmail);
         }
 
         private void frmLogIn_Load(object sender, EventArgs e)
@@ -122,5 +109,8 @@ namespace LogIn
         {
 
         }
+
+        private void lblLegajo_Click(object sender, EventArgs e)
+        { }
     }
 }

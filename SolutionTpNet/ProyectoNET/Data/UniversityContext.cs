@@ -20,12 +20,20 @@ namespace ProyectoNET.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configurar herencia utilizando un discriminador para el tipo de usuario
-            modelBuilder.Entity<User>()
-                .HasDiscriminator<string>("Role")
-                .HasValue<Student>("Student")
-                .HasValue<Professor>("Professor")
-                .HasValue<Admin>("Admin");
+            // Configurar la relación muchos a muchos entre Course y User (como profesores)
+            modelBuilder.Entity<Course>()
+                .HasMany(c => c.Users)
+                .WithMany(u => u.Courses) // El rol de profesor se distingue por el atributo Role
+                .UsingEntity<Dictionary<string, object>>(
+                    "CourseProfessor", // Nombre de la tabla intermedia
+                    j => j.HasOne<User>().WithMany().HasForeignKey("UserId"),
+                    j => j.HasOne<Course>().WithMany().HasForeignKey("CourseId"),
+                    j =>
+                    {
+                        j.HasKey("CourseId", "UserId");
+                        j.ToTable("CourseProfessor"); // Nombre de la tabla intermedia
+                    }
+                );
 
             // Definir la relación entre Course y Schedule
             modelBuilder.Entity<Course>()
@@ -37,21 +45,6 @@ namespace ProyectoNET.Data
                 .HasOne(s => s.Course)
                 .WithMany(c => c.Schedules)
                 .HasForeignKey(s => s.CourseId);
-
-            // Relación muchos a muchos entre Course y Professor
-            modelBuilder.Entity<Course>()
-                .HasMany(c => c.Professors)
-                .WithMany(p => p.Courses)
-                .UsingEntity<Dictionary<string, object>>(
-                    "CourseProfessor", // Nombre de la tabla intermedia
-                    j => j.HasOne<Professor>().WithMany().HasForeignKey("ProfessorId"),
-                    j => j.HasOne<Course>().WithMany().HasForeignKey("CourseId"),
-                    j =>
-                    {
-                        j.HasKey("CourseId", "ProfessorId");
-                        j.ToTable("CourseProfessor"); // Nombre de la tabla intermedia
-                    }
-                );
 
             // Relación uno a muchos entre Enrollment y Status
             modelBuilder.Entity<Enrollment>()
@@ -71,10 +64,10 @@ namespace ProyectoNET.Data
                 .WithMany(c => c.Enrollments)
                 .HasForeignKey(e => e.CourseId);
 
-            // Relación uno a muchos entre Student y Enrollment
+            // Relación uno a muchos entre User (Estudiante) y Enrollment
             modelBuilder.Entity<Enrollment>()
                 .HasOne(e => e.Student)
-                .WithMany(s => s.Enrollments)
+                .WithMany(u => u.Enrollments)
                 .HasForeignKey(e => e.StudentId);
 
             // Definiciones adicionales de configuración si es necesario

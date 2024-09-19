@@ -15,17 +15,18 @@ namespace ProyectoNET.Controllers
             _enrollmentRepository = enrollmentRepository;
         }
 
-        public void CreateEnrollment(int courseId, DateTime enrollmentDate, int statusId)
+        public void CreateEnrollment(string studentId, int courseId, DateTime enrollmentDate, int statusId)
         {
             var enrollment = new Enrollment
             {
                 CourseId = courseId,
                 EnrollmentDate = enrollmentDate,
-                StatusId = statusId
+                StatusId = statusId,
+                StudentId = studentId // Asocia el legajo del estudiante
             };
 
             _enrollmentRepository.CreateEnrollment(enrollment);
-            Console.WriteLine($"Inscripción creada con éxito para el curso con Id {courseId}.");
+            Console.WriteLine($"Inscripción creada con éxito para el curso con Id {courseId} y estudiante con Legajo {studentId}.");
         }
 
         public void GetEnrollmentById(int id)
@@ -38,6 +39,9 @@ namespace ProyectoNET.Controllers
                 Console.WriteLine($"Fecha de inscripción: {enrollment.EnrollmentDate}");
                 Console.WriteLine($"Curso: {enrollment.Course?.Year}");
                 Console.WriteLine($"Estado: {enrollment.Status?.Description}");
+
+                // Mostrar detalles del estudiante
+                Console.WriteLine($"Estudiante: {enrollment.Student?.Name} {enrollment.Student?.LastName} (Legajo: {enrollment.Student?.File})");
 
                 Console.WriteLine("Asistencias asociadas:");
                 foreach (var attendance in enrollment.Attendances)

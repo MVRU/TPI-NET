@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProyectoNET.Data;
 
@@ -11,9 +12,11 @@ using ProyectoNET.Data;
 namespace ProyectoNET.Migrations
 {
     [DbContext(typeof(UniversityContext))]
-    partial class UniversityContextModelSnapshot : ModelSnapshot
+    [Migration("20240919201358_DBUpdated")]
+    partial class DBUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,7 +195,7 @@ namespace ProyectoNET.Migrations
 
             modelBuilder.Entity("ProyectoNET.Models.User", b =>
                 {
-                    b.Property<string>("File")
+                    b.Property<string>("Legajo")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
@@ -200,6 +203,7 @@ namespace ProyectoNET.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
@@ -216,6 +220,7 @@ namespace ProyectoNET.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Position")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Role")
@@ -223,9 +228,10 @@ namespace ProyectoNET.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Specialization")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("File");
+                    b.HasKey("Legajo");
 
                     b.ToTable("Users");
                 });

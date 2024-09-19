@@ -26,7 +26,7 @@ namespace ProyectoNET.Repositories
             return _context.Courses
                 .Include(c => c.Subject)      
                 .Include(c => c.Schedules)    
-                .Include(c => c.Professors)       
+                .Include(c => c.Users)       
                 .Include(c => c.Enrollments)      
                 .FirstOrDefault(c => c.Id == id);
         }
@@ -36,7 +36,7 @@ namespace ProyectoNET.Repositories
             return _context.Courses
                 .Include(c => c.Subject)
                 .Include(c => c.Schedules)
-                .Include(c => c.Professors)
+                .Include(c => c.Users)
                 .Include(c => c.Enrollments)
                 .ToList();
         }

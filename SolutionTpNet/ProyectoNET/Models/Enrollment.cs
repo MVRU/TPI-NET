@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProyectoNET.Models
 {
@@ -23,7 +22,7 @@ namespace ProyectoNET.Models
 
         [ForeignKey("StudentId")]
         public string StudentId { get; set; } // Foreign Key
-        public Student Student { get; set; } // Propiedad de navegación
+        public User Student { get; set; } // Propiedad de navegación
         public ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
     }
 }

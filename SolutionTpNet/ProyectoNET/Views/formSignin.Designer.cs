@@ -34,8 +34,8 @@
             btnRegistrarse = new Button();
             lblApellido = new Label();
             txtLastName = new TextBox();
-            label1 = new Label();
-            txtId = new TextBox();
+            lblEmail = new Label();
+            txtEmail = new TextBox();
             label2 = new Label();
             txtDir = new TextBox();
             label3 = new Label();
@@ -43,6 +43,8 @@
             lblRepetirContraseña = new Label();
             txtPwdConfirm = new TextBox();
             lblRequisitosContraseña = new Label();
+            lblLegajo = new Label();
+            txtLegajo = new TextBox();
             SuspendLayout();
             // 
             // txtName
@@ -51,11 +53,11 @@
             txtName.BorderStyle = BorderStyle.None;
             txtName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtName.ForeColor = Color.FromArgb(79, 122, 148);
-            txtName.Location = new Point(158, 110);
+            txtName.Location = new Point(158, 160);
             txtName.Margin = new Padding(3, 2, 3, 2);
             txtName.Name = "txtName";
             txtName.Size = new Size(393, 19);
-            txtName.TabIndex = 0;
+            txtName.TabIndex = 1;
             txtName.Text = "Introduce tu nombre";
             txtName.Click += txtName_Click;
             txtName.TextChanged += textBox1_TextChanged;
@@ -65,7 +67,7 @@
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNombre.ForeColor = Color.FromArgb(13, 23, 28);
-            lblNombre.Location = new Point(158, 85);
+            lblNombre.Location = new Point(158, 135);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(71, 20);
             lblNombre.TabIndex = 6;
@@ -90,7 +92,7 @@
             btnRegistrarse.FlatAppearance.BorderSize = 0;
             btnRegistrarse.FlatStyle = FlatStyle.Flat;
             btnRegistrarse.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnRegistrarse.Location = new Point(158, 461);
+            btnRegistrarse.Location = new Point(158, 520);
             btnRegistrarse.Margin = new Padding(3, 2, 3, 2);
             btnRegistrarse.Name = "btnRegistrarse";
             btnRegistrarse.Size = new Size(393, 30);
@@ -104,7 +106,7 @@
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblApellido.ForeColor = Color.FromArgb(13, 23, 28);
-            lblApellido.Location = new Point(158, 142);
+            lblApellido.Location = new Point(158, 192);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(73, 20);
             lblApellido.TabIndex = 15;
@@ -116,46 +118,46 @@
             txtLastName.BorderStyle = BorderStyle.None;
             txtLastName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtLastName.ForeColor = Color.FromArgb(79, 122, 148);
-            txtLastName.Location = new Point(158, 167);
+            txtLastName.Location = new Point(158, 217);
             txtLastName.Margin = new Padding(3, 2, 3, 2);
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(393, 19);
-            txtLastName.TabIndex = 1;
+            txtLastName.TabIndex = 2;
             txtLastName.Text = "Introduce tu apellido";
             txtLastName.Click += txtLastName_Click;
             txtLastName.TextChanged += textBox3_TextChanged;
             // 
-            // label1
+            // lblEmail
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.FromArgb(13, 23, 28);
-            label1.Location = new Point(158, 200);
-            label1.Name = "label1";
-            label1.Size = new Size(154, 20);
-            label1.TabIndex = 17;
-            label1.Text = "Email institucional";
+            lblEmail.AutoSize = true;
+            lblEmail.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEmail.ForeColor = Color.FromArgb(13, 23, 28);
+            lblEmail.Location = new Point(158, 250);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(154, 20);
+            lblEmail.TabIndex = 17;
+            lblEmail.Text = "Email institucional";
             // 
-            // txtId
+            // txtEmail
             // 
-            txtId.BackColor = Color.FromArgb(232, 237, 242);
-            txtId.BorderStyle = BorderStyle.None;
-            txtId.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtId.ForeColor = Color.FromArgb(79, 122, 148);
-            txtId.Location = new Point(158, 225);
-            txtId.Margin = new Padding(3, 2, 3, 2);
-            txtId.Name = "txtId";
-            txtId.Size = new Size(393, 19);
-            txtId.TabIndex = 2;
-            txtId.Text = "Introduce tu email institucional";
-            txtId.Click += txtId_Click;
+            txtEmail.BackColor = Color.FromArgb(232, 237, 242);
+            txtEmail.BorderStyle = BorderStyle.None;
+            txtEmail.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtEmail.ForeColor = Color.FromArgb(79, 122, 148);
+            txtEmail.Location = new Point(158, 275);
+            txtEmail.Margin = new Padding(3, 2, 3, 2);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(393, 19);
+            txtEmail.TabIndex = 3;
+            txtEmail.Text = "Introduce tu email institucional";
+            txtEmail.TextChanged += txtId_TextChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(13, 23, 28);
-            label2.Location = new Point(158, 261);
+            label2.Location = new Point(158, 311);
             label2.Name = "label2";
             label2.Size = new Size(84, 20);
             label2.TabIndex = 19;
@@ -168,11 +170,11 @@
             txtDir.BorderStyle = BorderStyle.None;
             txtDir.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtDir.ForeColor = Color.FromArgb(79, 122, 148);
-            txtDir.Location = new Point(158, 286);
+            txtDir.Location = new Point(158, 336);
             txtDir.Margin = new Padding(3, 2, 3, 2);
             txtDir.Name = "txtDir";
             txtDir.Size = new Size(393, 19);
-            txtDir.TabIndex = 3;
+            txtDir.TabIndex = 4;
             txtDir.Text = "Introduce tu direccion";
             txtDir.Click += txtDir_Click;
             txtDir.TextChanged += textBox4_TextChanged;
@@ -182,7 +184,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(13, 23, 28);
-            label3.Location = new Point(158, 322);
+            label3.Location = new Point(158, 372);
             label3.Name = "label3";
             label3.Size = new Size(102, 20);
             label3.TabIndex = 21;
@@ -194,12 +196,12 @@
             txtPwd.BorderStyle = BorderStyle.None;
             txtPwd.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPwd.ForeColor = Color.FromArgb(79, 122, 148);
-            txtPwd.Location = new Point(158, 366);
+            txtPwd.Location = new Point(158, 416);
             txtPwd.Margin = new Padding(3, 2, 3, 2);
             txtPwd.Name = "txtPwd";
             txtPwd.PasswordChar = '*';
             txtPwd.Size = new Size(393, 19);
-            txtPwd.TabIndex = 4;
+            txtPwd.TabIndex = 5;
             txtPwd.Text = "Introduce tu contraseña";
             txtPwd.Click += txtPwd_Click;
             // 
@@ -208,7 +210,7 @@
             lblRepetirContraseña.AutoSize = true;
             lblRepetirContraseña.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblRepetirContraseña.ForeColor = Color.FromArgb(13, 23, 28);
-            lblRepetirContraseña.Location = new Point(159, 399);
+            lblRepetirContraseña.Location = new Point(159, 449);
             lblRepetirContraseña.Name = "lblRepetirContraseña";
             lblRepetirContraseña.Size = new Size(178, 20);
             lblRepetirContraseña.TabIndex = 23;
@@ -220,12 +222,12 @@
             txtPwdConfirm.BorderStyle = BorderStyle.None;
             txtPwdConfirm.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPwdConfirm.ForeColor = Color.FromArgb(79, 122, 148);
-            txtPwdConfirm.Location = new Point(159, 424);
+            txtPwdConfirm.Location = new Point(159, 474);
             txtPwdConfirm.Margin = new Padding(3, 2, 3, 2);
             txtPwdConfirm.Name = "txtPwdConfirm";
             txtPwdConfirm.PasswordChar = '*';
             txtPwdConfirm.Size = new Size(393, 19);
-            txtPwdConfirm.TabIndex = 5;
+            txtPwdConfirm.TabIndex = 6;
             txtPwdConfirm.Text = "Introduce tu contraseña";
             txtPwdConfirm.Click += txtPwdConfirm_Click;
             // 
@@ -234,18 +236,44 @@
             lblRequisitosContraseña.AutoSize = true;
             lblRequisitosContraseña.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblRequisitosContraseña.ForeColor = Color.FromArgb(79, 122, 148);
-            lblRequisitosContraseña.Location = new Point(158, 342);
+            lblRequisitosContraseña.Location = new Point(158, 392);
             lblRequisitosContraseña.Name = "lblRequisitosContraseña";
             lblRequisitosContraseña.Size = new Size(367, 15);
             lblRequisitosContraseña.TabIndex = 24;
             lblRequisitosContraseña.Text = "Usa más de 8 caracteres, combinando letras, números y símbolos";
+            // 
+            // lblLegajo
+            // 
+            lblLegajo.AutoSize = true;
+            lblLegajo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLegajo.ForeColor = Color.FromArgb(13, 23, 28);
+            lblLegajo.Location = new Point(159, 80);
+            lblLegajo.Name = "lblLegajo";
+            lblLegajo.Size = new Size(63, 20);
+            lblLegajo.TabIndex = 26;
+            lblLegajo.Text = "Legajo";
+            // 
+            // txtLegajo
+            // 
+            txtLegajo.BackColor = Color.FromArgb(232, 237, 242);
+            txtLegajo.BorderStyle = BorderStyle.None;
+            txtLegajo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtLegajo.ForeColor = Color.FromArgb(79, 122, 148);
+            txtLegajo.Location = new Point(159, 105);
+            txtLegajo.Margin = new Padding(3, 2, 3, 2);
+            txtLegajo.Name = "txtLegajo";
+            txtLegajo.Size = new Size(393, 19);
+            txtLegajo.TabIndex = 0;
+            txtLegajo.Text = "Introduce tu legajo";
             // 
             // frmSignIn
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(247, 250, 250);
-            ClientSize = new Size(686, 527);
+            ClientSize = new Size(686, 576);
+            Controls.Add(lblLegajo);
+            Controls.Add(txtLegajo);
             Controls.Add(lblRequisitosContraseña);
             Controls.Add(lblRepetirContraseña);
             Controls.Add(txtPwdConfirm);
@@ -253,8 +281,8 @@
             Controls.Add(txtPwd);
             Controls.Add(label2);
             Controls.Add(txtDir);
-            Controls.Add(label1);
-            Controls.Add(txtId);
+            Controls.Add(lblEmail);
+            Controls.Add(txtEmail);
             Controls.Add(lblApellido);
             Controls.Add(txtLastName);
             Controls.Add(btnRegistrarse);
@@ -278,8 +306,8 @@
         private Button btnRegistrarse;
         private Label lblApellido;
         private TextBox txtLastName;
-        private Label label1;
-        private TextBox txtId;
+        private Label lblEmail;
+        private TextBox txtEmail;
         private Label label2;
         private TextBox txtDir;
         private Label label3;
@@ -287,5 +315,7 @@
         private Label lblRepetirContraseña;
         private TextBox txtPwdConfirm;
         private Label lblRequisitosContraseña;
+        private Label lblLegajo;
+        private TextBox txtLegajo;
     }
 }

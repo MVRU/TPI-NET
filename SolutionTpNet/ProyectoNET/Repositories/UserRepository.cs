@@ -26,10 +26,10 @@ namespace ProyectoNET.Repositories
                     throw new ArgumentException("Rol inválido. Debe ser 'Professor', 'Admin' o 'Student'.");
                 }
 
-                // Verificar si el email ya está registrado
-                if (await _context.Users.AnyAsync(u => u.Id == user.Id))
+                // Verificar si el legajo ya está registrado
+                if (await _context.Users.AnyAsync(u => u.File == user.File))
                 {
-                    throw new InvalidOperationException("El email ya está registrado.");
+                    throw new InvalidOperationException("El legajo ya está registrado.");
                 }
 
                 // Guardar el usuario
@@ -61,29 +61,19 @@ namespace ProyectoNET.Repositories
         {
             try
             {
-                var user = await _context.Users.FindAsync(updatedUser.Id);
+                var user = await _context.Users.FindAsync(updatedUser.File);
 
                 if (user != null)
                 {
                     user.Name = updatedUser.Name;
                     user.LastName = updatedUser.LastName;
+                    user.Email = updatedUser.Email;
                     user.Password = updatedUser.Password;
                     user.Address = updatedUser.Address;
 
                     // Actualizar campos específicos según el tipo de usuario
-                    if (user is Student student && updatedUser is Student updatedStudent)
-                    {
-                        student.StudentFile = updatedStudent.StudentFile;
-                    }
-                    else if (user is Professor professor && updatedUser is Professor updatedProfessor)
-                    {
-                        professor.ProfessorFile = updatedProfessor.ProfessorFile;
-                        professor.Specialization = updatedProfessor.Specialization;
-                    }
-                    else if (user is Admin admin && updatedUser is Admin updatedAdmin)
-                    {
-                        admin.Position = updatedAdmin.Position;
-                    }
+                    user.Specialization = updatedUser.Specialization;
+                    user.Position = updatedUser.Position;
 
                     await _context.SaveChangesAsync();
                     Console.WriteLine("Usuario actualizado exitosamente.");
