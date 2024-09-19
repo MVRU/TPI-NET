@@ -16,88 +16,88 @@ El sistema incluirá funcionalidades para la autenticación de usuarios, gestió
 
 ```mermaid
 classDiagram
-    Universidad "1" -- "*" Usuario
-    Usuario <|-- Alumno
-    Usuario <|-- Profesor
-    Usuario <|-- Admin
-    Profesor "1..*" -- "*" Curso: rol_profesor String
-    Cursado "1" -- "*" Asistencia
-    Alumno "1" -- "*" Cursado
-    Cursado "*" -- "1" Curso
-    Curso "1" -- "1..*" Horario
-    Curso "*" -- "1" Asignatura
-    Cursado "*" -- "1" Estado
+    University "1" -- "*" User
+    User <|-- Student
+    User <|-- Professor
+    User <|-- Admin
+    Professor "1..*" -- "*" Course
+    Enrollment "1" -- "*" Attendance
+    Student "1" -- "*" Enrollment
+    Enrollment "*" -- "1" Course
+    Course "1" -- "1..*" Schedule
+    Course "*" -- "1" Subject
+    Enrollment "*" -- "1" Status
 
-    class Universidad{
-      +id: Integer
-      +descripción: String
-      +ubicacion: String
-      +getCursos(): List~Curso~
-      +getProfesores(): List~Profesores~
-      +getAlumnos(): List~Alumno~
+    class University{
+      +Id: Integer
+      +Description: String
+      +Location: String
+      +getCourses(): List~Course~
+      +getProfessors(): List~Professor~
+      +getStudents(): List~Student~
     }
-    class Usuario{
-      +id: Integer
-      +nombre: String
-      +apellido: String
-      +email: String
-      +contraseña: String
-      +login(email: String, contraseña: String): Boolean
+    class User{
+      +Id: Integer
+      +Name: String
+      +LastName: String
+      +Address: String
+      +Password: String
+      +login(id: String, password: String): Boolean
       +logout(): Void
     }
-    class Asignatura{
-      +id: Integer
-      +descripción: String
-      +porc_asistencia_reg: Float
-      +porc_asistencia_prom: Float
-      +getCursos(): List~Curso~
+    class Subject{
+      +Id: Integer
+      +description: String
+      +RequiredAttendancePercentage: Float
+      +AverageAttendancePercentage: Float
+      +getCourses(): List~Course~
     }
-    class Asistencia{
-      +id: Integer
-      +fecha_hora: DateTime
+    class Attendance{
+      +Id: Integer
+      +Timestamp: DateTime
     }
-    class Alumno{
-        +legajo: Integer
-        +inscribirse(idCurso: Integer): Void
-        +getCursos(): List~Curso~
+    class Student{
+        +StudentFile: Integer
+        +enroll(CourseId: Integer): Void
+        +getCourses(): List~Course~
     }
-    class Profesor{
-        +legajo: Integer
-        +especialidad: String
-        +marcarAsistencia(a: Alumno, c: Curso, fecha: Date): Void
+    class Professor{
+        +ProfessorFile: Integer
+        +Specialization: String
+        +markAttendance(s: Student, c: Course, d: Date): Void
     }
     class Admin{
-        +cargo: String
-        +crearCurso(): Curso
-        +modificarCurso(c: Curso): Void
-        +eliminarCurso(curso: Curso): Void
-        +marcarAsistencia(a: Alumno, c: Curso, fecha: Date): Void
+        +Position: String
+        +createCourse(): Course
+        +modifyCourse(c: Course): Void
+        +deleteCourse(c: Course): Void
+        +markAttendance(s: Student, c: Course, d: Date): Void
     }
-    class Cursado{
-        +id: Integer
-        +fecha_insc: Date
+    class Enrollment{
+        +Id: Integer
+        +enrollmentDate: Date
     }
-    class Curso{
-        +id: Integer
-        +año: Integer
-        +fecha_ini: Date
-        +fecha_fin: Date
-        +cupo: Integer
-        +getAlumnos(): List~Alumno~
-        +cupoDisponible(): Boolean
+    class Course{
+        +Id: Integer
+        +Year: Integer
+        +StartDate: Date
+        +EndDate: Date
+        +quota: Integer
+        +getStudents(): List~Student~
+        +hasAvailableQuota(): Boolean
     }
-    class Horario{
-        +id: Integer
-        +dia: string
-        +hora_ini: Time
-        +hora_fin: Time
+    class Schedule{
+        +Id: Integer
+        +Day: string
+        +StartTime: Time
+        +EndTime: Time
     }
-    class Estado{
-        +id: Integer
-        +descripción: String
+    class Status{
+        +Id: Integer
+        +Description: String
     }
 
-note for Estado "Pendiente, regular, libre, etc."
+note for Status "Pendiente, regular, libre, etc."
 note for Admin "Puede ser un bedel o administrativo
 con todos los privilegios"
 ```
