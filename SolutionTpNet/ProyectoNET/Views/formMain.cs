@@ -89,7 +89,9 @@ namespace ProyectoNET
 
         private void MostrarFormularioLogin()
         {
+
             var loginForm = Program.ServiceProvider.GetRequiredService<frmLogIn>();
+            Point centerPoint = new Point((this.Width / 2) - (500 / 2), (this.Height / 2) - (400 / 2));
             loginForm.MdiParent = this;
             loginForm.Show();
         }

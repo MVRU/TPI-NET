@@ -98,6 +98,7 @@
             dgvEstudiantes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             resources.ApplyResources(dgvEstudiantes, "dgvEstudiantes");
             dgvEstudiantes.Name = "dgvEstudiantes";
+            dgvEstudiantes.CellContentClick += dgvEstudiantes_CellContentClick;
             // 
             // txtBusquedaEstudiantes
             // 

@@ -105,6 +105,7 @@ namespace LogIn
         {
             // Vincular el evento de clic del botón al método btnIngresar_Click
             btnIngresar.Click += new EventHandler(btnIngresar_Click);
+            pnlLogIn.Location = new Point((this.Width / 2) - (pnlLogIn.Width / 2), (this.Height / 2) - (pnlLogIn.Height / 2));
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -126,6 +127,21 @@ namespace LogIn
         { }
 
         private void chkRememberMe_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblBienvenida_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

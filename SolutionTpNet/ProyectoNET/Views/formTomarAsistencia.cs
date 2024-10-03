@@ -87,5 +87,10 @@ namespace tomarAsistencia
             }
 
         }
+
+        private void dgvEstudiantes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

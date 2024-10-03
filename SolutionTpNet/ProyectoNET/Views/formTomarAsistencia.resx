@@ -130,14 +130,14 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="btnTerminarClase.Location" type="System.Drawing.Point, System.Drawing">
-    <value>678, 476</value>
+    <value>969, 793</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnTerminarClase.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>6, 7, 6, 7</value>
   </data>
   <data name="btnTerminarClase.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 41</value>
+    <value>246, 68</value>
   </data>
   <data name="btnTerminarClase.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -164,13 +164,13 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="btnGuardarAsistencia.Location" type="System.Drawing.Point, System.Drawing">
-    <value>642, 428</value>
+    <value>917, 713</value>
   </data>
   <data name="btnGuardarAsistencia.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>6, 7, 6, 7</value>
   </data>
   <data name="btnGuardarAsistencia.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 41</value>
+    <value>297, 68</value>
   </data>
   <data name="btnGuardarAsistencia.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -197,13 +197,13 @@
     <value>Microsoft Sans Serif, 15.75pt</value>
   </data>
   <data name="lblFecha.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 68</value>
+    <value>120, 113</value>
   </data>
   <data name="lblFecha.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>6, 0, 6, 0</value>
   </data>
   <data name="lblFecha.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 25</value>
+    <value>235, 37</value>
   </data>
   <data name="lblFecha.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -230,13 +230,13 @@
     <value>Microsoft Sans Serif, 18pt, style=Bold</value>
   </data>
   <data name="lblNombreAsignatura.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 24</value>
+    <value>120, 40</value>
   </data>
   <data name="lblNombreAsignatura.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>6, 0, 6, 0</value>
   </data>
   <data name="lblNombreAsignatura.Size" type="System.Drawing.Size, System.Drawing">
-    <value>679, 29</value>
+    <value>981, 40</value>
   </data>
   <data name="lblNombreAsignatura.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -257,16 +257,16 @@
     <value>3</value>
   </data>
   <data name="dgvEstudiantes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 33</value>
+    <value>10, 55</value>
   </data>
   <data name="dgvEstudiantes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>6, 7, 6, 7</value>
   </data>
   <data name="dgvEstudiantes.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>62</value>
   </data>
   <data name="dgvEstudiantes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>756, 275</value>
+    <value>1080, 458</value>
   </data>
   <data name="dgvEstudiantes.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -287,16 +287,16 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="txtBusquedaEstudiantes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 4</value>
+    <value>10, 7</value>
   </data>
   <data name="txtBusquedaEstudiantes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>6, 7, 6, 7</value>
   </data>
   <data name="txtBusquedaEstudiantes.PlaceholderText" xml:space="preserve">
     <value>Buscar estudiantes</value>
   </data>
   <data name="txtBusquedaEstudiantes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>755, 26</value>
+    <value>1078, 35</value>
   </data>
   <data name="txtBusquedaEstudiantes.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -317,13 +317,13 @@
     <value>1</value>
   </data>
   <data name="pnlEstudiantes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 108</value>
+    <value>120, 180</value>
   </data>
   <data name="pnlEstudiantes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>6, 7, 6, 7</value>
   </data>
   <data name="pnlEstudiantes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>766, 312</value>
+    <value>1094, 520</value>
   </data>
   <data name="pnlEstudiantes.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -347,10 +347,10 @@
     <value>0, 0</value>
   </data>
   <data name="pnlTomarAsistencia.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>6, 7, 6, 7</value>
   </data>
   <data name="pnlTomarAsistencia.Size" type="System.Drawing.Size, System.Drawing">
-    <value>956, 529</value>
+    <value>1366, 882</value>
   </data>
   <data name="pnlTomarAsistencia.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -371,16 +371,16 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
+    <value>10, 25</value>
   </data>
   <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>956, 529</value>
+    <value>1366, 882</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>6, 7, 6, 7</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
