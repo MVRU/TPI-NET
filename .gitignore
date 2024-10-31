@@ -1,4 +1,43 @@
+SolutionTpNet/.vs/
+SolutionTpNet/ProyectoNET/bin/
+SolutionTpNet/ProyectoNET/obj/
 
-SolutionTpNet/.vs/*
-SolutionTpNet/ProyectoNET/bin/*
-SolutionTpNet/ProyectoNET/obj/*
+# Ignorar carpetas de compilación
+**/bin/
+**/obj/
+
+# Ignorar configuración de Visual Studio
+.vs/
+*.suo
+*.user
+*.userprefs
+
+# Ignorar archivos de salida
+*.dll
+*.exe
+*.pdb
+*.cache
+*.mdb
+*.ilk
+
+# Ignorar resultados de pruebas
+TestResults/
+*.trx
+
+# Ignorar paquetes NuGet
+packages/
+*.nupkg
+project.lock.json
+project.json
+
+# Ignorar Visual Studio Code
+.vscode/
+
+# Ignorar archivos de respaldo
+*.bak
+*.log
+
+# Archivos generados
+*.g.cs
+*.g.i.cs
+*.generated.cs
