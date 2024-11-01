@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProyectoNET.Forms
 {
-    public partial class frmDashboard : Form
+    public partial class DashboardForm : Form
     {
-        public frmDashboard()
+        public DashboardForm()
         {
             InitializeComponent();
         }

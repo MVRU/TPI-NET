@@ -144,13 +144,13 @@
             // 
             txtPassword.BackColor = Color.FromArgb(232, 237, 242);
             txtPassword.BorderStyle = BorderStyle.None;
-            txtPassword.Font = new Font("Microsoft Sans Serif", 12F);
+            txtPassword.Font = new Font("Microsoft Sans Serif", 10F);
             txtPassword.ForeColor = Color.FromArgb(79, 122, 148);
             txtPassword.Location = new Point(196, 288);
             txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '*';
+            txtPassword.PasswordChar = '●';
             txtPassword.PlaceholderText = "Introduce tu contraseña";
-            txtPassword.Size = new Size(420, 19);
+            txtPassword.Size = new Size(420, 16);
             txtPassword.TabIndex = 1;
             txtPassword.Text = "Introduce tu contraseña";
             // 

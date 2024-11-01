@@ -10,13 +10,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ProyectoNET
 {
-    internal partial class frmMain : Form
+    internal partial class MainForm : Form
     {
         private readonly UserController _userController;
 
         private bool sesionIniciada = false;  // Variable para verificar si la sesión está iniciada
 
-        public frmMain(UserController userController)
+        public MainForm(UserController userController)
         {
             InitializeComponent();
             _userController = userController;
@@ -96,14 +96,14 @@ namespace ProyectoNET
 
         private void asistenciaCuentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var formX = Program.ServiceProvider.GetRequiredService<frmTomarAsistencia>();
+            var formX = Program.ServiceProvider.GetRequiredService<TakeAttendanceForm>();
             formX.MdiParent = this;
             formX.Show();
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var formX = Program.ServiceProvider.GetRequiredService<frmDashboard>();
+            var formX = Program.ServiceProvider.GetRequiredService<DashboardForm>();
             formX.MdiParent = this;
             formX.Show();
         }

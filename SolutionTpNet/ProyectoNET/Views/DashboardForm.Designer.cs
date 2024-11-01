@@ -1,6 +1,6 @@
 ﻿namespace ProyectoNET.Forms
 {
-    partial class frmDashboard
+    partial class DashboardForm
     {
         /// <summary>
         /// Required designer variable.

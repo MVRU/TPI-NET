@@ -64,7 +64,7 @@ namespace LogIn
                 MessageBox.Show("Usted ha ingresado al sistema correctamente.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Obtener el formulario principal abierto
-                frmMain mainForm = (frmMain)this.MdiParent;
+                MainForm mainForm = (MainForm)this.MdiParent;
 
                 if (mainForm != null)
                 {
@@ -73,7 +73,7 @@ namespace LogIn
                 }
 
                 // Redirigir al frmMain y mostrar frmDashboard dentro del mismo
-                frmDashboard dashboard = new frmDashboard();  // Crear el formulario de dashboard
+                DashboardForm dashboard = new DashboardForm();  // Crear el formulario de dashboard
 
                 // Configurar frmDashboard como hijo de frmMain
                 dashboard.MdiParent = mainForm;

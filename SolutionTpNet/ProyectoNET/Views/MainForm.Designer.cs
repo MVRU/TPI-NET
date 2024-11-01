@@ -1,6 +1,6 @@
 ﻿namespace ProyectoNET
 {
-    partial class frmMain
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             msnMainMenu = new MenuStrip();
             archivoToolStripMenuItem = new ToolStripMenuItem();
             dashboardToolStripMenuItem = new ToolStripMenuItem();

@@ -1,6 +1,6 @@
 ﻿namespace tomarAsistencia
 {
-    partial class frmTomarAsistencia
+    partial class TakeAttendanceForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTomarAsistencia));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TakeAttendanceForm));
             pnlTomarAsistencia = new Panel();
             btnTerminarClase = new Button();
             btnGuardarAsistencia = new Button();

@@ -37,11 +37,11 @@ namespace ProyectoNET
                 .AddScoped<StatusController>()
                 .AddScoped<SubjectController>()
                 .AddScoped<UserController>()
-                .AddTransient<frmDashboard>()
+                .AddTransient<DashboardForm>()
                 .AddTransient<frmLogIn>()
-                .AddTransient<frmMain>()
+                .AddTransient<MainForm>()
                 .AddTransient<frmSignIn>()
-                .AddTransient<frmTomarAsistencia>();
+                .AddTransient<TakeAttendanceForm>();
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
 
@@ -54,7 +54,7 @@ namespace ProyectoNET
             try
             {
                 ApplicationConfiguration.Initialize();
-                var mainForm = ServiceProvider.GetRequiredService<frmMain>();
+                var mainForm = ServiceProvider.GetRequiredService<MainForm>();
                 Application.Run(mainForm);
             }
             catch (Exception ex)

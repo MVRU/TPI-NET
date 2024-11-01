@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace tomarAsistencia
 {
-    public partial class frmTomarAsistencia : Form
+    public partial class TakeAttendanceForm : Form
     {
-        public frmTomarAsistencia()
+        public TakeAttendanceForm()
         {
             InitializeComponent();
         }
