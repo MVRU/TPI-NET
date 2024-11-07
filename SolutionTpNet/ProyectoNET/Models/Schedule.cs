@@ -10,7 +10,7 @@ namespace ProyectoNET.Models
     /// La clase Schedule contiene información sobre el día y las horas de inicio y fin de la clase.
     /// Además, tiene una relación con el curso al que pertenece este horario.
     /// </summary>
-    internal class Schedule
+    public class Schedule
     {
         [Key]
         public int Id { get; set; }

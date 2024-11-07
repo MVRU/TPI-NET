@@ -34,6 +34,7 @@
             dashboardToolStripMenuItem = new ToolStripMenuItem();
             iniciarSesionToolStripMenuItem = new ToolStripMenuItem();
             registrarseToolStripMenuItem = new ToolStripMenuItem();
+            cuentaToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
             asistenciaToolStripMenuItem = new ToolStripMenuItem();
             tomarAsistenciaToolStripMenuItem = new ToolStripMenuItem();
@@ -46,7 +47,8 @@
             ayudaToolStripMenuItem = new ToolStripMenuItem();
             guíaDeAyudaToolStripMenuItem = new ToolStripMenuItem();
             acercaDeToolStripMenuItem = new ToolStripMenuItem();
-            cuentaToolStripMenuItem = new ToolStripMenuItem();
+            usuariosToolStripMenuItem = new ToolStripMenuItem();
+            listaDeUsuariosToolStripMenuItem = new ToolStripMenuItem();
             msnMainMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -54,7 +56,7 @@
             // 
             msnMainMenu.AutoSize = false;
             msnMainMenu.ImageScalingSize = new Size(24, 24);
-            msnMainMenu.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, asistenciaToolStripMenuItem, cursosToolStripMenuItem, configuraciónToolStripMenuItem, ayudaToolStripMenuItem });
+            msnMainMenu.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, asistenciaToolStripMenuItem, cursosToolStripMenuItem, usuariosToolStripMenuItem, configuraciónToolStripMenuItem, ayudaToolStripMenuItem });
             msnMainMenu.Location = new Point(0, 0);
             msnMainMenu.Name = "msnMainMenu";
             msnMainMenu.Padding = new Padding(4, 1, 0, 1);
@@ -75,28 +77,34 @@
             // dashboardToolStripMenuItem
             // 
             dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            dashboardToolStripMenuItem.Size = new Size(146, 22);
+            dashboardToolStripMenuItem.Size = new Size(180, 22);
             dashboardToolStripMenuItem.Text = "Dashboard";
             dashboardToolStripMenuItem.Click += dashboardToolStripMenuItem_Click;
             // 
             // iniciarSesionToolStripMenuItem
             // 
             iniciarSesionToolStripMenuItem.Name = "iniciarSesionToolStripMenuItem";
-            iniciarSesionToolStripMenuItem.Size = new Size(146, 22);
+            iniciarSesionToolStripMenuItem.Size = new Size(180, 22);
             iniciarSesionToolStripMenuItem.Text = "Iniciar sesión";
             iniciarSesionToolStripMenuItem.Click += mnuLogIn_Click;
             // 
             // registrarseToolStripMenuItem
             // 
             registrarseToolStripMenuItem.Name = "registrarseToolStripMenuItem";
-            registrarseToolStripMenuItem.Size = new Size(146, 22);
+            registrarseToolStripMenuItem.Size = new Size(180, 22);
             registrarseToolStripMenuItem.Text = "Registrarse";
             registrarseToolStripMenuItem.Click += mnuSignIn_Click;
+            // 
+            // cuentaToolStripMenuItem
+            // 
+            cuentaToolStripMenuItem.Name = "cuentaToolStripMenuItem";
+            cuentaToolStripMenuItem.Size = new Size(180, 22);
+            cuentaToolStripMenuItem.Text = "Cuenta";
             // 
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(146, 22);
+            salirToolStripMenuItem.Size = new Size(180, 22);
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.Click += mnuSalir_Click;
             // 
@@ -131,13 +139,13 @@
             // listaDeCursosToolStripMenuItem
             // 
             listaDeCursosToolStripMenuItem.Name = "listaDeCursosToolStripMenuItem";
-            listaDeCursosToolStripMenuItem.Size = new Size(170, 22);
+            listaDeCursosToolStripMenuItem.Size = new Size(180, 22);
             listaDeCursosToolStripMenuItem.Text = "Lista de cursos";
             // 
             // crearNuevoCursoToolStripMenuItem
             // 
             crearNuevoCursoToolStripMenuItem.Name = "crearNuevoCursoToolStripMenuItem";
-            crearNuevoCursoToolStripMenuItem.Size = new Size(170, 22);
+            crearNuevoCursoToolStripMenuItem.Size = new Size(180, 22);
             crearNuevoCursoToolStripMenuItem.Text = "Crear nuevo curso";
             // 
             // configuraciónToolStripMenuItem
@@ -150,7 +158,7 @@
             // preferenciasToolStripMenuItem
             // 
             preferenciasToolStripMenuItem.Name = "preferenciasToolStripMenuItem";
-            preferenciasToolStripMenuItem.Size = new Size(138, 22);
+            preferenciasToolStripMenuItem.Size = new Size(180, 22);
             preferenciasToolStripMenuItem.Text = "Preferencias";
             // 
             // ayudaToolStripMenuItem
@@ -163,23 +171,31 @@
             // guíaDeAyudaToolStripMenuItem
             // 
             guíaDeAyudaToolStripMenuItem.Name = "guíaDeAyudaToolStripMenuItem";
-            guíaDeAyudaToolStripMenuItem.Size = new Size(180, 22);
+            guíaDeAyudaToolStripMenuItem.Size = new Size(156, 22);
             guíaDeAyudaToolStripMenuItem.Text = "Guía de usuario";
             guíaDeAyudaToolStripMenuItem.Click += guíaDeAyudaToolStripMenuItem_Click;
             // 
             // acercaDeToolStripMenuItem
             // 
             acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            acercaDeToolStripMenuItem.Size = new Size(180, 22);
+            acercaDeToolStripMenuItem.Size = new Size(156, 22);
             acercaDeToolStripMenuItem.Text = "Acerca de";
             // 
-            // cuentaToolStripMenuItem
+            // usuariosToolStripMenuItem
             // 
-            cuentaToolStripMenuItem.Name = "cuentaToolStripMenuItem";
-            cuentaToolStripMenuItem.Size = new Size(146, 22);
-            cuentaToolStripMenuItem.Text = "Cuenta";
+            usuariosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listaDeUsuariosToolStripMenuItem });
+            usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            usuariosToolStripMenuItem.Size = new Size(64, 22);
+            usuariosToolStripMenuItem.Text = "Usuarios";
             // 
-            // frmMain
+            // listaDeUsuariosToolStripMenuItem
+            // 
+            listaDeUsuariosToolStripMenuItem.Name = "listaDeUsuariosToolStripMenuItem";
+            listaDeUsuariosToolStripMenuItem.Size = new Size(180, 22);
+            listaDeUsuariosToolStripMenuItem.Text = "Lista de usuarios";
+            listaDeUsuariosToolStripMenuItem.Click += listaDeUsuariosToolStripMenuItem_Click;
+            // 
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -191,7 +207,7 @@
             IsMdiContainer = true;
             MainMenuStrip = msnMainMenu;
             Margin = new Padding(2);
-            Name = "frmMain";
+            Name = "MainForm";
             Text = "CheckInU";
             WindowState = FormWindowState.Maximized;
             Load += formMain_Load;
@@ -220,5 +236,7 @@
         private ToolStripMenuItem acercaDeToolStripMenuItem;
         private ToolStripMenuItem dashboardToolStripMenuItem;
         private ToolStripMenuItem cuentaToolStripMenuItem;
+        private ToolStripMenuItem usuariosToolStripMenuItem;
+        private ToolStripMenuItem listaDeUsuariosToolStripMenuItem;
     }
 }

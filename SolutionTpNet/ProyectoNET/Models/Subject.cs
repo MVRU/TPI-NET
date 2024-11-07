@@ -10,7 +10,7 @@ namespace ProyectoNET.Models
     /// el porcentaje de asistencia requerido y el promedio de asistencia, además
     /// de los cursos asociados a esa asignatura.
     /// </summary>
-    internal class Subject
+    public class Subject
     {
         [Key]
         public int Id { get; set; }

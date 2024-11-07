@@ -68,19 +68,17 @@ namespace LogIn
 
                 if (mainForm != null)
                 {
-                    // Habilitar el Dashboard en el menú principal
-                    mainForm.HabilitarMenus();
+                    // Pasar el ID del usuario al MainForm para habilitar los menús
+                    mainForm.SetUserId(txtLegajo.Text);  // Usar el legajo como ID
+                    await mainForm.HabilitarMenusAsync(txtLegajo.Text);
                 }
 
-                // Redirigir al frmMain y mostrar frmDashboard dentro del mismo
-                DashboardForm dashboard = new DashboardForm();  // Crear el formulario de dashboard
+                DashboardForm dashboard = new DashboardForm();
 
-                // Configurar frmDashboard como hijo de frmMain
                 dashboard.MdiParent = mainForm;
                 dashboard.WindowState = FormWindowState.Maximized;
                 dashboard.Show();
 
-                // Cerrar el formulario de login actual
                 this.Close();
             }
             else
@@ -88,6 +86,7 @@ namespace LogIn
                 MessageBox.Show("Legajo y/o contraseña incorrectos.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void frmLogIn_Load(object sender, EventArgs e)
         {

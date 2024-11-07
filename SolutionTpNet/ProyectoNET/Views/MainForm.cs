@@ -6,7 +6,7 @@ using System;
 using System.Windows.Forms;
 using tomarAsistencia;
 using Microsoft.Extensions.DependencyInjection;
-
+using ProyectoNET.Views;
 
 namespace ProyectoNET
 {
@@ -15,6 +15,7 @@ namespace ProyectoNET
         private readonly UserController _userController;
 
         private bool sesionIniciada = false;  // Variable para verificar si la sesión está iniciada
+        private string userIdActual; // Variable para almacenar el ID del usuario actual
 
         public MainForm(UserController userController)
         {
@@ -27,11 +28,19 @@ namespace ProyectoNET
             cursosToolStripMenuItem.Visible = false;
             configuraciónToolStripMenuItem.Visible = false;
             cuentaToolStripMenuItem.Visible = false;
+            usuariosToolStripMenuItem.Visible = false;
         }
 
         // Método para habilitar los menús después de iniciar sesión correctamente
-        public void HabilitarMenus()
+        public async Task HabilitarMenusAsync(string userId)
         {
+            var user = await _userController.GetUserByIdAsync(userId); // Usar el ID del usuario actual
+
+            if (user != null && user.Role == "Admin")
+            {
+                usuariosToolStripMenuItem.Visible = true; // Mostrar el menú solo si el usuario es Admin
+            }
+
             dashboardToolStripMenuItem.Enabled = true;
             asistenciaToolStripMenuItem.Visible = true;
             cursosToolStripMenuItem.Visible = true;
@@ -106,6 +115,19 @@ namespace ProyectoNET
             var formX = Program.ServiceProvider.GetRequiredService<DashboardForm>();
             formX.MdiParent = this;
             formX.Show();
+        }
+
+        private void listaDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formX = Program.ServiceProvider.GetRequiredService<UsersManagementForm>();
+            formX.MdiParent = this;
+            formX.Show();
+        }
+
+        // Al momento de iniciar sesión, se debe almacenar el ID del usuario actual
+        public void SetUserId(string userId)
+        {
+            userIdActual = userId;
         }
     }
 }

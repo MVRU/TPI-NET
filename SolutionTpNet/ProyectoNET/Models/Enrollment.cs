@@ -10,7 +10,7 @@ namespace ProyectoNET.Models
     /// La clase Enrollment contiene información sobre el curso, el estado de la matrícula,
     /// el estudiante y sus asistencias.
     /// </summary>
-    internal class Enrollment
+    public class Enrollment
     {
         [Key]
         public int Id { get; set; }

@@ -9,7 +9,7 @@ namespace ProyectoNET.Models
     /// La clase Attendance contiene información sobre la fecha de asistencia,
     /// el estado de presencia y la relación con la matrícula del estudiante.
     /// </summary>
-    internal class Attendance
+    public class Attendance
     {
         [Key]
         public int Id { get; set; }

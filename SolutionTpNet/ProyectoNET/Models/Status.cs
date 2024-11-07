@@ -8,7 +8,7 @@ namespace ProyectoNET.Models
     /// La clase Status contiene información sobre la descripción del estado
     /// y las matrículas asociadas a ese estado.
     /// </summary>
-    internal class Status
+    public class Status
     {
         [Key]
         public int Id { get; set; }

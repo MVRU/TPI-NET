@@ -3,7 +3,7 @@ using ProyectoNET.Models;
 
 namespace ProyectoNET.Data
 {
-    internal class UniversityContext : DbContext
+    public class UniversityContext : DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Course> Courses { get; set; }
@@ -20,7 +20,7 @@ namespace ProyectoNET.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configurar la relación muchos a muchos entre Course y User (como professors)
+            // Configurar la relación muchos a muchos entre Course y User (como profesores)
             modelBuilder.Entity<Course>()
                 .HasMany(c => c.Users)
                 .WithMany(u => u.Courses) // El rol de profesor se distingue por el atributo Role
@@ -80,7 +80,6 @@ namespace ProyectoNET.Data
 
             modelBuilder.Entity<Attendance>()
                 .HasKey(a => a.Id);
-
 
             // DB SEEDING
 

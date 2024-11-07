@@ -7,7 +7,7 @@ using ProyectoNET.Models;
 
 namespace ProyectoNET.Repositories
 {
-    internal class UserRepository
+    public class UserRepository
     {
         private readonly UniversityContext _context;
 
@@ -211,6 +211,20 @@ namespace ProyectoNET.Repositories
             {
                 Console.WriteLine($"Error al eliminar usuario: {ex.Message}");
                 return false;
+            }
+        }
+
+        // Obtener todos los usuarios
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            try
+            {
+                return await _context.Users.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener usuarios: {ex.Message}");
+                return new List<User>(); // Retorna una lista vacía en caso de error
             }
         }
     }

@@ -10,7 +10,7 @@ namespace ProyectoNET.Models
     /// las fechas de inicio y fin, la asignatura asociada, la cuota de estudiantes
     /// y las relaciones con los horarios, usuarios y matrículas.
     /// </summary>
-    internal class Course
+    public class Course
     {
         [Key]
         public int Id { get; set; }

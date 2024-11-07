@@ -5,7 +5,7 @@ using ProyectoNET.Repositories;
 
 namespace ProyectoNET.Controllers
 {
-    internal class UserController
+    public class UserController
     {
         private readonly UserRepository _userRepository;
 
@@ -16,45 +16,92 @@ namespace ProyectoNET.Controllers
 
         public async Task<bool> AddUserAsync(User user)
         {
-            // Hashear la contraseña antes de guardarla
-            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            return await _userRepository.AddUserAsync(user);
+            try
+            {
+                // Hashear la contraseña antes de guardarla
+                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+                return await _userRepository.AddUserAsync(user);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al agregar usuario: {ex.Message}");
+                return false;
+            }
         }
 
         public async Task<User> GetUserByIdAsync(string id)
         {
-            return await _userRepository.GetUserByIdAsync(id);
+            try
+            {
+                return await _userRepository.GetUserByIdAsync(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener usuario: {ex.Message}");
+                return null;
+            }
         }
 
         public async Task<bool> UserLogInAsync(string id, string pwd)
         {
-            var user = await _userRepository.GetUserByIdAsync(id);
-
-            // Comparación de contraseñas usando BCrypt
-            if (user != null && VerifyPassword(user.Password, pwd))
+            try
             {
-                Console.WriteLine("Inicio de sesión exitoso.");
-                return true;
-            }
+                var user = await _userRepository.GetUserByIdAsync(id);
 
-            Console.WriteLine("Credenciales incorrectas.");
-            return false;
+                if (user != null && VerifyPassword(user.Password, pwd))
+                {
+                    Console.WriteLine("Inicio de sesión exitoso.");
+                    return true;
+                }
+
+                Console.WriteLine("Credenciales incorrectas.");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al intentar iniciar sesión: {ex.Message}");
+                return false;
+            }
         }
 
         private bool VerifyPassword(string storedPassword, string inputPassword)
         {
-            // Verificar la contraseña usando BCrypt
-            return BCrypt.Net.BCrypt.Verify(inputPassword, storedPassword);
+            try
+            {
+                // Verificar la contraseña usando BCrypt
+                return BCrypt.Net.BCrypt.Verify(inputPassword, storedPassword);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al verificar la contraseña: {ex.Message}");
+                return false;
+            }
         }
 
         public async Task<bool> UpdateUserAsync(User updatedUser, string currentUserId, string currentUserRole)
         {
-            return await _userRepository.UpdateUserAsync(updatedUser, currentUserId, currentUserRole);
+            try
+            {
+                return await _userRepository.UpdateUserAsync(updatedUser, currentUserId, currentUserRole);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al actualizar el usuario: {ex.Message}");
+                return false;
+            }
         }
 
         public async Task<bool> DeleteUserAsync(string id, string currentUserRole)
         {
-            return await _userRepository.DeleteUserAsync(id, currentUserRole);
+            try
+            {
+                return await _userRepository.DeleteUserAsync(id, currentUserRole);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al eliminar el usuario: {ex.Message}");
+                return false;
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration; 
 using ProyectoNET.Controllers;
 using ProyectoNET.Repositories;
 using ProyectoNET.Data;
@@ -9,6 +10,8 @@ using Signin;
 using tomarAsistencia;
 using ProyectoNET.Forms;
 using Microsoft.EntityFrameworkCore;
+using ProyectoNET.Views;
+using System.IO;
 
 namespace ProyectoNET
 {
@@ -19,10 +22,16 @@ namespace ProyectoNET
         [STAThread]
         private static void Main()
         {
+            // Configurar la lectura del archivo appsettings.json
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory()) // Establecer la base para la ruta del archivo
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true) // Cargar el archivo de configuración
+                .Build();
+
             // Configurar el host y la inyección de dependencias
             var serviceCollection = new ServiceCollection()
                 .AddDbContext<UniversityContext>(options =>
-                    options.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=University;Integrated Security=true"))
+                    options.UseSqlServer(config.GetConnectionString("DefaultConnection"))) // Usar la cadena de conexión del appsettings.json
                 .AddScoped<AttendanceRepository>()
                 .AddScoped<CourseRepository>()
                 .AddScoped<EnrollmentRepository>()
@@ -41,7 +50,8 @@ namespace ProyectoNET
                 .AddTransient<frmLogIn>()
                 .AddTransient<MainForm>()
                 .AddTransient<frmSignIn>()
-                .AddTransient<TakeAttendanceForm>();
+                .AddTransient<TakeAttendanceForm>()
+                .AddTransient<UsersManagementForm>();
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
 

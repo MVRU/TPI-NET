@@ -9,7 +9,7 @@ namespace ProyectoNET.Models
     /// La clase User contiene la información básica del usuario como su nombre, apellido, dirección,
     /// email, contraseña, y su rol en el sistema. Además, contiene atributos específicos según el tipo de usuario.
     /// </summary>
-    internal class User
+    public class User
     {
         [Key]
         [Required(ErrorMessage = "El legajo es obligatorio.")]
