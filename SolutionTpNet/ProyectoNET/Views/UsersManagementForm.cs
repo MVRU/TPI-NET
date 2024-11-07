@@ -16,5 +16,10 @@ namespace ProyectoNET.Views
         {
             InitializeComponent();
         }
+
+        private void frmUsersManagement_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

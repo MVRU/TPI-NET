@@ -57,31 +57,65 @@ namespace ProyectoNET.Repositories
             }
         }
 
-        public async Task<bool> UpdateUserAsync(User updatedUser)
+        public async Task<bool> UpdateUserAsync(User updatedUser, string currentUserId, string currentUserRole)
         {
             try
             {
                 var user = await _context.Users.FindAsync(updatedUser.File);
 
-                if (user != null)
+                if (user == null)
                 {
-                    user.Name = updatedUser.Name;
-                    user.LastName = updatedUser.LastName;
-                    user.Email = updatedUser.Email;
-                    user.Password = updatedUser.Password;
-                    user.Address = updatedUser.Address;
-
-                    // Actualizar campos específicos según el tipo de usuario
-                    user.Specialization = updatedUser.Specialization;
-                    user.Position = updatedUser.Position;
-
-                    await _context.SaveChangesAsync();
-                    Console.WriteLine("Usuario actualizado exitosamente.");
-                    return true;
+                    Console.WriteLine("Error: Usuario no encontrado.");
+                    return false;
                 }
 
-                Console.WriteLine("Error: Usuario no encontrado.");
-                return false;
+                // Evitar cambios en el legajo
+                if (user.File != updatedUser.File)
+                {
+                    Console.WriteLine("Error: El legajo no puede modificarse.");
+                    return false;
+                }
+
+                // Verificar que el usuario no intente modificar la contraseña de otro usuario
+                if (currentUserId != updatedUser.File && updatedUser.Password != user.Password)
+                {
+                    Console.WriteLine("Error: No puede modificar la contraseña de otro usuario.");
+                    return false;
+                }
+
+                // Solo un administrador puede modificar el rol
+                if (currentUserRole != "Admin" && updatedUser.Role != user.Role)
+                {
+                    Console.WriteLine("Error: Solo los administradores pueden modificar el rol.");
+                    return false;
+                }
+
+                // Actualizar campos comunes
+                user.Name = updatedUser.Name;
+                user.LastName = updatedUser.LastName;
+                user.Email = updatedUser.Email;
+                user.Address = updatedUser.Address;
+
+                // Actualizar campos específicos según el tipo de usuario
+                if (!string.IsNullOrEmpty(updatedUser.Specialization))
+                {
+                    user.Specialization = updatedUser.Specialization;
+                }
+
+                if (!string.IsNullOrEmpty(updatedUser.Position))
+                {
+                    user.Position = updatedUser.Position;
+                }
+
+                // Si la contraseña ha sido cambiada, hashearla
+                if (!string.IsNullOrEmpty(updatedUser.Password) && updatedUser.Password != user.Password)
+                {
+                    user.Password = BCrypt.Net.BCrypt.HashPassword(updatedUser.Password);
+                }
+
+                await _context.SaveChangesAsync();
+                Console.WriteLine("Usuario actualizado exitosamente.");
+                return true;
             }
             catch (DbUpdateException dbEx)
             {
@@ -95,27 +129,55 @@ namespace ProyectoNET.Repositories
             }
         }
 
-        public async Task<bool> DeleteUserAsync(string id)
+        public async Task<bool> DeleteUserAsync(string id, string currentUserRole)
         {
             try
             {
-                var user = await _context.Users.FindAsync(id);
+                var userToDelete = await _context.Users.FindAsync(id);
 
-                if (user != null)
+                if (userToDelete == null)
                 {
-                    _context.Users.Remove(user);
-                    await _context.SaveChangesAsync();
-                    Console.WriteLine("Usuario eliminado exitosamente.");
-                    return true;
+                    Console.WriteLine("Error: Usuario no encontrado.");
+                    return false;
                 }
 
-                Console.WriteLine("Error: Usuario no encontrado.");
-                return false;
-            }
-            catch (DbUpdateException dbEx)
-            {
-                Console.WriteLine($"Error de actualización en la base de datos: {dbEx.Message}");
-                return false;
+                // Los admins no pueden ser eliminados
+                if (userToDelete.Role == "Admin")
+                {
+                    Console.WriteLine("Error: No se puede eliminar un usuario administrador.");
+                    return false;
+                }
+
+                // Los profesores solo pueden ser eliminados por un admin
+                if (userToDelete.Role == "Professor" && currentUserRole != "Admin")
+                {
+                    Console.WriteLine("Error: Solo los administradores pueden eliminar profesores.");
+                    return false;
+                }
+
+                // Eliminar inscripciones de estudiantes si el curso no tiene más profesores
+                if (userToDelete.Role == "Professor")
+                {
+                    foreach (var course in userToDelete.Courses)
+                    {
+                        if (course.Users.Count == 1) // Si solo tiene un profesor, eliminar inscripciones
+                        {
+                            foreach (var enrollment in course.Enrollments)
+                            {
+                                _context.Enrollments.Remove(enrollment);
+                            }
+
+                            // Eliminar el curso asociado
+                            _context.Courses.Remove(course);
+                        }
+                    }
+                }
+
+                // Eliminar al usuario
+                _context.Users.Remove(userToDelete);
+                await _context.SaveChangesAsync();
+                Console.WriteLine("Usuario eliminado exitosamente.");
+                return true;
             }
             catch (Exception ex)
             {

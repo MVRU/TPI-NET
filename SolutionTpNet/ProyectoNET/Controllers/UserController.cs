@@ -47,14 +47,14 @@ namespace ProyectoNET.Controllers
             return BCrypt.Net.BCrypt.Verify(inputPassword, storedPassword);
         }
 
-        public async Task<bool> UpdateUserAsync(User updatedUser)
+        public async Task<bool> UpdateUserAsync(User updatedUser, string currentUserId, string currentUserRole)
         {
-            return await _userRepository.UpdateUserAsync(updatedUser);
+            return await _userRepository.UpdateUserAsync(updatedUser, currentUserId, currentUserRole);
         }
 
-        public async Task<bool> DeleteUserAsync(string id)
+        public async Task<bool> DeleteUserAsync(string id, string currentUserRole)
         {
-            return await _userRepository.DeleteUserAsync(id);
+            return await _userRepository.DeleteUserAsync(id, currentUserRole);
         }
     }
 }
