@@ -20,7 +20,7 @@ namespace ProyectoNET.Models
 
         // Relación con curso
         [ForeignKey("Course")]
-        public int CourseId { get; set; } // Clave foránea
+        public int? CourseId { get; set; } // Clave foránea nullable
         public Course Course { get; set; } // Propiedad de navegación
     }
 }

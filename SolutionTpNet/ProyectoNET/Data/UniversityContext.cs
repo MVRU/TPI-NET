@@ -20,7 +20,7 @@ namespace ProyectoNET.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configurar la relación muchos a muchos entre Course y User (como profesores)
+            // Configurar la relación muchos a muchos entre Course y User (como professors)
             modelBuilder.Entity<Course>()
                 .HasMany(c => c.Users)
                 .WithMany(u => u.Courses) // El rol de profesor se distingue por el atributo Role
@@ -44,7 +44,8 @@ namespace ProyectoNET.Data
             modelBuilder.Entity<Schedule>()
                 .HasOne(s => s.Course)
                 .WithMany(c => c.Schedules)
-                .HasForeignKey(s => s.CourseId);
+                .HasForeignKey(s => s.CourseId)
+                .OnDelete(DeleteBehavior.SetNull);  // Permite que CourseId sea nulo
 
             // Relación uno a muchos entre Enrollment y Status
             modelBuilder.Entity<Enrollment>()
@@ -64,7 +65,7 @@ namespace ProyectoNET.Data
                 .WithMany(c => c.Enrollments)
                 .HasForeignKey(e => e.CourseId);
 
-            // Relación uno a muchos entre User (Estudiante) y Enrollment
+            // Relación uno a muchos entre User (Student) y Enrollment
             modelBuilder.Entity<Enrollment>()
                 .HasOne(e => e.Student)
                 .WithMany(u => u.Enrollments)
@@ -79,6 +80,31 @@ namespace ProyectoNET.Data
 
             modelBuilder.Entity<Attendance>()
                 .HasKey(a => a.Id);
+
+
+            // DB SEEDING
+
+            // Datos de ejemplo para Status
+            modelBuilder.Entity<Status>().HasData(
+                new Status { Id = 1, Description = "Pendiente" },
+                new Status { Id = 2, Description = "Regular" },
+                new Status { Id = 3, Description = "Libre" },
+                new Status { Id = 4, Description = "Aprobada" }
+            );
+
+            // Datos de ejemplo para Schedule
+            modelBuilder.Entity<Schedule>().HasData(
+                new Schedule { Id = 1, Day = "Lunes", StartTime = new TimeSpan(8, 0, 0), EndTime = new TimeSpan(10, 0, 0), CourseId = null },
+                new Schedule { Id = 2, Day = "Lunes", StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(12, 0, 0), CourseId = null },
+                new Schedule { Id = 4, Day = "Martes", StartTime = new TimeSpan(8, 0, 0), EndTime = new TimeSpan(10, 0, 0), CourseId = null },
+                new Schedule { Id = 5, Day = "Martes", StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(12, 0, 0), CourseId = null },
+                new Schedule { Id = 6, Day = "Miércoles", StartTime = new TimeSpan(8, 0, 0), EndTime = new TimeSpan(10, 0, 0), CourseId = null },
+                new Schedule { Id = 7, Day = "Miércoles", StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(12, 0, 0), CourseId = null },
+                new Schedule { Id = 8, Day = "Jueves", StartTime = new TimeSpan(8, 0, 0), EndTime = new TimeSpan(10, 0, 0), CourseId = null },
+                new Schedule { Id = 9, Day = "Jueves", StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(12, 0, 0), CourseId = null },
+                new Schedule { Id = 10, Day = "Viernes", StartTime = new TimeSpan(8, 0, 0), EndTime = new TimeSpan(10, 0, 0), CourseId = null },
+                new Schedule { Id = 11, Day = "Viernes", StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(12, 0, 0), CourseId = null }
+            );
 
             base.OnModelCreating(modelBuilder);
         }

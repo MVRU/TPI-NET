@@ -45,12 +45,6 @@ namespace ProyectoNET
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
 
-            using (var scope = ServiceProvider.CreateScope())
-            {
-                var context = scope.ServiceProvider.GetRequiredService<UniversityContext>();
-                DataSeeder.Seed(context); // Llamar a la función Seed para agregar datos de prueba
-            }
-
             try
             {
                 ApplicationConfiguration.Initialize();

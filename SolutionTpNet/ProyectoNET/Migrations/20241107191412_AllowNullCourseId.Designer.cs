@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProyectoNET.Data;
 
@@ -11,9 +12,11 @@ using ProyectoNET.Data;
 namespace ProyectoNET.Migrations
 {
     [DbContext(typeof(UniversityContext))]
-    partial class UniversityContextModelSnapshot : ModelSnapshot
+    [Migration("20241107191412_AllowNullCourseId")]
+    partial class AllowNullCourseId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -328,7 +331,7 @@ namespace ProyectoNET.Migrations
                             Email = "admin@example.com",
                             LastName = "Principal",
                             Name = "Admin",
-                            Password = "$2a$10$5FZX2/9I4OQ/L1I5OFdHo.4omImiWUJcCUp.WAcy.2LMZr2JYFl6i",
+                            Password = "$2b$12$LsaagJ1caYoRBMtKO1rat.AjIfIrWUYafqn55uPuGwu3QWyAmGQwy",
                             Position = "Administrador Principal",
                             Role = "Admin Principal"
                         });
