@@ -3,6 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoNET.Models
 {
+    /// <summary>
+    /// Representa el estado de una matrícula de un estudiante.
+    /// La clase Status contiene información sobre la descripción del estado
+    /// y las matrículas asociadas a ese estado.
+    /// </summary>
     internal class Status
     {
         [Key]
@@ -12,6 +17,7 @@ namespace ProyectoNET.Models
         [StringLength(100)]
         public string Description { get; set; }
 
-        public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>(); // Relación uno a muchos con Enrollment
+        // Relación con matrículas
+        public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
     }
 }

@@ -4,6 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoNET.Models
 {
+    /// <summary>
+    /// Representa una asignatura o materia en el sistema.
+    /// La clase Subject contiene información sobre la descripción de la asignatura,
+    /// el porcentaje de asistencia requerido y el promedio de asistencia, además
+    /// de los cursos asociados a esa asignatura.
+    /// </summary>
     internal class Subject
     {
         [Key]
@@ -17,6 +23,8 @@ namespace ProyectoNET.Models
 
         [Range(0, 100, ErrorMessage = "El porcentaje promedio de asistencia debe estar entre 0 y 100")]
         public float AverageAttendancePercentage { get; set; }
-        public ICollection<Course> Courses { get; set; } = new List<Course>(); // Lista de Cursos de la Asignatura
+
+        // Relación con cursos
+        public ICollection<Course> Courses { get; set; } = new List<Course>();
     }
 }

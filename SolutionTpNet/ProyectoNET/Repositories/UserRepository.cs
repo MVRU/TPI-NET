@@ -16,6 +16,12 @@ namespace ProyectoNET.Repositories
             _context = context;
         }
 
+        /// <summary>
+        /// Agrega un nuevo usuario a la base de datos.
+        /// Realiza validaciones sobre el rol del usuario y verifica si el legajo ya está registrado.
+        /// </summary>
+        /// <param name="user">El usuario a agregar.</param>
+        /// <returns>True si el usuario fue agregado exitosamente, de lo contrario false.</returns>
         public async Task<bool> AddUserAsync(User user)
         {
             try
@@ -44,6 +50,11 @@ namespace ProyectoNET.Repositories
             }
         }
 
+        /// <summary>
+        /// Obtiene un usuario por su identificador (legajo).
+        /// </summary>
+        /// <param name="id">El legajo del usuario.</param>
+        /// <returns>El usuario encontrado o null si no se encuentra.</returns>
         public async Task<User> GetUserByIdAsync(string id)
         {
             try
@@ -57,6 +68,15 @@ namespace ProyectoNET.Repositories
             }
         }
 
+        /// <summary>
+        /// Actualiza la información de un usuario. 
+        /// Incluye validaciones para asegurar que solo el usuario actual pueda modificar su propia contraseña,
+        /// y solo un administrador puede modificar el rol de un usuario.
+        /// </summary>
+        /// <param name="updatedUser">El usuario con los datos actualizados.</param>
+        /// <param name="currentUserId">El identificador del usuario que realiza la actualización.</param>
+        /// <param name="currentUserRole">El rol del usuario que realiza la actualización.</param>
+        /// <returns>True si la actualización fue exitosa, de lo contrario false.</returns>
         public async Task<bool> UpdateUserAsync(User updatedUser, string currentUserId, string currentUserRole)
         {
             try
@@ -129,6 +149,14 @@ namespace ProyectoNET.Repositories
             }
         }
 
+        /// <summary>
+        /// Elimina un usuario de la base de datos.
+        /// Realiza validaciones sobre el rol del usuario que realiza la eliminación y el rol del usuario a eliminar.
+        /// Si el usuario es un profesor, se eliminan sus inscripciones y cursos si es el único profesor.
+        /// </summary>
+        /// <param name="id">El legajo del usuario a eliminar.</param>
+        /// <param name="currentUserRole">El rol del usuario que realiza la eliminación.</param>
+        /// <returns>True si la eliminación fue exitosa, de lo contrario false.</returns>
         public async Task<bool> DeleteUserAsync(string id, string currentUserRole)
         {
             try
