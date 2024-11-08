@@ -101,6 +101,7 @@
             cuentaToolStripMenuItem.Name = "cuentaToolStripMenuItem";
             cuentaToolStripMenuItem.Size = new Size(180, 22);
             cuentaToolStripMenuItem.Text = "Cuenta";
+            cuentaToolStripMenuItem.Click += cuentaToolStripMenuItem_Click;
             // 
             // cerrarSesiónToolStripMenuItem
             // 

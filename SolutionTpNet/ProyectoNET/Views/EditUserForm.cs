@@ -11,6 +11,9 @@ namespace ProyectoNET.Views
         private readonly User _user;
         private readonly UserController _userController;
 
+        // Definimos el evento
+        public event Action<User> UserUpdated;
+
         public EditUserForm(User user, UserController userController)
         {
             InitializeComponent();
@@ -31,6 +34,9 @@ namespace ProyectoNET.Views
             // Configurar lista desplegable para Role con opciones específicas
             cboRole.Items.AddRange(new string[] { "Student", "Admin", "Professor" });
             cboRole.SelectedItem = _user.Role;
+
+            // Evitar que se ingrese texto personalizado en el ComboBox
+            cboRole.DropDownStyle = ComboBoxStyle.DropDownList;
 
             // Deshabilitar campo de legajo (ID) ya que no debe modificarse
             txtFile.Enabled = false;
@@ -85,6 +91,8 @@ namespace ProyectoNET.Views
             var success = await _userController.UpdateUserAsync(_user, currentUserId, currentUserRole);
             if (success)
             {
+                // Disparar el evento de que el usuario se actualizó
+                UserUpdated?.Invoke(_user);
                 MessageBox.Show("Usuario actualizado con éxito.", "Edición de usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close(); // Cerrar el formulario de edición
             }
@@ -92,6 +100,10 @@ namespace ProyectoNET.Views
             {
                 MessageBox.Show("Hubo un error al actualizar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void EditUserForm_Load(object sender, EventArgs e)
+        {
         }
     }
 }

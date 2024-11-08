@@ -49,7 +49,7 @@
             // 
             txtFile.Location = new Point(144, 42);
             txtFile.Name = "txtFile";
-            txtFile.Size = new Size(100, 23);
+            txtFile.Size = new Size(154, 23);
             txtFile.TabIndex = 0;
             // 
             // lblFile
@@ -74,7 +74,7 @@
             // 
             txtName.Location = new Point(144, 95);
             txtName.Name = "txtName";
-            txtName.Size = new Size(100, 23);
+            txtName.Size = new Size(154, 23);
             txtName.TabIndex = 2;
             // 
             // lblLastName
@@ -90,7 +90,7 @@
             // 
             txtLastName.Location = new Point(144, 154);
             txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(100, 23);
+            txtLastName.Size = new Size(154, 23);
             txtLastName.TabIndex = 4;
             // 
             // lblEmail
@@ -106,7 +106,7 @@
             // 
             txtEmail.Location = new Point(144, 207);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(100, 23);
+            txtEmail.Size = new Size(154, 23);
             txtEmail.TabIndex = 6;
             // 
             // lblAddress
@@ -122,7 +122,7 @@
             // 
             txtAddress.Location = new Point(144, 263);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(100, 23);
+            txtAddress.Size = new Size(154, 23);
             txtAddress.TabIndex = 8;
             // 
             // lblRole
@@ -136,7 +136,7 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(107, 441);
+            btnGuardar.Location = new Point(144, 444);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(75, 23);
             btnGuardar.TabIndex = 12;
@@ -157,7 +157,7 @@
             // 
             txtPosition.Location = new Point(144, 373);
             txtPosition.Name = "txtPosition";
-            txtPosition.Size = new Size(100, 23);
+            txtPosition.Size = new Size(154, 23);
             txtPosition.TabIndex = 13;
             // 
             // cboRole
@@ -166,7 +166,7 @@
             cboRole.FormattingEnabled = true;
             cboRole.Location = new Point(144, 323);
             cboRole.Name = "cboRole";
-            cboRole.Size = new Size(121, 23);
+            cboRole.Size = new Size(154, 23);
             cboRole.TabIndex = 15;
             // 
             // EditUserForm
@@ -174,7 +174,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(800, 494);
+            ClientSize = new Size(373, 479);
             Controls.Add(cboRole);
             Controls.Add(lblPosition);
             Controls.Add(txtPosition);
@@ -192,7 +192,9 @@
             Controls.Add(txtFile);
             Name = "EditUserForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Editar usuario";
+            Load += EditUserForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

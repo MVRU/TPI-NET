@@ -205,5 +205,12 @@ namespace ProyectoNET
                 loginForm.Show();
             }
         }
+
+        private void cuentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var profileForm = Program.ServiceProvider.GetRequiredService<ProfileForm>();
+            profileForm.MdiParent = this;
+            profileForm.Show();
+        }
     }
 }
