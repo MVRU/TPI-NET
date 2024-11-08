@@ -15,13 +15,20 @@ namespace ProyectoNET.Views
         private readonly UserRepository _userRepository;
         private readonly UserController _userController;
         private List<User> _users;
+        private string _currentUserId; // Id del usuario actual
 
         public UsersManagementForm(UserRepository userRepository, UserController userController)
         {
             InitializeComponent();
             _userRepository = userRepository;
             _userController = userController;
-            LoadUsersAsync(); 
+            LoadUsersAsync();
+        }
+
+        // Método para establecer el ID del usuario actual
+        public void SetCurrentUserId(string currentUserId)
+        {
+            _currentUserId = currentUserId;
         }
 
         private void frmUsersManagement_Load(object sender, EventArgs e)
@@ -56,7 +63,7 @@ namespace ProyectoNET.Views
         }
 
         // Método para editar un usuario
-        private void BtnEditUser_Click(object sender, EventArgs e)
+        private void btnModificarUsuario_Click(object sender, EventArgs e)
         {
             if (dgvUsuarios.SelectedRows.Count > 0)
             {
@@ -76,18 +83,26 @@ namespace ProyectoNET.Views
         }
 
         // Método para eliminar un usuario
-        private async void BtnDeleteUser_Click(object sender, EventArgs e)
+        private async void btnEliminarUsuario_Click(object sender, EventArgs e)
         {
             if (dgvUsuarios.SelectedRows.Count > 0)
             {
                 var selectedUserFile = dgvUsuarios.SelectedRows[0].Cells["File"].Value.ToString();
+
+                // Bloquear eliminación del usuario actual
+                if (selectedUserFile == _currentUserId)
+                {
+                    MessageBox.Show("No puedes eliminar tu propia cuenta.");
+                    return;
+                }
+
                 var user = _users.FirstOrDefault(u => u.File == selectedUserFile);
                 if (user != null)
                 {
                     var confirmResult = MessageBox.Show("¿Estás seguro de eliminar este usuario?", "Confirmar eliminación", MessageBoxButtons.YesNo);
                     if (confirmResult == DialogResult.Yes)
                     {
-                        var success = await _userController.DeleteUserAsync(user.File, "Admin");
+                        var success = await _userController.DeleteUserAsync(user.File, _currentUserId, "Admin");
                         if (success)
                         {
                             LoadUsersAsync(); // Recargar los usuarios

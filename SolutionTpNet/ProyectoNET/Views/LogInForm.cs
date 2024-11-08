@@ -4,6 +4,7 @@ using ProyectoNET.Controllers;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProyectoNET.Properties;
 
 namespace LogIn
 {
@@ -32,6 +33,28 @@ namespace LogIn
                 // Simular un clic en el botón btnIngresar
                 btnIngresar.PerformClick();
             }
+        }
+
+        // Método para guardar el ID de usuario en la configuración
+        private void SaveUserSession(string userId)
+        {
+            Settings.Default.UserId = userId;
+            Settings.Default.MantenerSesion = checkBoxMantenerSesion.Checked;
+            Settings.Default.Save();
+        }
+
+        // Método para cargar el ID de usuario de la configuración
+        private string LoadUserSession()
+        {
+            return Settings.Default.UserId;
+        }
+
+        // Método para borrar el ID de usuario de la configuración
+        private void ClearUserSession()
+        {
+            Settings.Default.UserId = string.Empty;
+            Settings.Default.MantenerSesion = false;
+            Settings.Default.Save();
         }
 
         private async void btnIngresar_Click(object sender, EventArgs e)
@@ -63,18 +86,21 @@ namespace LogIn
             {
                 MessageBox.Show("Usted ha ingresado al sistema correctamente.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                // Guardar sesión si el checkbox está seleccionado
+                SaveUserSession(txtLegajo.Text);
+
                 // Obtener el formulario principal abierto
                 MainForm mainForm = (MainForm)this.MdiParent;
 
                 if (mainForm != null)
                 {
                     // Pasar el ID del usuario al MainForm para habilitar los menús
-                    mainForm.SetUserId(txtLegajo.Text);  // Usar el legajo como ID
+                    mainForm.SetUserId(txtLegajo.Text);
                     await mainForm.HabilitarMenusAsync(txtLegajo.Text);
                 }
 
+                // Mostrar el Dashboard
                 DashboardForm dashboard = new DashboardForm();
-
                 dashboard.MdiParent = mainForm;
                 dashboard.WindowState = FormWindowState.Maximized;
                 dashboard.Show();
@@ -87,29 +113,17 @@ namespace LogIn
             }
         }
 
-
         private void frmLogIn_Load(object sender, EventArgs e)
         {
             // Vincular el evento de clic del botón al método btnIngresar_Click
             btnIngresar.Click += new EventHandler(btnIngresar_Click);
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void checkBoxMantenerSesion_CheckedChanged(object sender, EventArgs e)
         {
-
+            // Al cambiar el estado del checkbox, se actualiza la propiedad MantenerSesion
+            Settings.Default.MantenerSesion = checkBoxMantenerSesion.Checked;
+            Settings.Default.Save();
         }
-
-        private void pnlLogIn_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnIngresar_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblLegajo_Click(object sender, EventArgs e)
-        { }
     }
 }

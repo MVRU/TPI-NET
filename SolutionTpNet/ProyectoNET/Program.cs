@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration; 
+using Microsoft.Extensions.Configuration;
 using ProyectoNET.Controllers;
 using ProyectoNET.Repositories;
 using ProyectoNET.Data;

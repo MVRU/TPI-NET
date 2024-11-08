@@ -51,6 +51,7 @@
             checkBoxMantenerSesion.TabIndex = 2;
             checkBoxMantenerSesion.Text = "Manten mi sesión iniciada";
             checkBoxMantenerSesion.UseVisualStyleBackColor = true;
+            checkBoxMantenerSesion.CheckedChanged += checkBoxMantenerSesion_CheckedChanged;
             // 
             // btnIngresar
             // 
@@ -65,7 +66,7 @@
             btnIngresar.TabIndex = 3;
             btnIngresar.Text = "Iniciar sesión";
             btnIngresar.UseVisualStyleBackColor = false;
-            btnIngresar.Click += btnIngresar_Click_1;
+            btnIngresar.Click += btnIngresar_Click;
             // 
             // linkOlvidaPassword
             // 
@@ -103,7 +104,6 @@
             lblLegajo.Size = new Size(57, 20);
             lblLegajo.TabIndex = 22;
             lblLegajo.Text = "Legajo";
-            lblLegajo.Click += lblLegajo_Click;
             // 
             // lblDescripcionBienvenida
             // 

@@ -91,10 +91,17 @@ namespace ProyectoNET.Controllers
             }
         }
 
-        public async Task<bool> DeleteUserAsync(string id, string currentUserRole)
+        public async Task<bool> DeleteUserAsync(string id, string currentUserId, string currentUserRole)
         {
             try
             {
+                // Evitar que el usuario actual elimine su propia cuenta
+                if (id == currentUserId)
+                {
+                    Console.WriteLine("Error: No puedes eliminar tu propia cuenta.");
+                    return false;
+                }
+
                 return await _userRepository.DeleteUserAsync(id, currentUserRole);
             }
             catch (Exception ex)
