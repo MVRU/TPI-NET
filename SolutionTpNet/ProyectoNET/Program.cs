@@ -52,7 +52,8 @@ namespace ProyectoNET
                 .AddTransient<frmSignIn>()
                 .AddTransient<TakeAttendanceForm>()
                 .AddTransient<UsersManagementForm>()
-                .AddTransient<ProfileForm>();
+                .AddTransient<ProfileForm>()
+                .AddTransient<ChangePasswordForm>();
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
 

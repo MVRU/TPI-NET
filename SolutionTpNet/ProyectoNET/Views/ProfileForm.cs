@@ -145,5 +145,11 @@ namespace ProyectoNET.Views
                 }
             }
         }
+
+        private void btnCambiarContraseña_Click(object sender, EventArgs e)
+        {
+            ChangePasswordForm changePasswordForm = new ChangePasswordForm(_currentUserId, _userController);
+            changePasswordForm.ShowDialog();
+        }
     }
 }

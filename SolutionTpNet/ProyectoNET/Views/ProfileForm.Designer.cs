@@ -44,6 +44,7 @@
             lblPosition = new Label();
             btnModificarUsuario = new Button();
             btnEliminarUsuario = new Button();
+            btnCambiarContraseña = new Button();
             SuspendLayout();
             // 
             // lblName
@@ -170,7 +171,7 @@
             // 
             // btnEliminarUsuario
             // 
-            btnEliminarUsuario.Location = new Point(179, 437);
+            btnEliminarUsuario.Location = new Point(296, 437);
             btnEliminarUsuario.Name = "btnEliminarUsuario";
             btnEliminarUsuario.Size = new Size(114, 23);
             btnEliminarUsuario.TabIndex = 15;
@@ -178,12 +179,23 @@
             btnEliminarUsuario.UseVisualStyleBackColor = true;
             btnEliminarUsuario.Click += btnEliminarUsuario_Click;
             // 
+            // btnCambiarContraseña
+            // 
+            btnCambiarContraseña.Location = new Point(158, 437);
+            btnCambiarContraseña.Name = "btnCambiarContraseña";
+            btnCambiarContraseña.Size = new Size(132, 23);
+            btnCambiarContraseña.TabIndex = 16;
+            btnCambiarContraseña.Text = "Cambiar contraseña";
+            btnCambiarContraseña.UseVisualStyleBackColor = true;
+            btnCambiarContraseña.Click += btnCambiarContraseña_Click;
+            // 
             // ProfileForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(800, 501);
+            ClientSize = new Size(503, 501);
+            Controls.Add(btnCambiarContraseña);
             Controls.Add(btnEliminarUsuario);
             Controls.Add(btnModificarUsuario);
             Controls.Add(txtPosition);
@@ -228,5 +240,6 @@
         private Label lblPosition;
         private Button btnModificarUsuario;
         private Button btnEliminarUsuario;
+        private Button btnCambiarContraseña;
     }
 }
