@@ -57,5 +57,39 @@ namespace ProyectoNET.Repositories
         {
             return _context.Statuses.ToList();
         }
+
+        // Método para actualizar el estado de inscripción de un estudiante
+        public void UpdateEnrollmentStatus(int enrollmentId, string statusDescription)
+        {
+            var enrollment = _context.Enrollments.FirstOrDefault(e => e.Id == enrollmentId);
+
+            if (enrollment != null)
+            {
+                var status = _context.Statuses.FirstOrDefault(s => s.Description == statusDescription);
+
+                if (status != null)
+                {
+                    enrollment.StatusId = status.Id;
+                    _context.SaveChanges();
+                }
+            }
+        }
+
+        // Método para realizar la eliminación lógica de una inscripción
+        public void MarkEnrollmentAsFree(int enrollmentId)
+        {
+            var enrollment = _context.Enrollments.FirstOrDefault(e => e.Id == enrollmentId);
+
+            if (enrollment != null)
+            {
+                var freeStatus = _context.Statuses.FirstOrDefault(s => s.Description == "Libre");
+
+                if (freeStatus != null)
+                {
+                    enrollment.StatusId = freeStatus.Id;
+                    _context.SaveChanges();
+                }
+            }
+        }
     }
 }

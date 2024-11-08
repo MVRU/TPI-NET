@@ -48,14 +48,18 @@ namespace ProyectoNET
             if (!sesionIniciada) return; // Solo habilita menús si la sesión está iniciada
             var user = await _userController.GetUserByIdAsync(userId); // Usar el ID del usuario actual
 
-            if (user != null && user.Role == "Admin")
+            if (user != null && user.Role == "Admin") // Mostrar solo si el usuario es Admin
             {
                 usuariosToolStripMenuItem.Visible = true; // Mostrar el menú solo si el usuario es Admin
             }
 
+            if (user != null && (user.Role == "Admin" || user.Role == "Professor")) // Si es Admin o Professor
+            {
+                cursosToolStripMenuItem.Visible = true;
+            }
+
             dashboardToolStripMenuItem.Enabled = true;
             asistenciaToolStripMenuItem.Visible = true;
-            cursosToolStripMenuItem.Visible = true;
             configuraciónToolStripMenuItem.Visible = true;
             cuentaToolStripMenuItem.Visible = true;
             cerrarSesiónToolStripMenuItem.Visible = true;
@@ -98,13 +102,6 @@ namespace ProyectoNET
         private void formMain_Load(object sender, EventArgs e)
         {
         }
-
-        private void menúToolStripMenuItem_Click(object sender, EventArgs e) { }
-
-        private void menuToolStripMenuItem_Click(object sender, EventArgs e) { }
-
-        private void guíaDeAyudaToolStripMenuItem_Click(object sender, EventArgs e) { }
-
         private void asistenciaCuentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var formX = Program.ServiceProvider.GetRequiredService<TakeAttendanceForm>();
@@ -211,6 +208,13 @@ namespace ProyectoNET
             var profileForm = Program.ServiceProvider.GetRequiredService<ProfileForm>();
             profileForm.MdiParent = this;
             profileForm.Show();
+        }
+
+        private void gestionarAsignaturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var subjectManagementForm = Program.ServiceProvider.GetRequiredService<SubjectManagementForm>();
+            subjectManagementForm.MdiParent = this;
+            subjectManagementForm.Show();
         }
     }
 }

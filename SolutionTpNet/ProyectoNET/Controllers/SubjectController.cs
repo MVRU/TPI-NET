@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using ProyectoNET.Models;
 using ProyectoNET.Repositories;
 
 namespace ProyectoNET.Controllers
 {
-    internal class SubjectController
+    public class SubjectController
     {
         private readonly SubjectRepository _subjectRepository;
 
@@ -98,6 +99,12 @@ namespace ProyectoNET.Controllers
             {
                 Console.WriteLine($"No se encontraron cursos para la asignatura con Id {subjectId}.");
             }
+        }
+
+        // Obtener todas las asignaturas
+        public List<Subject> GetAllSubjects()
+        {
+            return _subjectRepository.GetAllSubjects().ToList();
         }
     }
 }

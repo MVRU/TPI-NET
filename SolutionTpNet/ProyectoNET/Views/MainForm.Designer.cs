@@ -41,8 +41,8 @@
             tomarAsistenciaToolStripMenuItem = new ToolStripMenuItem();
             historialAsistenciaToolStripMenuItem = new ToolStripMenuItem();
             cursosToolStripMenuItem = new ToolStripMenuItem();
-            listaDeCursosToolStripMenuItem = new ToolStripMenuItem();
-            crearNuevoCursoToolStripMenuItem = new ToolStripMenuItem();
+            gestionarCursosToolStripMenuItem = new ToolStripMenuItem();
+            gestionarAsignaturasToolStripMenuItem = new ToolStripMenuItem();
             usuariosToolStripMenuItem = new ToolStripMenuItem();
             listaDeUsuariosToolStripMenuItem = new ToolStripMenuItem();
             configuraciónToolStripMenuItem = new ToolStripMenuItem();
@@ -73,47 +73,46 @@
             archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             archivoToolStripMenuItem.Size = new Size(58, 22);
             archivoToolStripMenuItem.Text = "Archivo";
-            archivoToolStripMenuItem.Click += menuToolStripMenuItem_Click;
             // 
             // dashboardToolStripMenuItem
             // 
             dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            dashboardToolStripMenuItem.Size = new Size(180, 22);
+            dashboardToolStripMenuItem.Size = new Size(147, 22);
             dashboardToolStripMenuItem.Text = "Dashboard";
             dashboardToolStripMenuItem.Click += dashboardToolStripMenuItem_Click;
             // 
             // iniciarSesionToolStripMenuItem
             // 
             iniciarSesionToolStripMenuItem.Name = "iniciarSesionToolStripMenuItem";
-            iniciarSesionToolStripMenuItem.Size = new Size(180, 22);
+            iniciarSesionToolStripMenuItem.Size = new Size(147, 22);
             iniciarSesionToolStripMenuItem.Text = "Iniciar sesión";
             iniciarSesionToolStripMenuItem.Click += mnuLogIn_Click;
             // 
             // registrarseToolStripMenuItem
             // 
             registrarseToolStripMenuItem.Name = "registrarseToolStripMenuItem";
-            registrarseToolStripMenuItem.Size = new Size(180, 22);
+            registrarseToolStripMenuItem.Size = new Size(147, 22);
             registrarseToolStripMenuItem.Text = "Registrarse";
             registrarseToolStripMenuItem.Click += mnuSignIn_Click;
             // 
             // cuentaToolStripMenuItem
             // 
             cuentaToolStripMenuItem.Name = "cuentaToolStripMenuItem";
-            cuentaToolStripMenuItem.Size = new Size(180, 22);
+            cuentaToolStripMenuItem.Size = new Size(147, 22);
             cuentaToolStripMenuItem.Text = "Cuenta";
             cuentaToolStripMenuItem.Click += cuentaToolStripMenuItem_Click;
             // 
             // cerrarSesiónToolStripMenuItem
             // 
             cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            cerrarSesiónToolStripMenuItem.Size = new Size(180, 22);
+            cerrarSesiónToolStripMenuItem.Size = new Size(147, 22);
             cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
             cerrarSesiónToolStripMenuItem.Click += cerrarSesiónToolStripMenuItem_Click;
             // 
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(180, 22);
+            salirToolStripMenuItem.Size = new Size(147, 22);
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.Click += mnuSalir_Click;
             // 
@@ -123,7 +122,6 @@
             asistenciaToolStripMenuItem.Name = "asistenciaToolStripMenuItem";
             asistenciaToolStripMenuItem.Size = new Size(72, 22);
             asistenciaToolStripMenuItem.Text = "Asistencia";
-            asistenciaToolStripMenuItem.Click += menúToolStripMenuItem_Click;
             // 
             // tomarAsistenciaToolStripMenuItem
             // 
@@ -140,22 +138,23 @@
             // 
             // cursosToolStripMenuItem
             // 
-            cursosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listaDeCursosToolStripMenuItem, crearNuevoCursoToolStripMenuItem });
+            cursosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { gestionarCursosToolStripMenuItem, gestionarAsignaturasToolStripMenuItem });
             cursosToolStripMenuItem.Name = "cursosToolStripMenuItem";
             cursosToolStripMenuItem.Size = new Size(55, 22);
             cursosToolStripMenuItem.Text = "Cursos";
             // 
-            // listaDeCursosToolStripMenuItem
+            // gestionarCursosToolStripMenuItem
             // 
-            listaDeCursosToolStripMenuItem.Name = "listaDeCursosToolStripMenuItem";
-            listaDeCursosToolStripMenuItem.Size = new Size(170, 22);
-            listaDeCursosToolStripMenuItem.Text = "Lista de cursos";
+            gestionarCursosToolStripMenuItem.Name = "gestionarCursosToolStripMenuItem";
+            gestionarCursosToolStripMenuItem.Size = new Size(187, 22);
+            gestionarCursosToolStripMenuItem.Text = "Gestionar cursos";
             // 
-            // crearNuevoCursoToolStripMenuItem
+            // gestionarAsignaturasToolStripMenuItem
             // 
-            crearNuevoCursoToolStripMenuItem.Name = "crearNuevoCursoToolStripMenuItem";
-            crearNuevoCursoToolStripMenuItem.Size = new Size(170, 22);
-            crearNuevoCursoToolStripMenuItem.Text = "Crear nuevo curso";
+            gestionarAsignaturasToolStripMenuItem.Name = "gestionarAsignaturasToolStripMenuItem";
+            gestionarAsignaturasToolStripMenuItem.Size = new Size(187, 22);
+            gestionarAsignaturasToolStripMenuItem.Text = "Gestionar asignaturas";
+            gestionarAsignaturasToolStripMenuItem.Click += gestionarAsignaturasToolStripMenuItem_Click;
             // 
             // usuariosToolStripMenuItem
             // 
@@ -196,7 +195,6 @@
             guíaDeAyudaToolStripMenuItem.Name = "guíaDeAyudaToolStripMenuItem";
             guíaDeAyudaToolStripMenuItem.Size = new Size(156, 22);
             guíaDeAyudaToolStripMenuItem.Text = "Guía de usuario";
-            guíaDeAyudaToolStripMenuItem.Click += guíaDeAyudaToolStripMenuItem_Click;
             // 
             // acercaDeToolStripMenuItem
             // 
@@ -236,8 +234,7 @@
         private ToolStripMenuItem tomarAsistenciaToolStripMenuItem;
         private ToolStripMenuItem historialAsistenciaToolStripMenuItem;
         private ToolStripMenuItem cursosToolStripMenuItem;
-        private ToolStripMenuItem listaDeCursosToolStripMenuItem;
-        private ToolStripMenuItem crearNuevoCursoToolStripMenuItem;
+        private ToolStripMenuItem gestionarCursosToolStripMenuItem;
         private ToolStripMenuItem configuraciónToolStripMenuItem;
         private ToolStripMenuItem preferenciasToolStripMenuItem;
         private ToolStripMenuItem ayudaToolStripMenuItem;
@@ -248,5 +245,6 @@
         private ToolStripMenuItem usuariosToolStripMenuItem;
         private ToolStripMenuItem listaDeUsuariosToolStripMenuItem;
         private ToolStripMenuItem cerrarSesiónToolStripMenuItem;
+        private ToolStripMenuItem gestionarAsignaturasToolStripMenuItem;
     }
 }

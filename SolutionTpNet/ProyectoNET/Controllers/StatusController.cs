@@ -64,5 +64,19 @@ namespace ProyectoNET.Controllers
                 Console.WriteLine("No se encontraron estados.");
             }
         }
+
+        // Método para actualizar el estado de inscripción de un estudiante
+        public void UpdateEnrollmentStatus(int enrollmentId, string statusDescription)
+        {
+            _statusRepository.UpdateEnrollmentStatus(enrollmentId, statusDescription);
+            Console.WriteLine("Estado de inscripción actualizado con éxito.");
+        }
+
+        // Método para realizar la eliminación lógica de una inscripción
+        public void MarkEnrollmentAsFree(int enrollmentId)
+        {
+            _statusRepository.MarkEnrollmentAsFree(enrollmentId);
+            Console.WriteLine("Inscripción marcada como libre con éxito.");
+        }
     }
 }

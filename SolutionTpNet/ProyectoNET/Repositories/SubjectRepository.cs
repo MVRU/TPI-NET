@@ -6,7 +6,7 @@ using ProyectoNET.Models;
 
 namespace ProyectoNET.Repositories
 {
-    internal class SubjectRepository
+    public class SubjectRepository
     {
         private readonly UniversityContext _context;
 
@@ -51,6 +51,12 @@ namespace ProyectoNET.Repositories
                 .FirstOrDefault(s => s.Id == subjectId);
 
             return subject?.Courses ?? Enumerable.Empty<Course>();
+        }
+
+        // Método para obtener todas las asignaturas
+        public IEnumerable<Subject> GetAllSubjects()
+        {
+            return _context.Subjects.ToList();
         }
     }
 }
