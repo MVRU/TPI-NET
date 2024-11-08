@@ -71,7 +71,7 @@ namespace ProyectoNET.Views
                 var user = _users.FirstOrDefault(u => u.File == selectedUserFile);
                 if (user != null)
                 {
-                    var editUserForm = new EditUserForm(user); // Formulario de edición
+                    var editUserForm = new EditUserForm(user, _userController); // Formulario de edición
                     editUserForm.ShowDialog();
                     LoadUsersAsync(); // Recargar los usuarios
                 }

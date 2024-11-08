@@ -15,7 +15,8 @@ namespace ProyectoNET
     {
         private readonly UserController _userController;
         private bool sesionIniciada = false;  // Variable para verificar si la sesión está iniciada
-        private string userIdActual; // Variable para almacenar el ID del usuario actual
+        private string userIdActual;          // Variable para almacenar el ID del usuario actual
+        private string userRoleActual;        // Variable para almacenar el rol del usuario actual
 
         public MainForm(UserController userController)
         {
@@ -33,9 +34,10 @@ namespace ProyectoNET
 
             // Cargar usuario de sesión solo si está guardado y si se debería mantener la sesión
             string savedUserId = LoadUserSession();
+            string savedUserRole = LoadUserRole();
             if (!string.IsNullOrEmpty(savedUserId))
             {
-                SetUserId(savedUserId);
+                SetUser(savedUserId, savedUserRole);
                 HabilitarMenusAsync(savedUserId);
             }
         }
@@ -125,29 +127,40 @@ namespace ProyectoNET
             formX.Show();
         }
 
-        // Al momento de iniciar sesión, se debe almacenar el ID del usuario actual
-        public void SetUserId(string userId)
+        // Al momento de iniciar sesión, se debe almacenar el ID y rol del usuario actual
+        public void SetUser(string userId, string userRole)
         {
             userIdActual = userId;
+            userRoleActual = userRole;
             sesionIniciada = true;  // Marcar que la sesión está iniciada
             cerrarSesiónToolStripMenuItem.Visible = true;  // Mostrar la opción de cerrar sesión
         }
 
-        // Métodos para cargar y guardar el ID de sesión en la configuración
+        // Métodos para cargar y guardar el ID y rol de sesión en la configuración
         private string LoadUserSession()
         {
-            if (Properties.Settings.Default.MantenerSesion)
+            if (Settings.Default.MantenerSesion)
             {
-                return Properties.Settings.Default.UserId;
+                return Settings.Default.UserId;
+            }
+            return string.Empty;
+        }
+
+        private string LoadUserRole()
+        {
+            if (Settings.Default.MantenerSesion)
+            {
+                return Settings.Default.UserRole;
             }
             return string.Empty;
         }
 
         private void ClearUserSession()
         {
-            Properties.Settings.Default.UserId = string.Empty;
-            Properties.Settings.Default.MantenerSesion = false;
-            Properties.Settings.Default.Save();
+            Settings.Default.UserId = string.Empty;
+            Settings.Default.UserRole = string.Empty;
+            Settings.Default.MantenerSesion = false;
+            Settings.Default.Save();
         }
 
         // Método para cerrar la sesión
@@ -165,9 +178,10 @@ namespace ProyectoNET
                     }
                 }
 
-                // Limpiar el ID de usuario de la sesión
+                // Limpiar el ID y rol de usuario de la sesión
                 ClearUserSession();
                 userIdActual = null;
+                userRoleActual = null;
                 sesionIniciada = false;
 
                 // Deshabilitar los menús que estaban disponibles solo para usuarios autenticados
@@ -193,4 +207,3 @@ namespace ProyectoNET
         }
     }
 }
-

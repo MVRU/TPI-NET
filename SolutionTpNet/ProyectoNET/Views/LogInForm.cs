@@ -36,10 +36,11 @@ namespace LogIn
         }
 
         // Método para guardar el ID de usuario en la configuración
-        private void SaveUserSession(string userId)
+        private void SaveUserSession(string userId, string userRole)
         {
             Settings.Default.UserId = userId;
             Settings.Default.MantenerSesion = checkBoxMantenerSesion.Checked;
+            Settings.Default.UserRole = userRole;
             Settings.Default.Save();
         }
 
@@ -54,6 +55,7 @@ namespace LogIn
         {
             Settings.Default.UserId = string.Empty;
             Settings.Default.MantenerSesion = false;
+            Settings.Default.UserRole = string.Empty;
             Settings.Default.Save();
         }
 
@@ -72,33 +74,38 @@ namespace LogIn
                 return;
             }
 
+            // Verificar las credenciales de inicio de sesión
             bool operation = await _userController.UserLogInAsync(txtLegajo.Text, txtPassword.Text);
 
-            // Validación de credenciales de inicio de sesión
             if (operation)
             {
                 MessageBox.Show("Usted ha ingresado al sistema correctamente.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Guardar sesión si el checkbox está seleccionado
-                SaveUserSession(txtLegajo.Text);
-
-                // Obtener el formulario principal abierto
-                MainForm mainForm = Application.OpenForms.OfType<MainForm>().FirstOrDefault();
-
-                if (mainForm != null)
+                // Obtener información del usuario después de iniciar sesión
+                var user = await _userController.GetUserByIdAsync(txtLegajo.Text);
+                if (user != null)
                 {
-                    // Pasar el ID del usuario al MainForm para habilitar los menús
-                    mainForm.SetUserId(txtLegajo.Text);
-                    await mainForm.HabilitarMenusAsync(txtLegajo.Text);
+                    // Guardar el ID y el rol del usuario en la configuración
+                    SaveUserSession(txtLegajo.Text, user.Role);
+
+                    // Obtener el formulario principal abierto
+                    MainForm mainForm = Application.OpenForms.OfType<MainForm>().FirstOrDefault();
+
+                    if (mainForm != null)
+                    {
+                        // Pasar el ID y el rol del usuario al MainForm para habilitar los menús
+                        mainForm.SetUser(txtLegajo.Text, user.Role);
+                        await mainForm.HabilitarMenusAsync(txtLegajo.Text);
+                    }
+
+                    // Mostrar el Dashboard
+                    DashboardForm dashboard = new DashboardForm();
+                    dashboard.MdiParent = mainForm;
+                    dashboard.WindowState = FormWindowState.Maximized;
+                    dashboard.Show();
+
+                    this.Close();
                 }
-
-                // Mostrar el Dashboard
-                DashboardForm dashboard = new DashboardForm();
-                dashboard.MdiParent = mainForm;
-                dashboard.WindowState = FormWindowState.Maximized;
-                dashboard.Show();
-
-                this.Close();
             }
             else
             {
