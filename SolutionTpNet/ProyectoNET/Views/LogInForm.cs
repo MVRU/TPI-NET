@@ -72,13 +72,6 @@ namespace LogIn
                 return;
             }
 
-            // Validar la longitud de la contraseña (mínimo 8 caracteres)
-            if (txtPassword.Text.Length < 8)
-            {
-                MessageBox.Show("La contraseña debe tener al menos 8 caracteres.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             bool operation = await _userController.UserLogInAsync(txtLegajo.Text, txtPassword.Text);
 
             // Validación de credenciales de inicio de sesión
@@ -90,7 +83,7 @@ namespace LogIn
                 SaveUserSession(txtLegajo.Text);
 
                 // Obtener el formulario principal abierto
-                MainForm mainForm = (MainForm)this.MdiParent;
+                MainForm mainForm = Application.OpenForms.OfType<MainForm>().FirstOrDefault();
 
                 if (mainForm != null)
                 {
@@ -111,12 +104,6 @@ namespace LogIn
             {
                 MessageBox.Show("Legajo y/o contraseña incorrectos.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void frmLogIn_Load(object sender, EventArgs e)
-        {
-            // Vincular el evento de clic del botón al método btnIngresar_Click
-            btnIngresar.Click += new EventHandler(btnIngresar_Click);
         }
 
         private void checkBoxMantenerSesion_CheckedChanged(object sender, EventArgs e)

@@ -35,6 +35,7 @@
             iniciarSesionToolStripMenuItem = new ToolStripMenuItem();
             registrarseToolStripMenuItem = new ToolStripMenuItem();
             cuentaToolStripMenuItem = new ToolStripMenuItem();
+            cerrarSesiónToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
             asistenciaToolStripMenuItem = new ToolStripMenuItem();
             tomarAsistenciaToolStripMenuItem = new ToolStripMenuItem();
@@ -49,7 +50,6 @@
             ayudaToolStripMenuItem = new ToolStripMenuItem();
             guíaDeAyudaToolStripMenuItem = new ToolStripMenuItem();
             acercaDeToolStripMenuItem = new ToolStripMenuItem();
-            cerrarSesiónToolStripMenuItem = new ToolStripMenuItem();
             msnMainMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -101,6 +101,13 @@
             cuentaToolStripMenuItem.Name = "cuentaToolStripMenuItem";
             cuentaToolStripMenuItem.Size = new Size(180, 22);
             cuentaToolStripMenuItem.Text = "Cuenta";
+            // 
+            // cerrarSesiónToolStripMenuItem
+            // 
+            cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
+            cerrarSesiónToolStripMenuItem.Size = new Size(180, 22);
+            cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
+            cerrarSesiónToolStripMenuItem.Click += cerrarSesiónToolStripMenuItem_Click;
             // 
             // salirToolStripMenuItem
             // 
@@ -195,12 +202,6 @@
             acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
             acercaDeToolStripMenuItem.Size = new Size(156, 22);
             acercaDeToolStripMenuItem.Text = "Acerca de";
-            // 
-            // cerrarSesiónToolStripMenuItem
-            // 
-            cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            cerrarSesiónToolStripMenuItem.Size = new Size(180, 22);
-            cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
             // 
             // MainForm
             // 

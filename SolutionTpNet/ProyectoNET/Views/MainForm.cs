@@ -29,6 +29,7 @@ namespace ProyectoNET
             configuraciónToolStripMenuItem.Visible = false;
             cuentaToolStripMenuItem.Visible = false;
             usuariosToolStripMenuItem.Visible = false;
+            cerrarSesiónToolStripMenuItem.Visible = false;
 
             // Cargar usuario de sesión solo si está guardado y si se debería mantener la sesión
             string savedUserId = LoadUserSession();
@@ -42,6 +43,7 @@ namespace ProyectoNET
         // Método para habilitar los menús después de iniciar sesión correctamente
         public async Task HabilitarMenusAsync(string userId)
         {
+            if (!sesionIniciada) return; // Solo habilita menús si la sesión está iniciada
             var user = await _userController.GetUserByIdAsync(userId); // Usar el ID del usuario actual
 
             if (user != null && user.Role == "Admin")
@@ -54,9 +56,9 @@ namespace ProyectoNET
             cursosToolStripMenuItem.Visible = true;
             configuraciónToolStripMenuItem.Visible = true;
             cuentaToolStripMenuItem.Visible = true;
+            cerrarSesiónToolStripMenuItem.Visible = true;
             iniciarSesionToolStripMenuItem.Visible = false;
             registrarseToolStripMenuItem.Visible = false;
-            cerrarSesiónToolStripMenuItem.Visible = true;
         }
 
         private void mnuSalir_Click(object sender, EventArgs e)
@@ -93,7 +95,6 @@ namespace ProyectoNET
 
         private void formMain_Load(object sender, EventArgs e)
         {
-            // Manejar la carga del formulario
         }
 
         private void menúToolStripMenuItem_Click(object sender, EventArgs e) { }
@@ -158,7 +159,7 @@ namespace ProyectoNET
                 // Cerrar todos los formularios hijos abiertos, excepto el MainForm
                 foreach (Form childForm in this.MdiChildren)
                 {
-                    if (childForm != this)  // No cerrar MainForm
+                    if (childForm != this)
                     {
                         childForm.Close();
                     }
@@ -176,15 +177,18 @@ namespace ProyectoNET
                 configuraciónToolStripMenuItem.Visible = false;
                 cuentaToolStripMenuItem.Visible = false;
                 usuariosToolStripMenuItem.Visible = false;
+                cerrarSesiónToolStripMenuItem.Visible = false;
 
                 // Restaurar la visibilidad de las opciones de iniciar sesión y registrarse
                 iniciarSesionToolStripMenuItem.Visible = true;
                 registrarseToolStripMenuItem.Visible = true;
 
-                // Ocultar el menú de cerrar sesión
-                cerrarSesiónToolStripMenuItem.Visible = false;
-
                 MessageBox.Show("Sesión cerrada correctamente.", "Cerrar Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Abrir el formulario de inicio de sesión
+                var loginForm = Program.ServiceProvider.GetRequiredService<frmLogIn>();
+                loginForm.MdiParent = this;
+                loginForm.Show();
             }
         }
     }
