@@ -41,6 +41,21 @@ namespace ProyectoNET.Controllers
             return false;
         }
 
+        public async Task<User> UserLogInAsyncObteniendoUsuario(string id, string pwd)
+        {
+            var user = await _userRepository.GetUserByIdAsync(id);
+
+            // Comparación de contraseñas usando BCrypt
+            if (user != null && VerifyPassword(user.Password, pwd))
+            {
+                Console.WriteLine("Inicio de sesión exitoso.");
+                return user;
+            }
+
+            Console.WriteLine("Credenciales incorrectas.");
+            return user;
+        }
+
         private bool VerifyPassword(string storedPassword, string inputPassword)
         {
             // Verificar la contraseña usando BCrypt

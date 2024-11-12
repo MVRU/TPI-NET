@@ -1,6 +1,7 @@
 ﻿using LogIn;
 using ProyectoNET.Controllers;
 using ProyectoNET.Forms;
+using ProyectoNET.Models;
 using Signin;
 using System;
 using System.Windows.Forms;
@@ -15,6 +16,7 @@ namespace ProyectoNET
         private readonly UserController _userController;
 
         private bool sesionIniciada = false;  // Variable para verificar si la sesión está iniciada
+        private User user;
 
         public frmMain(UserController userController)
         {
@@ -39,6 +41,11 @@ namespace ProyectoNET
             cuentaToolStripMenuItem.Visible = true;
             iniciarSesionToolStripMenuItem.Visible = false;
             registrarseToolStripMenuItem.Visible = false;
+        }
+
+        public void userAssign(User u)
+        {
+            this.user = u;
         }
 
         private void mnuSalir_Click(object sender, EventArgs e)
@@ -105,6 +112,14 @@ namespace ProyectoNET
         {
             var formX = Program.ServiceProvider.GetRequiredService<frmDashboard>();
             formX.MdiParent = this;
+            formX.Show();
+        }
+
+        private void cuentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formCuenta formX = new formCuenta();
+            formX.MdiParent = this;
+            formX.userAssign(user);
             formX.Show();
         }
     }

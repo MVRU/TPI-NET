@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoNET.Models
 {
-    internal class Status
+    public class Status
     {
         [Key]
         public int Id { get; set; }

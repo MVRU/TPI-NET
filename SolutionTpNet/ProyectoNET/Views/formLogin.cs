@@ -4,12 +4,14 @@ using ProyectoNET.Controllers;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProyectoNET.Models;
 
 namespace LogIn
 {
     internal partial class frmLogIn : Form
     {
         private readonly UserController _userController;
+        private User user;
 
         public frmLogIn(UserController userController)
         {
@@ -56,15 +58,16 @@ namespace LogIn
                 return;
             }
 
-            bool operation = await _userController.UserLogInAsync(txtLegajo.Text, txtPassword.Text);
+            User user = await _userController.UserLogInAsyncObteniendoUsuario(txtLegajo.Text, txtPassword.Text);
 
             // Validación de credenciales de inicio de sesión
-            if (operation)
+            if (user != null)
             {
                 MessageBox.Show("Usted ha ingresado al sistema correctamente.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Obtener el formulario principal abierto
                 frmMain mainForm = (frmMain)this.MdiParent;
+                mainForm.userAssign(user);
 
                 if (mainForm != null)
                 {
@@ -74,7 +77,7 @@ namespace LogIn
 
                 // Redirigir al frmMain y mostrar frmDashboard dentro del mismo
                 frmDashboard dashboard = new frmDashboard();  // Crear el formulario de dashboard
-
+                dashboard.userAssign(user);
                 // Configurar frmDashboard como hijo de frmMain
                 dashboard.MdiParent = mainForm;
                 dashboard.WindowState = FormWindowState.Maximized;

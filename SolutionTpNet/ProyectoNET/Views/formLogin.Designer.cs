@@ -47,7 +47,7 @@
             checkBoxMantenerSesion.ForeColor = Color.FromArgb(13, 23, 28);
             checkBoxMantenerSesion.Location = new Point(196, 329);
             checkBoxMantenerSesion.Name = "checkBoxMantenerSesion";
-            checkBoxMantenerSesion.Size = new Size(180, 20);
+            checkBoxMantenerSesion.Size = new Size(262, 29);
             checkBoxMantenerSesion.TabIndex = 2;
             checkBoxMantenerSesion.Text = "Manten mi sesión iniciada";
             checkBoxMantenerSesion.UseVisualStyleBackColor = true;
@@ -76,7 +76,7 @@
             linkOlvidaPassword.LinkColor = Color.DimGray;
             linkOlvidaPassword.Location = new Point(321, 428);
             linkOlvidaPassword.Name = "linkOlvidaPassword";
-            linkOlvidaPassword.Size = new Size(170, 20);
+            linkOlvidaPassword.Size = new Size(254, 29);
             linkOlvidaPassword.TabIndex = 4;
             linkOlvidaPassword.TabStop = true;
             linkOlvidaPassword.Text = "¿Olvidó su contaseña?";
@@ -89,7 +89,7 @@
             lblPassword.ForeColor = Color.FromArgb(13, 23, 28);
             lblPassword.Location = new Point(196, 265);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(92, 20);
+            lblPassword.Size = new Size(136, 29);
             lblPassword.TabIndex = 23;
             lblPassword.Text = "Contraseña";
             // 
@@ -100,7 +100,7 @@
             lblLegajo.ForeColor = Color.FromArgb(13, 23, 28);
             lblLegajo.Location = new Point(196, 200);
             lblLegajo.Name = "lblLegajo";
-            lblLegajo.Size = new Size(57, 20);
+            lblLegajo.Size = new Size(87, 29);
             lblLegajo.TabIndex = 22;
             lblLegajo.Text = "Legajo";
             lblLegajo.Click += lblLegajo_Click;
@@ -112,7 +112,7 @@
             lblDescripcionBienvenida.ForeColor = Color.FromArgb(79, 122, 148);
             lblDescripcionBienvenida.Location = new Point(183, 112);
             lblDescripcionBienvenida.Name = "lblDescripcionBienvenida";
-            lblDescripcionBienvenida.Size = new Size(461, 40);
+            lblDescripcionBienvenida.Size = new Size(703, 58);
             lblDescripcionBienvenida.TabIndex = 21;
             lblDescripcionBienvenida.Text = "Controla la asistencia, realiza un seguimiento de la participación \r\ny gestiona tus clases con facilidad.";
             lblDescripcionBienvenida.TextAlign = ContentAlignment.MiddleCenter;
@@ -124,7 +124,7 @@
             lblBienvenida.ForeColor = Color.FromArgb(13, 23, 28);
             lblBienvenida.Location = new Point(196, 48);
             lblBienvenida.Name = "lblBienvenida";
-            lblBienvenida.Size = new Size(435, 51);
+            lblBienvenida.Size = new Size(642, 74);
             lblBienvenida.TabIndex = 20;
             lblBienvenida.Text = "Bienvenido a la UTN";
             // 
@@ -136,7 +136,7 @@
             txtLegajo.ForeColor = Color.FromArgb(79, 122, 148);
             txtLegajo.Location = new Point(196, 223);
             txtLegajo.Name = "txtLegajo";
-            txtLegajo.Size = new Size(420, 19);
+            txtLegajo.Size = new Size(420, 28);
             txtLegajo.TabIndex = 0;
             txtLegajo.Text = "Introduce tu legajo";
             // 
@@ -150,16 +150,16 @@
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.PlaceholderText = "Introduce tu contraseña";
-            txtPassword.Size = new Size(420, 19);
+            txtPassword.Size = new Size(420, 28);
             txtPassword.TabIndex = 1;
             txtPassword.Text = "Introduce tu contraseña";
             // 
             // frmLogIn
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(247, 250, 250);
-            ClientSize = new Size(800, 502);
+            ClientSize = new Size(962, 502);
             Controls.Add(checkBoxMantenerSesion);
             Controls.Add(btnIngresar);
             Controls.Add(linkOlvidaPassword);

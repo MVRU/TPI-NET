@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoNET.Models
 {
-    internal class Subject
+    public class Subject
     {
         [Key]
         public int Id { get; set; }

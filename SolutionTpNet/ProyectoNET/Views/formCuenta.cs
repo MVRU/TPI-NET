@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProyectoNET.Models;
 
-namespace ProyectoNET.Forms
+namespace ProyectoNET
 {
-    public partial class frmDashboard : Form
+    public partial class formCuenta : Form
     {
-        private User user;
-        public frmDashboard()
+        public User user;
+        public formCuenta()
         {
             InitializeComponent();
         }
@@ -22,20 +22,18 @@ namespace ProyectoNET.Forms
         public void userAssign(User u)
         {
             this.user = u;
-            lblBienvenida.Text = lblBienvenida.Text + u.Name;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
+            txtName.Text = user.Name;
+            txtLastName.Text = user.LastName;
+            txtFile.Text = user.File;
+            txtRole.Text = user.Role;
 
         }
 
-        private void frmDashboard_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblBienvenida_Click(object sender, EventArgs e)
+        private void lblLastName_Click(object sender, EventArgs e)
         {
 
         }
