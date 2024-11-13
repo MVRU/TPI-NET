@@ -24,7 +24,6 @@ namespace ProyectoNET.Models
         public int Quota { get; set; }
 
         // Relación con asignatura
-        [Required(ErrorMessage = "El Id de la Asignatura es obligatorio.")]
         public int? SubjectId { get; set; } // Clave foránea
 
         [ForeignKey("SubjectId")]

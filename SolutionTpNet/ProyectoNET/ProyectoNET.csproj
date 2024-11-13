@@ -62,4 +62,8 @@
     <None Include="Services\SessionService.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Course\" />
+  </ItemGroup>
+
 </Project>

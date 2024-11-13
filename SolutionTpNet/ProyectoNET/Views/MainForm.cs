@@ -233,5 +233,12 @@ namespace ProyectoNET
         {
 
         }
+
+        private void gestionarCursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var courseManagementForm = Program.ServiceProvider.GetRequiredService<CourseManagementForm>();
+            courseManagementForm.MdiParent = this;
+            courseManagementForm.Show();
+        }
     }
 }

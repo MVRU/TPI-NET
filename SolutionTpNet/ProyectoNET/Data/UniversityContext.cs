@@ -39,7 +39,8 @@ namespace ProyectoNET.Data
             modelBuilder.Entity<Course>()
                 .HasOne(c => c.Subject)
                 .WithMany(s => s.Courses)
-                .HasForeignKey(c => c.SubjectId);
+                .HasForeignKey(c => c.SubjectId)
+                .IsRequired(false);  // Asegura que SubjectId sea opcional
 
             // Relación uno a muchos entre Enrollment y Status
             modelBuilder.Entity<Enrollment>()

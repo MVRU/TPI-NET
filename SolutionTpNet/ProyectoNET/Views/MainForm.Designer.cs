@@ -150,6 +150,7 @@
             gestionarCursosToolStripMenuItem.Name = "gestionarCursosToolStripMenuItem";
             gestionarCursosToolStripMenuItem.Size = new Size(187, 22);
             gestionarCursosToolStripMenuItem.Text = "Gestionar cursos";
+            gestionarCursosToolStripMenuItem.Click += gestionarCursosToolStripMenuItem_Click;
             // 
             // gestionarAsignaturasToolStripMenuItem
             // 
@@ -175,7 +176,7 @@
             // listaDeUsuariosToolStripMenuItem
             // 
             listaDeUsuariosToolStripMenuItem.Name = "listaDeUsuariosToolStripMenuItem";
-            listaDeUsuariosToolStripMenuItem.Size = new Size(180, 22);
+            listaDeUsuariosToolStripMenuItem.Size = new Size(171, 22);
             listaDeUsuariosToolStripMenuItem.Text = "Gestionar usuarios";
             listaDeUsuariosToolStripMenuItem.Click += listaDeUsuariosToolStripMenuItem_Click;
             // 
