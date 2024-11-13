@@ -35,27 +35,30 @@
             cmbSubject = new ComboBox();
             btnSave = new Button();
             lblYear = new Label();
-            label1 = new Label();
+            lblStartDate = new Label();
+            lblEndDate = new Label();
+            lblQuota = new Label();
+            lblSubject = new Label();
             SuspendLayout();
             // 
             // txtYear
             // 
             txtYear.AcceptsReturn = true;
-            txtYear.Location = new Point(166, 38);
+            txtYear.Location = new Point(185, 38);
             txtYear.Name = "txtYear";
             txtYear.Size = new Size(100, 23);
             txtYear.TabIndex = 0;
             // 
             // dtpStartDate
             // 
-            dtpStartDate.Location = new Point(299, 174);
+            dtpStartDate.Location = new Point(185, 84);
             dtpStartDate.Name = "dtpStartDate";
             dtpStartDate.Size = new Size(200, 23);
             dtpStartDate.TabIndex = 1;
             // 
             // dtpEndDate
             // 
-            dtpEndDate.Location = new Point(286, 214);
+            dtpEndDate.Location = new Point(185, 133);
             dtpEndDate.Name = "dtpEndDate";
             dtpEndDate.Size = new Size(200, 23);
             dtpEndDate.TabIndex = 2;
@@ -63,7 +66,7 @@
             // txtQuota
             // 
             txtQuota.AcceptsReturn = true;
-            txtQuota.Location = new Point(308, 282);
+            txtQuota.Location = new Point(185, 184);
             txtQuota.Name = "txtQuota";
             txtQuota.Size = new Size(100, 23);
             txtQuota.TabIndex = 3;
@@ -71,18 +74,18 @@
             // cmbSubject
             // 
             cmbSubject.FormattingEnabled = true;
-            cmbSubject.Location = new Point(291, 334);
+            cmbSubject.Location = new Point(185, 237);
             cmbSubject.Name = "cmbSubject";
-            cmbSubject.Size = new Size(121, 23);
+            cmbSubject.Size = new Size(200, 23);
             cmbSubject.TabIndex = 4;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(525, 385);
+            btnSave.Location = new Point(45, 293);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 5;
-            btnSave.Text = "button1";
+            btnSave.Text = "Guardar";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
@@ -95,21 +98,52 @@
             lblYear.TabIndex = 6;
             lblYear.Text = "Año de cursado";
             // 
-            // label1
+            // lblStartDate
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(355, 218);
-            label1.Name = "label1";
-            label1.Size = new Size(90, 15);
-            label1.TabIndex = 7;
-            label1.Text = "Año de cursado";
+            lblStartDate.AutoSize = true;
+            lblStartDate.Location = new Point(45, 90);
+            lblStartDate.Name = "lblStartDate";
+            lblStartDate.Size = new Size(86, 15);
+            lblStartDate.TabIndex = 8;
+            lblStartDate.Text = "Fecha de inicio";
+            // 
+            // lblEndDate
+            // 
+            lblEndDate.AutoSize = true;
+            lblEndDate.Location = new Point(45, 139);
+            lblEndDate.Name = "lblEndDate";
+            lblEndDate.Size = new Size(117, 15);
+            lblEndDate.TabIndex = 9;
+            lblEndDate.Text = "Fecha de finalización";
+            // 
+            // lblQuota
+            // 
+            lblQuota.AutoSize = true;
+            lblQuota.Location = new Point(45, 187);
+            lblQuota.Name = "lblQuota";
+            lblQuota.Size = new Size(87, 15);
+            lblQuota.TabIndex = 10;
+            lblQuota.Text = "Cupo del curso";
+            // 
+            // lblSubject
+            // 
+            lblSubject.AutoSize = true;
+            lblSubject.Location = new Point(45, 240);
+            lblSubject.Name = "lblSubject";
+            lblSubject.Size = new Size(64, 15);
+            lblSubject.TabIndex = 11;
+            lblSubject.Text = "Asignatura";
             // 
             // EditCourseForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(label1);
+            BackColor = SystemColors.ButtonHighlight;
+            ClientSize = new Size(499, 364);
+            Controls.Add(lblSubject);
+            Controls.Add(lblQuota);
+            Controls.Add(lblEndDate);
+            Controls.Add(lblStartDate);
             Controls.Add(lblYear);
             Controls.Add(btnSave);
             Controls.Add(cmbSubject);
@@ -118,7 +152,9 @@
             Controls.Add(dtpStartDate);
             Controls.Add(txtYear);
             Name = "EditCourseForm";
-            Text = "EditCourseForm";
+            ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Crear un nuevo curso";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -132,6 +168,9 @@
         private ComboBox cmbSubject;
         private Button btnSave;
         private Label lblYear;
-        private Label label1;
+        private Label lblStartDate;
+        private Label lblEndDate;
+        private Label lblQuota;
+        private Label lblSubject;
     }
 }

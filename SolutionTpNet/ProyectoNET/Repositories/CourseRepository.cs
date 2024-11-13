@@ -39,7 +39,7 @@ namespace ProyectoNET.Repositories
         public List<Course> GetAllCourses()
         {
             return _context.Courses
-                .Include(c => c.Subject) // Solo se incluyen cuando realmente se necesitan
+                .Include(c => c.Subject) // Incluye la relación con Subject para acceder a Id y Description
                 .Include(c => c.Schedules)
                 .Include(c => c.Users)
                 .Include(c => c.Enrollments)

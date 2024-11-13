@@ -36,6 +36,17 @@ namespace ProyectoNET.Models
         public ICollection<User> Users { get; set; } = new List<User>(); 
 
         // Relación con matrículas
-        public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>(); 
+        public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
+
+        // Esta propiedad solo se utilizará para la visualización (no se almacenará en la db)
+        [NotMapped]
+        public string SubjectDescription
+        {
+            get
+            {
+                // Si la asignatura está relacionada, concatenar Id y Descripción
+                return Subject != null ? $"{Subject.Id} ({Subject.Description})" : "N/A";
+            }
+        }
     }
 }

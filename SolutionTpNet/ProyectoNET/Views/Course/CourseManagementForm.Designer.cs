@@ -77,13 +77,17 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(800, 450);
             Controls.Add(btnDeleteCourse);
             Controls.Add(btnEditCourse);
             Controls.Add(btnAddCourse);
             Controls.Add(dataGridViewCourses);
             Name = "CourseManagementForm";
-            Text = "CourseManagementForm";
+            ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Gestión de cursos";
+            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)dataGridViewCourses).EndInit();
             ResumeLayout(false);
         }

@@ -63,7 +63,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Course\" />
+    <Folder Include="Views\Enrollment\" />
+    <Folder Include="Views\Attendance\" />
   </ItemGroup>
 
 </Project>
