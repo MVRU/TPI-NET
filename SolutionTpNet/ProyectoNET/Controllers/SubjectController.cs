@@ -15,20 +15,18 @@ namespace ProyectoNET.Controllers
             _subjectRepository = subjectRepository;
         }
 
-        public void CreateSubject(string description, float requiredAttendancePercentage, float averageAttendancePercentage)
+        public void CreateSubject(string description, float requiredAttendancePercentage)
         {
-            if (requiredAttendancePercentage < 0 || requiredAttendancePercentage > 100 ||
-                averageAttendancePercentage < 0 || averageAttendancePercentage > 100)
+            if (requiredAttendancePercentage < 0 || requiredAttendancePercentage > 100)
             {
-                Console.WriteLine("Error: Los porcentajes de asistencia deben estar entre 0 y 100.");
+                Console.WriteLine("Error: El porcentaje de asistencia debe estar entre 0 y 100.");
                 return;
             }
 
             var subject = new Subject
             {
                 Description = description,
-                RequiredAttendancePercentage = requiredAttendancePercentage,
-                AverageAttendancePercentage = averageAttendancePercentage
+                RequiredAttendancePercentage = requiredAttendancePercentage
             };
 
             _subjectRepository.CreateSubject(subject);
@@ -43,7 +41,6 @@ namespace ProyectoNET.Controllers
             {
                 Console.WriteLine($"Asignatura encontrada: {subject.Description}");
                 Console.WriteLine($"Porcentaje de asistencia requerido: {subject.RequiredAttendancePercentage}%");
-                Console.WriteLine($"Promedio de asistencia: {subject.AverageAttendancePercentage}%");
             }
             else
             {
@@ -51,10 +48,9 @@ namespace ProyectoNET.Controllers
             }
         }
 
-        public void UpdateSubject(int id, string newDescription, float newRequiredAttendancePercentage, float newAverageAttendancePercentage)
+        public void UpdateSubject(int id, string newDescription, float newRequiredAttendancePercentage)
         {
-            if (newRequiredAttendancePercentage < 0 || newRequiredAttendancePercentage > 100 ||
-                newAverageAttendancePercentage < 0 || newAverageAttendancePercentage > 100)
+            if (newRequiredAttendancePercentage < 0 || newRequiredAttendancePercentage > 100)
             {
                 Console.WriteLine("Error: Los porcentajes de asistencia deben estar entre 0 y 100.");
                 return;
@@ -66,7 +62,6 @@ namespace ProyectoNET.Controllers
             {
                 subject.Description = newDescription;
                 subject.RequiredAttendancePercentage = newRequiredAttendancePercentage;
-                subject.AverageAttendancePercentage = newAverageAttendancePercentage;
                 _subjectRepository.UpdateSubject(subject);
 
                 Console.WriteLine($"Asignatura con Id {id} fue actualizada con éxito.");

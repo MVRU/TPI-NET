@@ -87,7 +87,9 @@
             Controls.Add(dgvUsuarios);
             Name = "UsersManagementForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestionar Usuarios";
+            WindowState = FormWindowState.Maximized;
             Load += frmUsersManagement_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             ((System.ComponentModel.ISupportInitialize)allowNullCourseIdBindingSource).EndInit();

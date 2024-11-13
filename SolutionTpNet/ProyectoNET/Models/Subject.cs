@@ -21,8 +21,9 @@ namespace ProyectoNET.Models
         [Range(0, 100, ErrorMessage = "El porcentaje de asistencia debe estar entre 0 y 100")]
         public float RequiredAttendancePercentage { get; set; }
 
-        [Range(0, 100, ErrorMessage = "El porcentaje promedio de asistencia debe estar entre 0 y 100")]
-        public float AverageAttendancePercentage { get; set; }
+        // Este atributo no tiene ningún sentido
+        // [Range(0, 100, ErrorMessage = "El porcentaje promedio de asistencia debe estar entre 0 y 100")]
+        // public float AverageAttendancePercentage { get; set; }
 
         // Relación con cursos
         public ICollection<Course> Courses { get; set; } = new List<Course>();

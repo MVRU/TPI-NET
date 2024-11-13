@@ -54,6 +54,15 @@ namespace ProyectoNET.Views
                         u.Email,
                         u.Role
                     }).ToList();
+
+                    // Cambiar los nombres de las columnas en el DataGridView a español
+                    dgvUsuarios.Columns["File"].HeaderText = "Legajo";
+                    dgvUsuarios.Columns["Name"].HeaderText = "Nombre";
+                    dgvUsuarios.Columns["LastName"].HeaderText = "Apellido";
+                    dgvUsuarios.Columns["Role"].HeaderText = "Rol";
+
+                    // Ajustar automáticamente el tamaño de las columnas según el contenido
+                    dgvUsuarios.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                 }
             }
             catch (Exception ex)

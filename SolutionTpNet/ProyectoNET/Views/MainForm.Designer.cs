@@ -166,8 +166,8 @@
             // listaDeUsuariosToolStripMenuItem
             // 
             listaDeUsuariosToolStripMenuItem.Name = "listaDeUsuariosToolStripMenuItem";
-            listaDeUsuariosToolStripMenuItem.Size = new Size(161, 22);
-            listaDeUsuariosToolStripMenuItem.Text = "Lista de usuarios";
+            listaDeUsuariosToolStripMenuItem.Size = new Size(180, 22);
+            listaDeUsuariosToolStripMenuItem.Text = "Gestionar usuarios";
             listaDeUsuariosToolStripMenuItem.Click += listaDeUsuariosToolStripMenuItem_Click;
             // 
             // configuraciónToolStripMenuItem

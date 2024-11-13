@@ -31,7 +31,7 @@
             dgvSubjects = new DataGridView();
             btnModificarAsignatura = new Button();
             btnEliminarAsignatura = new Button();
-            btnGuardar = new Button();
+            btnAgregar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvSubjects).BeginInit();
             SuspendLayout();
             // 
@@ -40,35 +40,39 @@
             dgvSubjects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSubjects.Location = new Point(45, 44);
             dgvSubjects.Name = "dgvSubjects";
-            dgvSubjects.Size = new Size(392, 258);
+            dgvSubjects.Size = new Size(650, 290);
             dgvSubjects.TabIndex = 0;
+            dgvSubjects.CellClick += dgvSubjects_CellClick;
             // 
             // btnModificarAsignatura
             // 
-            btnModificarAsignatura.Location = new Point(71, 340);
+            btnModificarAsignatura.Location = new Point(141, 352);
             btnModificarAsignatura.Name = "btnModificarAsignatura";
             btnModificarAsignatura.Size = new Size(75, 23);
             btnModificarAsignatura.TabIndex = 1;
             btnModificarAsignatura.Text = "Modificar";
             btnModificarAsignatura.UseVisualStyleBackColor = true;
+            btnModificarAsignatura.Click += btnModificarAsignatura_Click;
             // 
             // btnEliminarAsignatura
             // 
-            btnEliminarAsignatura.Location = new Point(223, 340);
+            btnEliminarAsignatura.Location = new Point(239, 352);
             btnEliminarAsignatura.Name = "btnEliminarAsignatura";
             btnEliminarAsignatura.Size = new Size(75, 23);
             btnEliminarAsignatura.TabIndex = 2;
             btnEliminarAsignatura.Text = "Eliminar";
             btnEliminarAsignatura.UseVisualStyleBackColor = true;
+            btnEliminarAsignatura.Click += btnEliminarAsignatura_Click;
             // 
-            // btnGuardar
+            // btnAgregar
             // 
-            btnGuardar.Location = new Point(346, 340);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(75, 23);
-            btnGuardar.TabIndex = 3;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = true;
+            btnAgregar.Location = new Point(45, 352);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(75, 23);
+            btnAgregar.TabIndex = 4;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // SubjectManagementForm
             // 
@@ -76,7 +80,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnGuardar);
+            Controls.Add(btnAgregar);
             Controls.Add(btnEliminarAsignatura);
             Controls.Add(btnModificarAsignatura);
             Controls.Add(dgvSubjects);
@@ -95,6 +99,6 @@
         private DataGridView dgvSubjects;
         private Button btnModificarAsignatura;
         private Button btnEliminarAsignatura;
-        private Button btnGuardar;
+        private Button btnAgregar;
     }
 }
