@@ -39,7 +39,7 @@
             lblEndDate = new Label();
             lblQuota = new Label();
             lblSubject = new Label();
-            btnAssignSchedule = new Button();
+            tvSchedules = new TreeView();
             SuspendLayout();
             // 
             // txtYear
@@ -82,7 +82,7 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(185, 294);
+            btnSave.Location = new Point(45, 346);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 5;
@@ -135,23 +135,20 @@
             lblSubject.TabIndex = 11;
             lblSubject.Text = "Asignatura";
             // 
-            // btnAssignSchedule
+            // tvSchedules
             // 
-            btnAssignSchedule.Location = new Point(45, 294);
-            btnAssignSchedule.Name = "btnAssignSchedule";
-            btnAssignSchedule.Size = new Size(104, 23);
-            btnAssignSchedule.TabIndex = 12;
-            btnAssignSchedule.Text = "Asignar horario";
-            btnAssignSchedule.UseVisualStyleBackColor = true;
-            btnAssignSchedule.Click += btnAssignSchedule_Click;
+            tvSchedules.Location = new Point(185, 286);
+            tvSchedules.Name = "tvSchedules";
+            tvSchedules.Size = new Size(281, 151);
+            tvSchedules.TabIndex = 13;
             // 
             // EditCourseForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(499, 364);
-            Controls.Add(btnAssignSchedule);
+            ClientSize = new Size(731, 482);
+            Controls.Add(tvSchedules);
             Controls.Add(lblSubject);
             Controls.Add(lblQuota);
             Controls.Add(lblEndDate);
@@ -184,6 +181,6 @@
         private Label lblEndDate;
         private Label lblQuota;
         private Label lblSubject;
-        private Button btnAssignSchedule;
+        private TreeView tvSchedules;
     }
 }

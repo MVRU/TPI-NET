@@ -20,5 +20,22 @@ namespace ProyectoNET.Models
 
         // Relación con curso
         public ICollection<Course> Courses { get; set; } = new List<Course>();
+
+        public string DisplayText
+        {
+            get
+            {
+                // Verificar si StartTime y EndTime son válidos
+                try
+                {
+                    return $"{Day} - {StartTime:hh\\:mm} a {EndTime:hh\\:mm}";
+                }
+                catch (FormatException)
+                {
+                    // Manejar el error si el formato de TimeSpan es incorrecto
+                    return $"{Day} - Horario no válido";
+                }
+            }
+        }
     }
 }

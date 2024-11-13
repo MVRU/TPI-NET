@@ -55,6 +55,15 @@ namespace ProyectoNET.Controllers
             }
         }
 
+        public string GetSubjectDescriptionById(int id)
+        {
+            var subject = _subjectRepository.GetSubjectById(id);
+
+            // Si la asignatura no existe, devuelve "N/A"
+            return subject?.Description ?? "N/A";
+        }
+
+
         public void UpdateSubject(int id, string newDescription, float newRequiredAttendancePercentage)
         {
             if (newRequiredAttendancePercentage < 0 || newRequiredAttendancePercentage > 100)

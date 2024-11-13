@@ -26,9 +26,11 @@ namespace ProyectoNET.Repositories
 
         public Subject GetSubjectById(int id)
         {
-            return _context.Subjects
-                .Include(s => s.Courses) // Incluir Courses si es necesario
+            var subject = _context.Subjects
+                .Include(s => s.Courses)  // Incluimos los cursos relacionados
                 .FirstOrDefault(s => s.Id == id);
+
+            return subject;  // Si no encuentra la asignatura, devuelve null
         }
 
         public void UpdateSubject(Subject subject)

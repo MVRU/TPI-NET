@@ -13,9 +13,9 @@ namespace ProyectoNET.Controllers
             _repository = repository;
         }
 
-        public int? CreateCourse(int year, DateTime startDate, DateTime endDate, int quota, int? subjectId)
+        public int? CreateCourse(int year, DateTime startDate, DateTime endDate, int quota, int? subjectId, List<int> scheduleIds)
         {
-            return _repository.CreateCourse(year, startDate, endDate, quota, subjectId);
+            return _repository.CreateCourse(year, startDate, endDate, quota, subjectId, scheduleIds);
         }
 
         public Course GetCourseById(int id)
@@ -23,9 +23,9 @@ namespace ProyectoNET.Controllers
             return _repository.GetCourseById(id);
         }
 
-        public void UpdateCourse(int courseId, int year, DateTime startDate, DateTime endDate, int quota, int? subjectId)
+        public void UpdateCourse(int courseId, int year, DateTime startDate, DateTime endDate, int quota, int? subjectId, List<int> scheduleIds)
         {
-            _repository.UpdateCourse(courseId, year, startDate, endDate, quota, subjectId);
+            _repository.UpdateCourse(courseId, year, startDate, endDate, quota, subjectId, scheduleIds);
         }
 
         public void DeleteCourse(int id)

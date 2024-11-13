@@ -28,7 +28,7 @@ namespace ProyectoNET.Repositories
                        && (!excludedId.HasValue || c.Id != excludedId.Value));
         }
 
-        public int? CreateCourse(int year, DateTime startDate, DateTime endDate, int quota, int? subjectId)
+        public int? CreateCourse(int year, DateTime startDate, DateTime endDate, int quota, int? subjectId, List<int> scheduleIds)
         {
             // Verificar si ya existe un curso con los mismos parámetros
             if (CourseExists(year, startDate, endDate, quota, subjectId))
@@ -50,6 +50,10 @@ namespace ProyectoNET.Repositories
                 Quota = quota,
                 SubjectId = subjectId // Puede ser null si no se seleccionó una asignatura
             };
+
+            // Obtener los horarios seleccionados por el usuario
+            var schedules = _context.Schedules.Where(s => scheduleIds.Contains(s.Id)).ToList();
+            course.Schedules = schedules;
 
             _context.Courses.Add(course);
             _context.SaveChanges();
@@ -74,7 +78,7 @@ namespace ProyectoNET.Repositories
                 .ToList();
         }
 
-        public void UpdateCourse(int courseId, int year, DateTime startDate, DateTime endDate, int quota, int? subjectId)
+        public void UpdateCourse(int courseId, int year, DateTime startDate, DateTime endDate, int quota, int? subjectId, List<int> scheduleIds)
         {
             var course = GetCourseById(courseId);
             if (course != null)
@@ -90,6 +94,10 @@ namespace ProyectoNET.Repositories
                 course.EndDate = endDate;
                 course.Quota = quota;
                 course.SubjectId = subjectId;
+
+                // Obtener los horarios seleccionados
+                var schedules = _context.Schedules.Where(s => scheduleIds.Contains(s.Id)).ToList();
+                course.Schedules = schedules; // Actualizar la relación de horarios
 
                 _context.Courses.Update(course);
                 _context.SaveChanges();

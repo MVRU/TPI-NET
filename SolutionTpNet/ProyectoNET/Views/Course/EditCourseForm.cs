@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ProyectoNET.Controllers;
+﻿using ProyectoNET.Controllers;
 using ProyectoNET.Models;
 
 namespace ProyectoNET.Views
@@ -8,23 +7,25 @@ namespace ProyectoNET.Views
     {
         private readonly CourseController _courseController;
         private readonly SubjectController _subjectController;
+        private readonly ScheduleController _scheduleController;
         private int? _courseId;
 
         public event Action OnCourseAddedOrEdited;
 
-        public EditCourseForm(CourseController courseController, SubjectController subjectController)
+        public EditCourseForm(CourseController courseController, SubjectController subjectController, ScheduleController scheduleController)
         {
             InitializeComponent();
             _courseController = courseController;
             _subjectController = subjectController;
-            btnAssignSchedule.Visible = false;
+            _scheduleController = scheduleController; // Asigna el controlador de horarios
 
             LoadSubjects();
+            LoadSchedules(); // Cargar los horarios en el TreeView
             ConfigureControls();
         }
 
-        public EditCourseForm(CourseController courseController, SubjectController subjectController, int courseId)
-            : this(courseController, subjectController)
+        public EditCourseForm(CourseController courseController, SubjectController subjectController, ScheduleController scheduleController, int courseId)
+            : this(courseController, subjectController, scheduleController)
         {
             _courseId = courseId;
             LoadCourseDetails(courseId);
@@ -33,33 +34,63 @@ namespace ProyectoNET.Views
         private void LoadSubjects()
         {
             var subjects = _subjectController.GetAllSubjects().ToList();
-
-            // Agregar opción "N/A" al inicio de la lista de asignaturas
             subjects.Insert(0, new Subject { Id = 0, Description = "N/A" });
-
             cmbSubject.DataSource = subjects;
             cmbSubject.DisplayMember = "Description";
             cmbSubject.ValueMember = "Id";
             cmbSubject.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            // Establecer "N/A" como la opción seleccionada por defecto
             cmbSubject.SelectedIndex = 0;
+        }
+
+        private void LoadSchedules()
+        {
+            var schedules = _scheduleController.GetAllSchedules();
+
+            // Agrupar horarios por día
+            var schedulesByDay = schedules
+                .GroupBy(s => s.Day)
+                .OrderBy(g => g.Key) // Ordenar los días
+                .ToList();
+
+            tvSchedules.Nodes.Clear(); // Limpiar el TreeView antes de cargar los datos
+
+            foreach (var dayGroup in schedulesByDay)
+            {
+                var dayNode = new TreeNode(dayGroup.Key.ToString()) // Crear un nodo para el día
+                {
+                    Tag = dayGroup.Key, // Guardar el día como un valor (Tag) en el nodo
+                    Checked = false, // Asegurar que la casilla de verificación del día esté desmarcada
+                    ForeColor = Color.Gray // Desactivar visualmente el nodo "Day"
+                };
+
+                foreach (var schedule in dayGroup)
+                {
+                    var scheduleNode = new TreeNode($"{schedule.StartTime:hh\\:mm} - {schedule.EndTime:hh\\:mm} ({schedule.Day})")
+                    {
+                        Tag = schedule.Id // Guardar el Id del horario en el nodo
+                    };
+                    dayNode.Nodes.Add(scheduleNode); // Agregar el horario como un nodo hijo
+                }
+
+                tvSchedules.Nodes.Add(dayNode); // Agregar el nodo del día al TreeView
+            }
+
+            tvSchedules.FullRowSelect = true; // Permitir seleccionar toda la fila
+            tvSchedules.CheckBoxes = true; // Activar casillas de verificación para la selección
         }
 
         private void ConfigureControls()
         {
-            // Bloquear txtYear para que no sea editable
             txtYear.ReadOnly = true;
 
-            // Establecer el valor predeterminado de txtYear al año actual si no se ha asignado StartDate
             if (dtpStartDate.Value == null || dtpStartDate.Value == DateTime.MinValue)
             {
                 txtYear.Text = DateTime.Now.Year.ToString();
             }
 
             dtpStartDate.ValueChanged += (s, e) => UpdateYearBasedOnStartDate();
-            dtpStartDate.Format = DateTimePickerFormat.Short; // Para que solo se muestre la fecha, no la hora
-            dtpEndDate.Format = DateTimePickerFormat.Short;   // Lo mismo para la fecha de fin
+            dtpStartDate.Format = DateTimePickerFormat.Short;
+            dtpEndDate.Format = DateTimePickerFormat.Short;
         }
 
         private void UpdateYearBasedOnStartDate()
@@ -77,9 +108,23 @@ namespace ProyectoNET.Views
                 dtpEndDate.Value = course.EndDate;
                 txtQuota.Text = course.Quota.ToString();
 
-                // Si no tiene asignatura, seleccionar "N/A"
-                cmbSubject.SelectedValue = course.SubjectId ?? 0;  // 0 es el Id de "N/A"
-                btnAssignSchedule.Visible = true; // Mostrar el botón de asignación de horarios solo si es un curso existente
+                cmbSubject.SelectedValue = course.SubjectId ?? 0;
+
+                // Seleccionar los horarios del curso si están asociados a alguno
+                foreach (var schedule in course.Schedules)
+                {
+                    var dayNode = tvSchedules.Nodes.Cast<TreeNode>()
+                        .FirstOrDefault(node => node.Tag.ToString() == schedule.Day); // Comparar como string
+                    if (dayNode != null)
+                    {
+                        var scheduleNode = dayNode.Nodes.Cast<TreeNode>()
+                            .FirstOrDefault(node => (int)node.Tag == schedule.Id); // Buscar el horario correspondiente
+                        if (scheduleNode != null)
+                        {
+                            scheduleNode.Checked = true; // Marcar el horario como seleccionado
+                        }
+                    }
+                }
             }
             else
             {
@@ -90,101 +135,68 @@ namespace ProyectoNET.Views
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Validar que los campos obligatorios no estén vacíos
-            if (string.IsNullOrWhiteSpace(txtQuota.Text) || cmbSubject.SelectedIndex == -1)
+            // Validar campos obligatorios
+            if (string.IsNullOrWhiteSpace(txtQuota.Text) || cmbSubject.SelectedIndex == 0 || !tvSchedules.Nodes.Cast<TreeNode>().Any(dayNode => dayNode.Nodes.Cast<TreeNode>().Any(scheduleNode => scheduleNode.Checked)))
             {
                 MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            int year;
-            if (!int.TryParse(txtYear.Text, out year))
+            // Validar año
+            if (!int.TryParse(txtYear.Text, out int year))
             {
                 MessageBox.Show("El año no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Validar cuota
+            if (string.IsNullOrWhiteSpace(txtQuota.Text) || !int.TryParse(txtQuota.Text, out int quota))
+            {
+                MessageBox.Show("La cuota no es válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             DateTime startDate = dtpStartDate.Value;
             DateTime endDate = dtpEndDate.Value;
 
-            // Validar que la Fecha de Fin sea posterior a la Fecha de Inicio
             if (endDate <= startDate)
             {
                 MessageBox.Show("La fecha de fin debe ser posterior a la fecha de inicio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            int quota;
-            if (!int.TryParse(txtQuota.Text, out quota))
-            {
-                MessageBox.Show("La cuota no es válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            // Obtener los horarios seleccionados
+            var selectedScheduleIds = tvSchedules.Nodes.Cast<TreeNode>()
+                .Where(dayNode => dayNode.Nodes.Cast<TreeNode>().Any(scheduleNode => scheduleNode.Checked)) // Verificar solo los horarios seleccionados
+                .SelectMany(dayNode => dayNode.Nodes.Cast<TreeNode>())
+                .Where(scheduleNode => scheduleNode.Checked)
+                .Select(scheduleNode => (int)scheduleNode.Tag)
+                .ToList();
 
-            int? subjectId = cmbSubject.SelectedIndex > 0 ? (int?)cmbSubject.SelectedValue : null;
-
-            // Verificar que el SubjectId seleccionado sea válido si no es N/A
-            if (subjectId.HasValue && !_subjectController.SubjectExists(subjectId.Value))
+            if (selectedScheduleIds.Count == 0)
             {
-                MessageBox.Show("El SubjectId proporcionado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe seleccionar al menos un horario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             try
             {
-                // Si ya existe un ID de curso, actualizamos, de lo contrario, creamos un nuevo curso
+                // Crear o actualizar el curso
                 if (_courseId.HasValue)
                 {
-                    _courseController.UpdateCourse(_courseId.Value, year, startDate, endDate, quota, subjectId);
+                    _courseController.UpdateCourse(_courseId.Value, year, startDate, endDate, quota, (int?)cmbSubject.SelectedValue, selectedScheduleIds);
                 }
                 else
                 {
-                    _courseId = _courseController.CreateCourse(year, startDate, endDate, quota, subjectId);
+                    _courseId = _courseController.CreateCourse(year, startDate, endDate, quota, (int?)cmbSubject.SelectedValue, selectedScheduleIds);
                 }
 
-                // Notificar que se agregó o editó el curso
                 OnCourseAddedOrEdited?.Invoke();
-
-                // Solo mostrar el botón AssignSchedule si el curso fue creado correctamente
-                if (_courseId.HasValue)
-                {
-                    btnAssignSchedule.Visible = true; // Mostrar el botón solo si el curso fue creado o editado correctamente
-                }
-            }
-            catch (InvalidOperationException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (DbUpdateException dbEx) // Captura errores de Entity Framework
-            {
-                MessageBox.Show($"Hubo un error al guardar el curso: {dbEx.Message}\nDetalles: {dbEx.InnerException?.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Hubo un error al guardar el curso: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnAssignSchedule_Click(object sender, EventArgs e)
-        {
-            // Verificar si el curso es nuevo o ya existe
-            if (_courseId.HasValue)
-            {
-                // Si el curso ya tiene un ID (es existente), simplemente abrir el formulario de asignación de horarios
-                var course = _courseController.GetCourseById(_courseId.Value);
-                if (course != null)
-                {
-                    var assignScheduleForm = new AssignScheduleForm(course);
-                    assignScheduleForm.ShowDialog(); // Mostrar el formulario de asignación de horarios
-                }
-                else
-                {
-                    MessageBox.Show("El curso no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("No puede asignar horarios a un curso nuevo. Guarde el curso primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al guardar el curso: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
