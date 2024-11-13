@@ -28,7 +28,7 @@ namespace ProyectoNET.Repositories
                        && (!excludedId.HasValue || c.Id != excludedId.Value));
         }
 
-        public void CreateCourse(int year, DateTime startDate, DateTime endDate, int quota, int? subjectId)
+        public int? CreateCourse(int year, DateTime startDate, DateTime endDate, int quota, int? subjectId)
         {
             // Verificar si ya existe un curso con los mismos parámetros
             if (CourseExists(year, startDate, endDate, quota, subjectId))
@@ -53,6 +53,9 @@ namespace ProyectoNET.Repositories
 
             _context.Courses.Add(course);
             _context.SaveChanges();
+
+            // Devuelve el ID del curso recién creado
+            return course.Id;
         }
 
         public Course GetCourseById(int id)

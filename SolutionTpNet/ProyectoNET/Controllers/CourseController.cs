@@ -13,9 +13,9 @@ namespace ProyectoNET.Controllers
             _repository = repository;
         }
 
-        public void CreateCourse(int year, DateTime startDate, DateTime endDate, int quota, int? subjectId)
+        public int? CreateCourse(int year, DateTime startDate, DateTime endDate, int quota, int? subjectId)
         {
-            _repository.CreateCourse(year, startDate, endDate, quota, subjectId);
+            return _repository.CreateCourse(year, startDate, endDate, quota, subjectId);
         }
 
         public Course GetCourseById(int id)

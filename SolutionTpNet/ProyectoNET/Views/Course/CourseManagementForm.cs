@@ -126,5 +126,10 @@ namespace ProyectoNET.Views
                 LoadCourses();
             }
         }
+
+        private void CourseManagementForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

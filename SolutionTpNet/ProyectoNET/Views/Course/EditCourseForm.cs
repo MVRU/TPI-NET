@@ -17,6 +17,7 @@ namespace ProyectoNET.Views
             InitializeComponent();
             _courseController = courseController;
             _subjectController = subjectController;
+            btnAssignSchedule.Visible = false;
 
             LoadSubjects();
             ConfigureControls();
@@ -78,6 +79,7 @@ namespace ProyectoNET.Views
 
                 // Si no tiene asignatura, seleccionar "N/A"
                 cmbSubject.SelectedValue = course.SubjectId ?? 0;  // 0 es el Id de "N/A"
+                btnAssignSchedule.Visible = true; // Mostrar el botón de asignación de horarios solo si es un curso existente
             }
             else
             {
@@ -128,21 +130,26 @@ namespace ProyectoNET.Views
                 return;
             }
 
-            // Si ya existe un ID de curso, actualizamos, de lo contrario, creamos un nuevo curso
             try
             {
+                // Si ya existe un ID de curso, actualizamos, de lo contrario, creamos un nuevo curso
                 if (_courseId.HasValue)
                 {
                     _courseController.UpdateCourse(_courseId.Value, year, startDate, endDate, quota, subjectId);
                 }
                 else
                 {
-                    _courseController.CreateCourse(year, startDate, endDate, quota, subjectId);
+                    _courseId = _courseController.CreateCourse(year, startDate, endDate, quota, subjectId);
                 }
 
-                // Notificar que se agregó o editó el curso y cerrar el formulario
+                // Notificar que se agregó o editó el curso
                 OnCourseAddedOrEdited?.Invoke();
-                this.Close();
+
+                // Solo mostrar el botón AssignSchedule si el curso fue creado correctamente
+                if (_courseId.HasValue)
+                {
+                    btnAssignSchedule.Visible = true; // Mostrar el botón solo si el curso fue creado o editado correctamente
+                }
             }
             catch (InvalidOperationException ex)
             {
@@ -155,6 +162,29 @@ namespace ProyectoNET.Views
             catch (Exception ex)
             {
                 MessageBox.Show($"Hubo un error al guardar el curso: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAssignSchedule_Click(object sender, EventArgs e)
+        {
+            // Verificar si el curso es nuevo o ya existe
+            if (_courseId.HasValue)
+            {
+                // Si el curso ya tiene un ID (es existente), simplemente abrir el formulario de asignación de horarios
+                var course = _courseController.GetCourseById(_courseId.Value);
+                if (course != null)
+                {
+                    var assignScheduleForm = new AssignScheduleForm(course);
+                    assignScheduleForm.ShowDialog(); // Mostrar el formulario de asignación de horarios
+                }
+                else
+                {
+                    MessageBox.Show("El curso no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No puede asignar horarios a un curso nuevo. Guarde el curso primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

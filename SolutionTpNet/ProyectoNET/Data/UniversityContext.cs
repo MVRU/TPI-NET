@@ -16,6 +16,18 @@ namespace ProyectoNET.Data
         public UniversityContext(DbContextOptions<UniversityContext> options)
             : base(options)
         {
+            try
+            {
+                // Intentar conectar a la base de datos
+                if (!Database.CanConnect())
+                {
+                    Console.WriteLine("No se pudo conectar a la base de datos.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al intentar conectar a la base de datos: {ex.Message}");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

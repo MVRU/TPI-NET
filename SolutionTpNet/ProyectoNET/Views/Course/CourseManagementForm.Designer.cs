@@ -65,7 +65,7 @@
             // 
             // btnDeleteCourse
             // 
-            btnDeleteCourse.Location = new Point(247, 287);
+            btnDeleteCourse.Location = new Point(256, 287);
             btnDeleteCourse.Name = "btnDeleteCourse";
             btnDeleteCourse.Size = new Size(75, 23);
             btnDeleteCourse.TabIndex = 3;
@@ -88,6 +88,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestión de cursos";
             WindowState = FormWindowState.Maximized;
+            Load += CourseManagementForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewCourses).EndInit();
             ResumeLayout(false);
         }

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ProyectoNET.Data;
 using ProyectoNET.Models;
 
@@ -64,6 +62,21 @@ namespace ProyectoNET.Repositories
         public IQueryable<Schedule> GetAllSchedules()
         {
             return _context.Schedules;
+        }
+
+        public IEnumerable<Schedule> GetSchedulesByDay(string day)
+        {
+            try
+            {
+                return _context.Schedules
+                   .Where(s => s.Day.Equals(day, StringComparison.OrdinalIgnoreCase))
+                   .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener horarios para el día {day}: {ex.Message}");
+                return new List<Schedule>(); // Retornar una lista vacía en caso de error
+            }
         }
     }
 }
