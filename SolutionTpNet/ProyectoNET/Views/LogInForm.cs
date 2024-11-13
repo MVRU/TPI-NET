@@ -1,6 +1,7 @@
 using ProyectoNET;
 using ProyectoNET.Forms;
 using ProyectoNET.Controllers;
+using ProyectoNET.Models;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -56,20 +57,23 @@ namespace LogIn
                 return;
             }
 
-            bool operation = await _userController.UserLogInAsync(txtLegajo.Text, txtPassword.Text);
+            User user = await _userController.UserLogInAsyncObteniendoUsuario(txtLegajo.Text, txtPassword.Text);
 
             // Validación de credenciales de inicio de sesión
-            if (operation)
+            if (user != null)
             {
                 MessageBox.Show("Usted ha ingresado al sistema correctamente.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Obtener el formulario principal abierto
                 MainForm mainForm = (MainForm)this.MdiParent;
+                mainForm.userAssign(user);
+                mainForm.checkUserRole();
 
                 if (mainForm != null)
                 {
                     // Habilitar el Dashboard en el menú principal
                     mainForm.HabilitarMenus();
+                    mainForm.checkUserRole();
                 }
 
                 // Redirigir al frmMain y mostrar frmDashboard dentro del mismo
@@ -77,6 +81,8 @@ namespace LogIn
 
                 // Configurar frmDashboard como hijo de frmMain
                 dashboard.MdiParent = mainForm;
+                dashboard.userAssign(user);
+                dashboard.StartPosition = FormStartPosition.CenterScreen;
                 dashboard.WindowState = FormWindowState.Maximized;
                 dashboard.Show();
 

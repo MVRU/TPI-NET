@@ -29,55 +29,67 @@
         private void InitializeComponent()
         {
             pnlDashboard = new Panel();
-            lblBienvenida = new Label();
-            lblResumenCursos = new Label();
-            lblProximosCursos = new Label();
-            dgvProximosCursos = new DataGridView();
             dgvEstudiantesProblemas = new DataGridView();
-            lblEstudiantesProblemas = new Label();
+            lbl2Dashboard = new Label();
+            dgvProximosCursos = new DataGridView();
+            lblProximosCursos = new Label();
+            lblResumenCursos = new Label();
+            lblBienvenida = new Label();
             pnlDashboard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvProximosCursos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvEstudiantesProblemas).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProximosCursos).BeginInit();
             SuspendLayout();
             // 
             // pnlDashboard
             // 
+            pnlDashboard.Anchor = AnchorStyles.None;
             pnlDashboard.Controls.Add(dgvEstudiantesProblemas);
-            pnlDashboard.Controls.Add(lblEstudiantesProblemas);
+            pnlDashboard.Controls.Add(lbl2Dashboard);
             pnlDashboard.Controls.Add(dgvProximosCursos);
             pnlDashboard.Controls.Add(lblProximosCursos);
             pnlDashboard.Controls.Add(lblResumenCursos);
             pnlDashboard.Controls.Add(lblBienvenida);
-            pnlDashboard.Dock = DockStyle.Fill;
             pnlDashboard.Location = new Point(0, 0);
             pnlDashboard.Name = "pnlDashboard";
             pnlDashboard.Size = new Size(800, 602);
             pnlDashboard.TabIndex = 1;
             // 
-            // lblBienvenida
+            // dgvEstudiantesProblemas
             // 
-            lblBienvenida.AutoSize = true;
-            lblBienvenida.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblBienvenida.ForeColor = Color.FromArgb(13, 23, 28);
-            lblBienvenida.Location = new Point(70, 42);
-            lblBienvenida.Name = "lblBienvenida";
-            lblBienvenida.Size = new Size(365, 31);
-            lblBienvenida.TabIndex = 2;
-            lblBienvenida.Text = "Bienvenido de vuelta, Prof.";
+            dgvEstudiantesProblemas.Anchor = AnchorStyles.None;
+            dgvEstudiantesProblemas.BackgroundColor = Color.FromArgb(247, 250, 250);
+            dgvEstudiantesProblemas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEstudiantesProblemas.Location = new Point(70, 400);
+            dgvEstudiantesProblemas.Name = "dgvEstudiantesProblemas";
+            dgvEstudiantesProblemas.Size = new Size(660, 190);
+            dgvEstudiantesProblemas.TabIndex = 7;
             // 
-            // lblResumenCursos
+            // lbl2Dashboard
             // 
-            lblResumenCursos.AutoSize = true;
-            lblResumenCursos.Font = new Font("Microsoft Sans Serif", 12F);
-            lblResumenCursos.ForeColor = Color.FromArgb(79, 122, 148);
-            lblResumenCursos.Location = new Point(70, 85);
-            lblResumenCursos.Name = "lblResumenCursos";
-            lblResumenCursos.Size = new Size(274, 20);
-            lblResumenCursos.TabIndex = 3;
-            lblResumenCursos.Text = "Aquí tiene un resumen de sus cursos.";
+            lbl2Dashboard.Anchor = AnchorStyles.None;
+            lbl2Dashboard.AutoSize = true;
+            lbl2Dashboard.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl2Dashboard.ForeColor = Color.FromArgb(13, 23, 28);
+            lbl2Dashboard.Location = new Point(70, 377);
+            lbl2Dashboard.Name = "lbl2Dashboard";
+            lbl2Dashboard.Size = new Size(338, 20);
+            lbl2Dashboard.TabIndex = 6;
+            lbl2Dashboard.Text = "Estudiantes con problemas de asistencia";
+            lbl2Dashboard.Click += label1_Click;
+            // 
+            // dgvProximosCursos
+            // 
+            dgvProximosCursos.Anchor = AnchorStyles.None;
+            dgvProximosCursos.BackgroundColor = Color.FromArgb(247, 250, 250);
+            dgvProximosCursos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProximosCursos.Location = new Point(70, 149);
+            dgvProximosCursos.Name = "dgvProximosCursos";
+            dgvProximosCursos.Size = new Size(660, 212);
+            dgvProximosCursos.TabIndex = 5;
             // 
             // lblProximosCursos
             // 
+            lblProximosCursos.Anchor = AnchorStyles.None;
             lblProximosCursos.AutoSize = true;
             lblProximosCursos.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblProximosCursos.ForeColor = Color.FromArgb(13, 23, 28);
@@ -87,37 +99,31 @@
             lblProximosCursos.TabIndex = 4;
             lblProximosCursos.Text = "Próximos cursos";
             // 
-            // dgvProximosCursos
+            // lblResumenCursos
             // 
-            dgvProximosCursos.BackgroundColor = Color.FromArgb(247, 250, 250);
-            dgvProximosCursos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProximosCursos.Location = new Point(70, 149);
-            dgvProximosCursos.Name = "dgvProximosCursos";
-            dgvProximosCursos.Size = new Size(660, 212);
-            dgvProximosCursos.TabIndex = 5;
+            lblResumenCursos.Anchor = AnchorStyles.None;
+            lblResumenCursos.AutoSize = true;
+            lblResumenCursos.Font = new Font("Microsoft Sans Serif", 12F);
+            lblResumenCursos.ForeColor = Color.FromArgb(79, 122, 148);
+            lblResumenCursos.Location = new Point(70, 85);
+            lblResumenCursos.Name = "lblResumenCursos";
+            lblResumenCursos.Size = new Size(274, 20);
+            lblResumenCursos.TabIndex = 3;
+            lblResumenCursos.Text = "Aquí tiene un resumen de sus cursos.";
             // 
-            // dgvEstudiantesProblemas
+            // lblBienvenida
             // 
-            dgvEstudiantesProblemas.BackgroundColor = Color.FromArgb(247, 250, 250);
-            dgvEstudiantesProblemas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEstudiantesProblemas.Location = new Point(70, 400);
-            dgvEstudiantesProblemas.Name = "dgvEstudiantesProblemas";
-            dgvEstudiantesProblemas.Size = new Size(660, 190);
-            dgvEstudiantesProblemas.TabIndex = 7;
+            lblBienvenida.Anchor = AnchorStyles.None;
+            lblBienvenida.AutoSize = true;
+            lblBienvenida.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblBienvenida.ForeColor = Color.FromArgb(13, 23, 28);
+            lblBienvenida.Location = new Point(70, 42);
+            lblBienvenida.Name = "lblBienvenida";
+            lblBienvenida.Size = new Size(302, 31);
+            lblBienvenida.TabIndex = 2;
+            lblBienvenida.Text = "Bienvenido de vuelta, ";
             // 
-            // lblEstudiantesProblemas
-            // 
-            lblEstudiantesProblemas.AutoSize = true;
-            lblEstudiantesProblemas.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEstudiantesProblemas.ForeColor = Color.FromArgb(13, 23, 28);
-            lblEstudiantesProblemas.Location = new Point(70, 377);
-            lblEstudiantesProblemas.Name = "lblEstudiantesProblemas";
-            lblEstudiantesProblemas.Size = new Size(338, 20);
-            lblEstudiantesProblemas.TabIndex = 6;
-            lblEstudiantesProblemas.Text = "Estudiantes con problemas de asistencia";
-            lblEstudiantesProblemas.Click += label1_Click;
-            // 
-            // frmDashboard
+            // DashboardForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -125,15 +131,15 @@
             BackColor = Color.FromArgb(247, 250, 250);
             ClientSize = new Size(800, 602);
             Controls.Add(pnlDashboard);
-            Name = "frmDashboard";
+            Name = "DashboardForm";
             ShowIcon = false;
             Text = "Dashboard";
             WindowState = FormWindowState.Maximized;
             Load += frmDashboard_Load;
             pnlDashboard.ResumeLayout(false);
             pnlDashboard.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvProximosCursos).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvEstudiantesProblemas).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProximosCursos).EndInit();
             ResumeLayout(false);
         }
 
@@ -145,6 +151,6 @@
         private Label lblProximosCursos;
         private DataGridView dgvProximosCursos;
         private DataGridView dgvEstudiantesProblemas;
-        private Label lblEstudiantesProblemas;
+        private Label lbl2Dashboard;
     }
 }

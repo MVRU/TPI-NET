@@ -6,6 +6,8 @@ using System;
 using System.Windows.Forms;
 using tomarAsistencia;
 using Microsoft.Extensions.DependencyInjection;
+using ProyectoNET.Models;
+using ProyectoNET.Views;
 
 
 namespace ProyectoNET
@@ -15,6 +17,8 @@ namespace ProyectoNET
         private readonly UserController _userController;
 
         private bool sesionIniciada = false;  // Variable para verificar si la sesión está iniciada
+
+        private User _user;
 
         public MainForm(UserController userController)
         {
@@ -64,19 +68,26 @@ namespace ProyectoNET
             // Mostrar el formulario de inicio de sesión
             var loginForm = Program.ServiceProvider.GetRequiredService<frmLogIn>();
             loginForm.MdiParent = this;
+            loginForm.StartPosition = FormStartPosition.CenterScreen;
             loginForm.Show();
         }
 
         private void mnuLogIn_Click(object sender, EventArgs e)
         {
-            var formX = Program.ServiceProvider.GetRequiredService<frmLogIn>();
-            formX.MdiParent = this;
-            formX.Show();
+            var formLogIn = Program.ServiceProvider.GetRequiredService<frmLogIn>();
+            formLogIn.MdiParent = this;
+            formLogIn.StartPosition = FormStartPosition.CenterScreen;
+            formLogIn.Show();
         }
 
         private void formMain_Load(object sender, EventArgs e)
         {
             // Manejar la carga del formulario
+            this.checkUserRole();
+            var formLogIn = Program.ServiceProvider.GetRequiredService<frmLogIn>();
+            formLogIn.MdiParent = this;
+            formLogIn.StartPosition = FormStartPosition.CenterScreen;
+            formLogIn.Show();
         }
 
         private void menúToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,6 +116,51 @@ namespace ProyectoNET
         {
             var formX = Program.ServiceProvider.GetRequiredService<DashboardForm>();
             formX.MdiParent = this;
+            formX.userAssign(_user);
+            formX.StartPosition = FormStartPosition.CenterScreen;
+            formX.Show();
+        }
+        public void userAssign(User u)
+        {
+            this._user = u;
+        }
+
+        public void checkUserRole()
+        {
+            if (this._user != null)
+            {
+                switch (this._user.Role.ToUpper())
+                {
+                    case "ADMIN":
+                        misMateriasToolStripMenuItem.Visible = false;
+                        materiasToolStripMenuItem.Visible = true;
+                        break;
+
+                    case "STUDENT":
+                        tomarAsistenciaToolStripMenuItem.Visible = false;
+                        crearNuevoCursoToolStripMenuItem.Visible = false;
+                        materiasToolStripMenuItem.Visible = true;
+                        break;
+
+                    case "PROF":
+                        crearNuevoCursoToolStripMenuItem.Visible = false;
+                        misMateriasToolStripMenuItem.Visible = false;
+                        materiasToolStripMenuItem.Visible = true;
+                        break;
+                }
+            }
+            else
+            {
+                dashboardToolStripMenuItem.Visible = false;
+                materiasToolStripMenuItem.Visible = false;
+            }
+        }
+
+        private void verTodasLasMateriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formX = Program.ServiceProvider.GetRequiredService<SubjectsForm>();
+            formX.MdiParent = this;
+            formX.StartPosition = FormStartPosition.CenterScreen;
             formX.Show();
         }
     }

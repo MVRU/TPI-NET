@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProyectoNET.Models
 {
-    internal class Schedule
+    public class Schedule
     {
         [Key]
         public int Id { get; set; }

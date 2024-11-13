@@ -34,10 +34,14 @@
             dashboardToolStripMenuItem = new ToolStripMenuItem();
             iniciarSesionToolStripMenuItem = new ToolStripMenuItem();
             registrarseToolStripMenuItem = new ToolStripMenuItem();
+            cuentaToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
             asistenciaToolStripMenuItem = new ToolStripMenuItem();
             tomarAsistenciaToolStripMenuItem = new ToolStripMenuItem();
             historialAsistenciaToolStripMenuItem = new ToolStripMenuItem();
+            materiasToolStripMenuItem = new ToolStripMenuItem();
+            misMateriasToolStripMenuItem = new ToolStripMenuItem();
+            verTodasLasMateriasToolStripMenuItem = new ToolStripMenuItem();
             cursosToolStripMenuItem = new ToolStripMenuItem();
             listaDeCursosToolStripMenuItem = new ToolStripMenuItem();
             crearNuevoCursoToolStripMenuItem = new ToolStripMenuItem();
@@ -46,7 +50,6 @@
             ayudaToolStripMenuItem = new ToolStripMenuItem();
             guíaDeAyudaToolStripMenuItem = new ToolStripMenuItem();
             acercaDeToolStripMenuItem = new ToolStripMenuItem();
-            cuentaToolStripMenuItem = new ToolStripMenuItem();
             msnMainMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -54,7 +57,7 @@
             // 
             msnMainMenu.AutoSize = false;
             msnMainMenu.ImageScalingSize = new Size(24, 24);
-            msnMainMenu.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, asistenciaToolStripMenuItem, cursosToolStripMenuItem, configuraciónToolStripMenuItem, ayudaToolStripMenuItem });
+            msnMainMenu.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, asistenciaToolStripMenuItem, materiasToolStripMenuItem, cursosToolStripMenuItem, configuraciónToolStripMenuItem, ayudaToolStripMenuItem });
             msnMainMenu.Location = new Point(0, 0);
             msnMainMenu.Name = "msnMainMenu";
             msnMainMenu.Padding = new Padding(4, 1, 0, 1);
@@ -93,6 +96,12 @@
             registrarseToolStripMenuItem.Text = "Registrarse";
             registrarseToolStripMenuItem.Click += mnuSignIn_Click;
             // 
+            // cuentaToolStripMenuItem
+            // 
+            cuentaToolStripMenuItem.Name = "cuentaToolStripMenuItem";
+            cuentaToolStripMenuItem.Size = new Size(146, 22);
+            cuentaToolStripMenuItem.Text = "Cuenta";
+            // 
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
@@ -120,6 +129,26 @@
             historialAsistenciaToolStripMenuItem.Name = "historialAsistenciaToolStripMenuItem";
             historialAsistenciaToolStripMenuItem.Size = new Size(188, 22);
             historialAsistenciaToolStripMenuItem.Text = "Historial de asistencia";
+            // 
+            // materiasToolStripMenuItem
+            // 
+            materiasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { misMateriasToolStripMenuItem, verTodasLasMateriasToolStripMenuItem });
+            materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
+            materiasToolStripMenuItem.Size = new Size(64, 22);
+            materiasToolStripMenuItem.Text = "Materias";
+            // 
+            // misMateriasToolStripMenuItem
+            // 
+            misMateriasToolStripMenuItem.Name = "misMateriasToolStripMenuItem";
+            misMateriasToolStripMenuItem.Size = new Size(187, 22);
+            misMateriasToolStripMenuItem.Text = "Mis materias";
+            // 
+            // verTodasLasMateriasToolStripMenuItem
+            // 
+            verTodasLasMateriasToolStripMenuItem.Name = "verTodasLasMateriasToolStripMenuItem";
+            verTodasLasMateriasToolStripMenuItem.Size = new Size(187, 22);
+            verTodasLasMateriasToolStripMenuItem.Text = "Ver todas las materias";
+            verTodasLasMateriasToolStripMenuItem.Click += verTodasLasMateriasToolStripMenuItem_Click;
             // 
             // cursosToolStripMenuItem
             // 
@@ -163,23 +192,17 @@
             // guíaDeAyudaToolStripMenuItem
             // 
             guíaDeAyudaToolStripMenuItem.Name = "guíaDeAyudaToolStripMenuItem";
-            guíaDeAyudaToolStripMenuItem.Size = new Size(180, 22);
+            guíaDeAyudaToolStripMenuItem.Size = new Size(156, 22);
             guíaDeAyudaToolStripMenuItem.Text = "Guía de usuario";
             guíaDeAyudaToolStripMenuItem.Click += guíaDeAyudaToolStripMenuItem_Click;
             // 
             // acercaDeToolStripMenuItem
             // 
             acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            acercaDeToolStripMenuItem.Size = new Size(180, 22);
+            acercaDeToolStripMenuItem.Size = new Size(156, 22);
             acercaDeToolStripMenuItem.Text = "Acerca de";
             // 
-            // cuentaToolStripMenuItem
-            // 
-            cuentaToolStripMenuItem.Name = "cuentaToolStripMenuItem";
-            cuentaToolStripMenuItem.Size = new Size(146, 22);
-            cuentaToolStripMenuItem.Text = "Cuenta";
-            // 
-            // frmMain
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -191,7 +214,7 @@
             IsMdiContainer = true;
             MainMenuStrip = msnMainMenu;
             Margin = new Padding(2);
-            Name = "frmMain";
+            Name = "MainForm";
             Text = "CheckInU";
             WindowState = FormWindowState.Maximized;
             Load += formMain_Load;
@@ -220,5 +243,8 @@
         private ToolStripMenuItem acercaDeToolStripMenuItem;
         private ToolStripMenuItem dashboardToolStripMenuItem;
         private ToolStripMenuItem cuentaToolStripMenuItem;
+        private ToolStripMenuItem materiasToolStripMenuItem;
+        private ToolStripMenuItem misMateriasToolStripMenuItem;
+        private ToolStripMenuItem verTodasLasMateriasToolStripMenuItem;
     }
 }

@@ -42,6 +42,7 @@
             // 
             // checkBoxMantenerSesion
             // 
+            checkBoxMantenerSesion.Anchor = AnchorStyles.None;
             checkBoxMantenerSesion.AutoSize = true;
             checkBoxMantenerSesion.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             checkBoxMantenerSesion.ForeColor = Color.FromArgb(13, 23, 28);
@@ -54,6 +55,7 @@
             // 
             // btnIngresar
             // 
+            btnIngresar.Anchor = AnchorStyles.None;
             btnIngresar.BackColor = Color.FromArgb(59, 161, 227);
             btnIngresar.FlatAppearance.BorderSize = 0;
             btnIngresar.FlatStyle = FlatStyle.Flat;
@@ -69,6 +71,7 @@
             // 
             // linkOlvidaPassword
             // 
+            linkOlvidaPassword.Anchor = AnchorStyles.None;
             linkOlvidaPassword.AutoSize = true;
             linkOlvidaPassword.DisabledLinkColor = Color.DimGray;
             linkOlvidaPassword.Font = new Font("Microsoft Sans Serif", 12F);
@@ -84,6 +87,7 @@
             // 
             // lblPassword
             // 
+            lblPassword.Anchor = AnchorStyles.None;
             lblPassword.AutoSize = true;
             lblPassword.Font = new Font("Microsoft Sans Serif", 12F);
             lblPassword.ForeColor = Color.FromArgb(13, 23, 28);
@@ -95,6 +99,7 @@
             // 
             // lblLegajo
             // 
+            lblLegajo.Anchor = AnchorStyles.None;
             lblLegajo.AutoSize = true;
             lblLegajo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblLegajo.ForeColor = Color.FromArgb(13, 23, 28);
@@ -107,6 +112,7 @@
             // 
             // lblDescripcionBienvenida
             // 
+            lblDescripcionBienvenida.Anchor = AnchorStyles.None;
             lblDescripcionBienvenida.AutoSize = true;
             lblDescripcionBienvenida.Font = new Font("Microsoft Sans Serif", 12F);
             lblDescripcionBienvenida.ForeColor = Color.FromArgb(79, 122, 148);
@@ -119,6 +125,7 @@
             // 
             // lblBienvenida
             // 
+            lblBienvenida.Anchor = AnchorStyles.None;
             lblBienvenida.AutoSize = true;
             lblBienvenida.Font = new Font("Microsoft Sans Serif", 32.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblBienvenida.ForeColor = Color.FromArgb(13, 23, 28);
@@ -130,6 +137,7 @@
             // 
             // txtLegajo
             // 
+            txtLegajo.Anchor = AnchorStyles.None;
             txtLegajo.BackColor = Color.FromArgb(232, 237, 242);
             txtLegajo.BorderStyle = BorderStyle.None;
             txtLegajo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -142,6 +150,7 @@
             // 
             // txtPassword
             // 
+            txtPassword.Anchor = AnchorStyles.None;
             txtPassword.BackColor = Color.FromArgb(232, 237, 242);
             txtPassword.BorderStyle = BorderStyle.None;
             txtPassword.Font = new Font("Microsoft Sans Serif", 10F);

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoNET.Models
 {
-    internal class User
+    public class User
     {
         [Key]
         [Required(ErrorMessage = "El legajo es obligatorio.")]

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProyectoNET.Models
 {
-    internal class Enrollment
+    public class Enrollment
     {
         [Key]
         public int Id { get; set; }
