@@ -50,7 +50,9 @@ namespace ProyectoNET
 
         private void mnuSalir_Click(object sender, EventArgs e)
         {
+            this.user = new User();
             this.Close();
+            this.checkUserRole();
         }
 
         private void mnuSignIn_Click(object sender, EventArgs e)
@@ -78,12 +80,17 @@ namespace ProyectoNET
         {
             var formX = Program.ServiceProvider.GetRequiredService<frmLogIn>();
             formX.MdiParent = this;
+            formX.StartPosition = FormStartPosition.CenterScreen;
             formX.Show();
         }
 
         private void formMain_Load(object sender, EventArgs e)
         {
-            // Manejar la carga del formulario
+            this.checkUserRole();
+            var formX = Program.ServiceProvider.GetRequiredService<frmLogIn>();
+            formX.MdiParent = this;
+            formX.StartPosition = FormStartPosition.CenterScreen;
+            formX.Show();
         }
 
         private void menúToolStripMenuItem_Click(object sender, EventArgs e)
@@ -112,6 +119,8 @@ namespace ProyectoNET
         {
             var formX = Program.ServiceProvider.GetRequiredService<frmDashboard>();
             formX.MdiParent = this;
+            formX.StartPosition = FormStartPosition.CenterScreen;
+            formX.userAssign(user);
             formX.Show();
         }
 
@@ -121,6 +130,42 @@ namespace ProyectoNET
             formX.MdiParent = this;
             formX.userAssign(user);
             formX.Show();
+        }
+
+        public void checkUserRole()
+        {
+            if (this.user != null)
+            {
+                switch (this.user.Role.ToUpper())
+                {
+                    case "ADMIN":
+                        misMateriasToolStripMenuItem.Visible = false;
+                        break;
+                    case "STUDENT":
+                        tomarAsistenciaToolStripMenuItem.Visible = false;
+                        crearNuevoCursoToolStripMenuItem.Visible = false;
+                        registrarMateriaToolStripMenuItem.Visible = false;
+                        darDeBajaMateriaToolStripMenuItem.Visible = false;
+                        modificarUnaMateriaToolStripMenuItem.Visible = true;
+                        break;
+                    case "PROF":
+                        crearNuevoCursoToolStripMenuItem.Visible = false;
+                        misMateriasToolStripMenuItem.Visible = false;
+                        registrarMateriaToolStripMenuItem.Visible = false;
+                        darDeBajaMateriaToolStripMenuItem.Visible = false;
+                        modificarUnaMateriaToolStripMenuItem.Visible = true;
+                        break;
+                }
+            }
+            else
+            {
+                dashboardToolStripMenuItem.Visible = false;
+            }
+        }
+
+        private void darDeBajaMateriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -63,11 +63,10 @@ namespace LogIn
             // Validación de credenciales de inicio de sesión
             if (user != null)
             {
-                MessageBox.Show("Usted ha ingresado al sistema correctamente.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 // Obtener el formulario principal abierto
                 frmMain mainForm = (frmMain)this.MdiParent;
                 mainForm.userAssign(user);
+                mainForm.checkUserRole();
 
                 if (mainForm != null)
                 {
@@ -80,6 +79,7 @@ namespace LogIn
                 dashboard.userAssign(user);
                 // Configurar frmDashboard como hijo de frmMain
                 dashboard.MdiParent = mainForm;
+                dashboard.StartPosition = FormStartPosition.CenterScreen;
                 dashboard.WindowState = FormWindowState.Maximized;
                 dashboard.Show();
 

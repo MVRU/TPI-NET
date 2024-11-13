@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formCuenta));
             lblName = new Label();
             lblLastName = new Label();
             lblFile = new Label();
@@ -41,18 +42,20 @@
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Location = new Point(125, 75);
+            lblName.Location = new Point(88, 45);
+            lblName.Margin = new Padding(2, 0, 2, 0);
             lblName.Name = "lblName";
-            lblName.Size = new Size(78, 25);
+            lblName.Size = new Size(51, 15);
             lblName.TabIndex = 0;
             lblName.Text = "Nombre";
             // 
             // lblLastName
             // 
             lblLastName.AutoSize = true;
-            lblLastName.Location = new Point(125, 117);
+            lblLastName.Location = new Point(88, 70);
+            lblLastName.Margin = new Padding(2, 0, 2, 0);
             lblLastName.Name = "lblLastName";
-            lblLastName.Size = new Size(78, 25);
+            lblLastName.Size = new Size(51, 15);
             lblLastName.TabIndex = 1;
             lblLastName.Text = "Apellido";
             lblLastName.Click += lblLastName_Click;
@@ -60,58 +63,64 @@
             // lblFile
             // 
             lblFile.AutoSize = true;
-            lblFile.Location = new Point(125, 158);
+            lblFile.Location = new Point(88, 95);
+            lblFile.Margin = new Padding(2, 0, 2, 0);
             lblFile.Name = "lblFile";
-            lblFile.Size = new Size(64, 25);
+            lblFile.Size = new Size(42, 15);
             lblFile.TabIndex = 2;
             lblFile.Text = "Legajo";
             // 
             // lblRole
             // 
             lblRole.AutoSize = true;
-            lblRole.Location = new Point(125, 203);
+            lblRole.Location = new Point(88, 122);
+            lblRole.Margin = new Padding(2, 0, 2, 0);
             lblRole.Name = "lblRole";
-            lblRole.Size = new Size(37, 25);
+            lblRole.Size = new Size(24, 15);
             lblRole.TabIndex = 3;
             lblRole.Text = "Rol";
             // 
             // txtName
             // 
             txtName.Enabled = false;
-            txtName.Location = new Point(245, 69);
+            txtName.Location = new Point(172, 41);
+            txtName.Margin = new Padding(2, 2, 2, 2);
             txtName.Name = "txtName";
-            txtName.Size = new Size(150, 31);
+            txtName.Size = new Size(106, 23);
             txtName.TabIndex = 4;
             // 
             // txtLastName
             // 
             txtLastName.Enabled = false;
-            txtLastName.Location = new Point(245, 111);
+            txtLastName.Location = new Point(172, 67);
+            txtLastName.Margin = new Padding(2, 2, 2, 2);
             txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(150, 31);
+            txtLastName.Size = new Size(106, 23);
             txtLastName.TabIndex = 5;
             // 
             // txtFile
             // 
             txtFile.Enabled = false;
-            txtFile.Location = new Point(245, 152);
+            txtFile.Location = new Point(172, 91);
+            txtFile.Margin = new Padding(2, 2, 2, 2);
             txtFile.Name = "txtFile";
-            txtFile.Size = new Size(150, 31);
+            txtFile.Size = new Size(106, 23);
             txtFile.TabIndex = 6;
             // 
             // txtRole
             // 
             txtRole.Enabled = false;
-            txtRole.Location = new Point(245, 197);
+            txtRole.Location = new Point(172, 118);
+            txtRole.Margin = new Padding(2, 2, 2, 2);
             txtRole.Name = "txtRole";
-            txtRole.Size = new Size(150, 31);
+            txtRole.Size = new Size(106, 23);
             txtRole.TabIndex = 7;
             // 
             // formCuenta
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(560, 270);
             Controls.Add(txtRole);
             Controls.Add(txtFile);
             Controls.Add(txtLastName);
@@ -120,6 +129,8 @@
             Controls.Add(lblFile);
             Controls.Add(lblLastName);
             Controls.Add(lblName);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(2, 2, 2, 2);
             Name = "formCuenta";
             Text = "Cuenta";
             Load += Form1_Load;

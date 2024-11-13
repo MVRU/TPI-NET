@@ -32,12 +32,28 @@ namespace ProyectoNET.Forms
 
         private void frmDashboard_Load(object sender, EventArgs e)
         {
-
+            this.checkUserRole();
         }
 
         private void lblBienvenida_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void checkUserRole()
+        {
+            switch (this.user.Role.ToUpper())
+            {
+                case "ADMIN":
+                    lbl2Dashboard.Text = "Listado de alumnos y profesores";
+                    break;
+                case "STUDENT":
+                    lbl2Dashboard.Text = "Porcentaje de asistencia por curso";
+                    break;
+                case "PROF":
+                    lbl2Dashboard.Text = "Estudiantes con problema de asistencia";
+                    break;
+            }
         }
     }
 }

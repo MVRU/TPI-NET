@@ -1,29 +1,43 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\gustg\\Documents\\Facu\\3er A\u00F1o\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\",
+  "WorkspaceRootPath": "F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|c:\\users\\gustg\\documents\\facu\\3er a\u00F1o\\net\\proyecto\\tpi-net\\solutiontpnet\\proyectonet\\views\\formdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|solutionrelative:proyectonet\\views\\formdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|f:\\facu\\ing en sistemas\\3er a\u00F1o\\tec. de desarrollo de software ide\\tpi-net\\solutiontpnet\\proyectonet\\views\\formcuenta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|solutionrelative:proyectonet\\views\\formcuenta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|C:\\Users\\gustg\\Documents\\Facu\\3er A\u00F1o\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\proyectonet\\views\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|solutionrelative:proyectonet\\views\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|C:\\Users\\gustg\\Documents\\Facu\\3er A\u00F1o\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\proyectonet\\views\\formdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\proyectonet\\views\\formdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|solutionrelative:proyectonet\\views\\formdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|c:\\users\\gustg\\documents\\facu\\3er a\u00F1o\\net\\proyecto\\tpi-net\\solutiontpnet\\proyectonet\\views\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|solutionrelative:proyectonet\\views\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|C:\\Users\\gustg\\Documents\\Facu\\3er A\u00F1o\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\proyectonet\\views\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\proyectonet\\views\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|solutionrelative:proyectonet\\views\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\proyectonet\\views\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|solutionrelative:proyectonet\\views\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|f:\\facu\\ing en sistemas\\3er a\u00F1o\\tec. de desarrollo de software ide\\tpi-net\\solutiontpnet\\proyectonet\\views\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|solutionrelative:proyectonet\\views\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|f:\\facu\\ing en sistemas\\3er a\u00F1o\\tec. de desarrollo de software ide\\tpi-net\\solutiontpnet\\proyectonet\\views\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|solutionrelative:proyectonet\\views\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|f:\\facu\\ing en sistemas\\3er a\u00F1o\\tec. de desarrollo de software ide\\tpi-net\\solutiontpnet\\proyectonet\\views\\formdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0836F101-CBB9-497E-8280-3CDDDD109276}|ProyectoNET\\ProyectoNET.csproj|solutionrelative:proyectonet\\views\\formdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gustg\\AppData\\Local\\Temp\\w30rpuls..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/University/True/SqlTable/dbo.Users.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gustg\\AppData\\Local\\Temp\\w30rpuls..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,83 +47,138 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "formLogin.cs",
-              "DocumentMoniker": "C:\\Users\\gustg\\Documents\\Facu\\3er A\u00F1o\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formLogin.cs",
-              "RelativeDocumentMoniker": "ProyectoNET\\Views\\formLogin.cs",
-              "ToolTip": "C:\\Users\\gustg\\Documents\\Facu\\3er A\u00F1o\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formLogin.cs",
-              "RelativeToolTip": "ProyectoNET\\Views\\formLogin.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAwAAAAAAAAAAA",
+              "DocumentIndex": 5,
+              "Title": "formMain.cs",
+              "DocumentMoniker": "F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formMain.cs",
+              "RelativeDocumentMoniker": "ProyectoNET\\Views\\formMain.cs",
+              "ToolTip": "F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formMain.cs*",
+              "RelativeToolTip": "ProyectoNET\\Views\\formMain.cs*",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAJsAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T14:30:11.658Z",
+              "WhenOpened": "2024-11-12T21:08:36.184Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "formMain.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\gustg\\Documents\\Facu\\3er A\u00F1o\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formMain.cs",
-              "RelativeDocumentMoniker": "ProyectoNET\\Views\\formMain.cs",
-              "ToolTip": "C:\\Users\\gustg\\Documents\\Facu\\3er A\u00F1o\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formMain.cs [Dise\u00F1o]",
-              "RelativeToolTip": "ProyectoNET\\Views\\formMain.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T14:29:39.056Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "formDashboard.cs",
-              "DocumentMoniker": "C:\\Users\\gustg\\Documents\\Facu\\3er A\u00F1o\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formDashboard.cs",
+              "DocumentMoniker": "F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formDashboard.cs",
               "RelativeDocumentMoniker": "ProyectoNET\\Views\\formDashboard.cs",
-              "ToolTip": "C:\\Users\\gustg\\Documents\\Facu\\3er A\u00F1o\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formDashboard.cs",
-              "RelativeToolTip": "ProyectoNET\\Views\\formDashboard.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABAAAAAdAAAA",
+              "ToolTip": "F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formDashboard.cs*",
+              "RelativeToolTip": "ProyectoNET\\Views\\formDashboard.cs*",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAowCIAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T14:26:41.225Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "formDashboard.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\gustg\\Documents\\Facu\\3er A\u00F1o\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formDashboard.cs",
-              "RelativeDocumentMoniker": "ProyectoNET\\Views\\formDashboard.cs",
-              "ToolTip": "C:\\Users\\gustg\\Documents\\Facu\\3er A\u00F1o\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formDashboard.cs [Dise\u00F1o]",
-              "RelativeToolTip": "ProyectoNET\\Views\\formDashboard.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T14:26:11.359Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "formLogin.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\gustg\\Documents\\Facu\\3er A\u00F1o\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formLogin.cs",
+              "Title": "formLogin.cs",
+              "DocumentMoniker": "F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formLogin.cs",
               "RelativeDocumentMoniker": "ProyectoNET\\Views\\formLogin.cs",
-              "ToolTip": "C:\\Users\\gustg\\Documents\\Facu\\3er A\u00F1o\\NET\\Proyecto\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formLogin.cs [Dise\u00F1o]",
-              "RelativeToolTip": "ProyectoNET\\Views\\formLogin.cs [Dise\u00F1o]",
+              "ToolTip": "F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formLogin.cs",
+              "RelativeToolTip": "ProyectoNET\\Views\\formLogin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T14:19:04.084Z"
+              "WhenOpened": "2024-11-07T14:30:11.658Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "dbo.Users [Datos]",
+              "DocumentIndex": 7,
+              "Title": "w30rpuls..sql ",
+              "DocumentMoniker": "C:\\Users\\gustg\\AppData\\Local\\Temp\\w30rpuls..sql",
+              "ToolTip": "w30rpuls..sql ",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-11-12T21:31:54.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "dbo.Users.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/University/True/SqlTable/dbo.Users.sql",
-              "ToolTip": "dbo.Users [Datos]",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/University/True/SqlTable/dbo.Users.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2024-11-07T14:25:25.289Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "85dffc10-a4ec-488c-a2f4-8a8d801d091d",
+        "Display": 1,
+        "X": 71,
+        "Y": -28,
+        "Width": 1166,
+        "Height": 706,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "formMain.cs [Dise\u00F1o]",
+              "DocumentMoniker": "F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formMain.cs",
+              "RelativeDocumentMoniker": "ProyectoNET\\Views\\formMain.cs",
+              "ToolTip": "F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formMain.cs [Dise\u00F1o]*",
+              "RelativeToolTip": "ProyectoNET\\Views\\formMain.cs [Dise\u00F1o]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T21:26:21.917Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "formLogin.cs [Dise\u00F1o]",
+              "DocumentMoniker": "F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formLogin.cs",
+              "RelativeDocumentMoniker": "ProyectoNET\\Views\\formLogin.cs",
+              "ToolTip": "F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formLogin.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ProyectoNET\\Views\\formLogin.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T14:19:04.084Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "formDashboard.cs [Dise\u00F1o]",
+              "DocumentMoniker": "F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formDashboard.cs",
+              "RelativeDocumentMoniker": "ProyectoNET\\Views\\formDashboard.cs",
+              "ToolTip": "F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formDashboard.cs [Dise\u00F1o]*",
+              "RelativeToolTip": "ProyectoNET\\Views\\formDashboard.cs [Dise\u00F1o]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T14:26:11.359Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "formCuenta.cs [Dise\u00F1o]",
+              "DocumentMoniker": "F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formCuenta.cs",
+              "RelativeDocumentMoniker": "ProyectoNET\\Views\\formCuenta.cs",
+              "ToolTip": "F:\\Facu\\Ing en Sistemas\\3er A\u00F1o\\Tec. de Desarrollo de Software IDE\\TPI-NET\\SolutionTpNet\\ProyectoNET\\Views\\formCuenta.cs [Dise\u00F1o]*",
+              "RelativeToolTip": "ProyectoNET\\Views\\formCuenta.cs [Dise\u00F1o]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T15:11:57.868Z",
+              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }
