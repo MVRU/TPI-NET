@@ -15,15 +15,40 @@ namespace ProyectoNET.Repositories
             _context = context;
         }
 
+
+        // Método para verificar si ya existe un curso con los mismos parámetros
+        public bool CourseExists(int year, DateTime startDate, DateTime endDate, int quota, int? subjectId, int? excludedId = null)
+        {
+            return _context.Courses
+                .Any(c => c.Year == year
+                       && c.StartDate.Date == startDate.Date // Comparar solo la fecha sin la hora
+                       && c.EndDate.Date == endDate.Date // Comparar solo la fecha sin la hora
+                       && c.Quota == quota
+                       && c.SubjectId == subjectId
+                       && (!excludedId.HasValue || c.Id != excludedId.Value));
+        }
+
         public void CreateCourse(int year, DateTime startDate, DateTime endDate, int quota, int? subjectId)
         {
+            // Verificar si ya existe un curso con los mismos parámetros
+            if (CourseExists(year, startDate, endDate, quota, subjectId))
+            {
+                throw new InvalidOperationException("Ya existe un curso con los mismos parámetros.");
+            }
+
+            // Verificar si el SubjectId existe en la base de datos
+            if (subjectId.HasValue && !_context.Subjects.Any(s => s.Id == subjectId.Value))
+            {
+                throw new ArgumentException("El SubjectId proporcionado no es válido.");
+            }
+
             var course = new Course
             {
                 Year = year,
                 StartDate = startDate,
                 EndDate = endDate,
                 Quota = quota,
-                SubjectId = subjectId // Puede ser null
+                SubjectId = subjectId // Puede ser null si no se seleccionó una asignatura
             };
 
             _context.Courses.Add(course);
@@ -51,11 +76,17 @@ namespace ProyectoNET.Repositories
             var course = GetCourseById(courseId);
             if (course != null)
             {
+                // Verificar si ya existe un curso con los mismos parámetros (sin contar el curso actual)
+                if (CourseExists(year, startDate, endDate, quota, subjectId, courseId))
+                {
+                    throw new InvalidOperationException("Ya existe un curso con los mismos parámetros.");
+                }
+
                 course.Year = year;
                 course.StartDate = startDate;
                 course.EndDate = endDate;
                 course.Quota = quota;
-                course.SubjectId = subjectId; // Puede ser null
+                course.SubjectId = subjectId;
 
                 _context.Courses.Update(course);
                 _context.SaveChanges();

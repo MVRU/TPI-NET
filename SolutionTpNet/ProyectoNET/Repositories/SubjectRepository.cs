@@ -15,6 +15,9 @@ namespace ProyectoNET.Repositories
             _context = context;
         }
 
+        // Propiedad para acceder al DbSet de Subjects
+        public DbSet<Subject> Subjects => _context.Subjects;
+
         public void CreateSubject(Subject subject)
         {
             _context.Subjects.Add(subject);

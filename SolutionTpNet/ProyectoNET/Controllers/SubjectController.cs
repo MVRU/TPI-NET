@@ -15,6 +15,13 @@ namespace ProyectoNET.Controllers
             _subjectRepository = subjectRepository;
         }
 
+        // Método para verificar si una asignatura existe en la base de datos
+        public bool SubjectExists(int subjectId)
+        {
+            // Llama al repositorio para comprobar si el SubjectId existe
+            return _subjectRepository.Subjects.Any(s => s.Id == subjectId);
+        }
+
         public void CreateSubject(string description, float requiredAttendancePercentage)
         {
             if (requiredAttendancePercentage < 0 || requiredAttendancePercentage > 100)

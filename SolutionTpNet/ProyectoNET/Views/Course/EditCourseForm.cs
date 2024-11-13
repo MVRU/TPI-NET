@@ -1,8 +1,6 @@
-﻿using ProyectoNET.Controllers;
+﻿using Microsoft.EntityFrameworkCore;
+using ProyectoNET.Controllers;
 using ProyectoNET.Models;
-using System;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace ProyectoNET.Views
 {
@@ -111,17 +109,24 @@ namespace ProyectoNET.Views
             if (endDate <= startDate)
             {
                 MessageBox.Show("La fecha de fin debe ser posterior a la fecha de inicio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Evitar guardar el curso si las fechas no son válidas
+                return;
             }
 
             int quota;
-            if (!int.TryParse(txtQuota.Text, out quota) || quota <= 1)
+            if (!int.TryParse(txtQuota.Text, out quota))
             {
-                MessageBox.Show("La cuota debe ser mayor a 1.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("La cuota no es válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             int? subjectId = cmbSubject.SelectedIndex > 0 ? (int?)cmbSubject.SelectedValue : null;
+
+            // Verificar que el SubjectId seleccionado sea válido si no es N/A
+            if (subjectId.HasValue && !_subjectController.SubjectExists(subjectId.Value))
+            {
+                MessageBox.Show("El SubjectId proporcionado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             // Si ya existe un ID de curso, actualizamos, de lo contrario, creamos un nuevo curso
             try
@@ -138,6 +143,14 @@ namespace ProyectoNET.Views
                 // Notificar que se agregó o editó el curso y cerrar el formulario
                 OnCourseAddedOrEdited?.Invoke();
                 this.Close();
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (DbUpdateException dbEx) // Captura errores de Entity Framework
+            {
+                MessageBox.Show($"Hubo un error al guardar el curso: {dbEx.Message}\nDetalles: {dbEx.InnerException?.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
