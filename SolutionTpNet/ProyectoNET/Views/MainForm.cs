@@ -31,6 +31,7 @@ namespace ProyectoNET
             cuentaToolStripMenuItem.Visible = false;
             usuariosToolStripMenuItem.Visible = false;
             cerrarSesiónToolStripMenuItem.Visible = false;
+            gestionarHorariosToolStripMenuItem.Visible = false;
 
             // Cargar usuario de sesión solo si está guardado y si se debería mantener la sesión
             string savedUserId = LoadUserSession();
@@ -55,13 +56,16 @@ namespace ProyectoNET
 
             if (user != null && (user.Role == "Admin" || user.Role == "Professor")) // Si es Admin o Professor
             {
-                cursosToolStripMenuItem.Visible = true;
+                gestionarHorariosToolStripMenuItem.Visible = true;
+                gestionarCursosToolStripMenuItem.Visible = true;
+                gestionarAsignaturasToolStripMenuItem.Visible = true;
             }
 
             dashboardToolStripMenuItem.Enabled = true;
             asistenciaToolStripMenuItem.Visible = true;
             configuraciónToolStripMenuItem.Visible = true;
             cuentaToolStripMenuItem.Visible = true;
+            cursosToolStripMenuItem.Visible = true;
             cerrarSesiónToolStripMenuItem.Visible = true;
             iniciarSesionToolStripMenuItem.Visible = false;
             registrarseToolStripMenuItem.Visible = false;
@@ -189,6 +193,7 @@ namespace ProyectoNET
                 cuentaToolStripMenuItem.Visible = false;
                 usuariosToolStripMenuItem.Visible = false;
                 cerrarSesiónToolStripMenuItem.Visible = false;
+                cursosToolStripMenuItem.Visible = false;
 
                 // Restaurar la visibilidad de las opciones de iniciar sesión y registrarse
                 iniciarSesionToolStripMenuItem.Visible = true;
@@ -215,6 +220,18 @@ namespace ProyectoNET
             var subjectManagementForm = Program.ServiceProvider.GetRequiredService<SubjectManagementForm>();
             subjectManagementForm.MdiParent = this;
             subjectManagementForm.Show();
+        }
+
+        private void gestionarHorariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var scheduleManagementForm = Program.ServiceProvider.GetRequiredService<ScheduleManagementForm>();
+            scheduleManagementForm.MdiParent = this;
+            scheduleManagementForm.Show();
+        }
+
+        private void cursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

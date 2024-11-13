@@ -19,8 +19,6 @@ namespace ProyectoNET.Models
         public TimeSpan EndTime { get; set; }
 
         // Relación con curso
-        [ForeignKey("Course")]
-        public int? CourseId { get; set; } // Clave foránea nullable
-        public Course Course { get; set; } // Propiedad de navegación
+        public ICollection<Course> Courses { get; set; } = new List<Course>();
     }
 }

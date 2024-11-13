@@ -43,6 +43,7 @@
             cursosToolStripMenuItem = new ToolStripMenuItem();
             gestionarCursosToolStripMenuItem = new ToolStripMenuItem();
             gestionarAsignaturasToolStripMenuItem = new ToolStripMenuItem();
+            gestionarHorariosToolStripMenuItem = new ToolStripMenuItem();
             usuariosToolStripMenuItem = new ToolStripMenuItem();
             listaDeUsuariosToolStripMenuItem = new ToolStripMenuItem();
             configuraciónToolStripMenuItem = new ToolStripMenuItem();
@@ -138,10 +139,11 @@
             // 
             // cursosToolStripMenuItem
             // 
-            cursosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { gestionarCursosToolStripMenuItem, gestionarAsignaturasToolStripMenuItem });
+            cursosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { gestionarCursosToolStripMenuItem, gestionarAsignaturasToolStripMenuItem, gestionarHorariosToolStripMenuItem });
             cursosToolStripMenuItem.Name = "cursosToolStripMenuItem";
             cursosToolStripMenuItem.Size = new Size(55, 22);
             cursosToolStripMenuItem.Text = "Cursos";
+            cursosToolStripMenuItem.Click += cursosToolStripMenuItem_Click;
             // 
             // gestionarCursosToolStripMenuItem
             // 
@@ -155,6 +157,13 @@
             gestionarAsignaturasToolStripMenuItem.Size = new Size(187, 22);
             gestionarAsignaturasToolStripMenuItem.Text = "Gestionar asignaturas";
             gestionarAsignaturasToolStripMenuItem.Click += gestionarAsignaturasToolStripMenuItem_Click;
+            // 
+            // gestionarHorariosToolStripMenuItem
+            // 
+            gestionarHorariosToolStripMenuItem.Name = "gestionarHorariosToolStripMenuItem";
+            gestionarHorariosToolStripMenuItem.Size = new Size(187, 22);
+            gestionarHorariosToolStripMenuItem.Text = "Gestionar horarios";
+            gestionarHorariosToolStripMenuItem.Click += gestionarHorariosToolStripMenuItem_Click;
             // 
             // usuariosToolStripMenuItem
             // 
@@ -246,5 +255,6 @@
         private ToolStripMenuItem listaDeUsuariosToolStripMenuItem;
         private ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private ToolStripMenuItem gestionarAsignaturasToolStripMenuItem;
+        private ToolStripMenuItem gestionarHorariosToolStripMenuItem;
     }
 }

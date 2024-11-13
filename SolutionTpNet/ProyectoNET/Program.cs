@@ -54,7 +54,8 @@ namespace ProyectoNET
                 .AddTransient<UsersManagementForm>()
                 .AddTransient<ProfileForm>()
                 .AddTransient<ChangePasswordForm>()
-                .AddTransient<SubjectManagementForm>();
+                .AddTransient<SubjectManagementForm>()
+                .AddTransient<ScheduleManagementForm>();
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
 

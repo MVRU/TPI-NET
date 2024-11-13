@@ -6,13 +6,20 @@ using ProyectoNET.Models;
 
 namespace ProyectoNET.Repositories
 {
-    internal class ScheduleRepository
+    public class ScheduleRepository
     {
         private readonly UniversityContext _context;
 
         public ScheduleRepository(UniversityContext context)
         {
             _context = context;
+        }
+
+        // Verificar si ya existe un horario con el mismo día, hora de inicio y hora de fin (sin importar el ID)
+        public bool ScheduleExists(string day, TimeSpan startTime, TimeSpan endTime, int? excludedId = null)
+        {
+            return _context.Schedules
+                .Any(s => s.Day == day && s.StartTime == startTime && s.EndTime == endTime && (!excludedId.HasValue || s.Id != excludedId.Value));
         }
 
         public void CreateSchedule(Schedule schedule)
@@ -24,7 +31,7 @@ namespace ProyectoNET.Repositories
         public Schedule GetScheduleById(int id)
         {
             return _context.Schedules
-                .Include(s => s.Course) // Incluir Course si es necesario
+                .Include(s => s.Courses) // Incluir Courses en caso de necesitar acceder a los cursos asignados
                 .FirstOrDefault(s => s.Id == id);
         }
 
@@ -44,11 +51,19 @@ namespace ProyectoNET.Repositories
             }
         }
 
+        // Obtener horarios de un curso específico a través de la relación muchos a muchos
         public IEnumerable<Schedule> GetSchedulesByCourseId(int courseId)
         {
             return _context.Schedules
-                .Where(s => s.CourseId == courseId)
+                .Include(s => s.Courses)
+                .Where(s => s.Courses.Any(c => c.Id == courseId))
                 .ToList();
+        }
+
+        // Obtener todos los horarios
+        public IQueryable<Schedule> GetAllSchedules()
+        {
+            return _context.Schedules;
         }
     }
 }

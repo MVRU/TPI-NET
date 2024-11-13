@@ -37,8 +37,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Update="Views\LogInForm.cs" />
-    <Compile Update="Views\SignInForm.cs">
+    <Compile Update="Views\Auth\LogInForm.cs" />
+    <Compile Update="Views\Auth\SignInForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Views\TakeAttendanceForm.cs">
