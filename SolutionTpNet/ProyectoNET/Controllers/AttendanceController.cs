@@ -108,6 +108,11 @@ namespace ProyectoNET.Controllers
             return _attendanceRepository.GetAllAttendances();
         }
 
+        public IEnumerable<Attendance> GetAttendancesByUserId(string userId)
+        {
+            return _attendanceRepository.GetAttendancesByUserId(userId);
+        }
+
         // Obtener al User con la mejor y peor asistencia en un curso
         public (User bestAttendanceUser, User worstAttendanceUser) GetBestAndWorstAttendance(int courseId)
         {

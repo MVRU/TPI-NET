@@ -93,5 +93,15 @@ namespace ProyectoNET.Repositories
                 .Include(e => e.Student)  // Incluir al estudiante en la inscripción
                 .ToList();
         }
+
+        // Obtener asistencias por ID de usuario
+        public IEnumerable<Attendance> GetAttendancesByUserId(string userId)
+        {
+            return _context.Attendances
+                .Include(a => a.Enrollment)
+                .ThenInclude(e => e.Student)  // Incluir al estudiante (User)
+                .Where(a => a.Enrollment.StudentId == userId)
+                .ToList();
+        }
     }
 }

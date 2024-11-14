@@ -18,6 +18,16 @@ namespace ProyectoNET.Repositories
             _connectionString = _context.Database.GetConnectionString();
         }
 
+        // Obtener las inscripciones de un estudiante por su ID
+        public async Task<List<Enrollment>> GetEnrollmentsByStudentIdAsync(string studentId)
+        {
+            return await _context.Enrollments
+                .Include(e => e.Course)              
+                .ThenInclude(c => c.Subject)         
+                .Where(e => e.StudentId == studentId)
+                .ToListAsync();
+        }
+
         // Crear matrícula con Entity Framework
         public void CreateEnrollment(Enrollment enrollment)
         {

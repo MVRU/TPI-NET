@@ -37,6 +37,17 @@ namespace ProyectoNET.Controllers
             }
         }
 
+        // Obtener la descripción del Subject para un Enrollment dado
+        public string GetCourseDescription(int enrollmentId)
+        {
+            var enrollment = _enrollmentRepository.GetEnrollmentById(enrollmentId);
+            if (enrollment != null && enrollment.Course != null && enrollment.Course.Subject != null)
+            {
+                return enrollment.Course.Subject.Description;
+            }
+            return "Sin descripción"; // Valor predeterminado si no se encuentra la descripción
+        }
+
         public Enrollment GetEnrollmentById(int id)
         {
             try
@@ -57,6 +68,7 @@ namespace ProyectoNET.Controllers
                 throw;
             }
         }
+
 
         public void UpdateEnrollment(int enrollmentId, DateTime enrollmentDate, int courseId, int statusId)
         {

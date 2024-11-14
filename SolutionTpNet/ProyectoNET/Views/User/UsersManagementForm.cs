@@ -1,12 +1,7 @@
-﻿using ProyectoNET.Data;
+﻿using ProyectoNET.Controllers;
+using ProyectoNET.Data;
 using ProyectoNET.Models;
 using ProyectoNET.Repositories;
-using ProyectoNET.Controllers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ProyectoNET.Views
 {
@@ -14,14 +9,16 @@ namespace ProyectoNET.Views
     {
         private readonly UserRepository _userRepository;
         private readonly UserController _userController;
+        private readonly UniversityContext _context;
         private List<User> _users;
         private string _currentUserId; // Id del usuario actual
 
-        public UsersManagementForm(UserRepository userRepository, UserController userController)
+        public UsersManagementForm(UserRepository userRepository, UserController userController, UniversityContext context)
         {
             InitializeComponent();
             _userRepository = userRepository;
             _userController = userController;
+            _context = context;
             LoadUsersAsync();
         }
 
@@ -132,6 +129,46 @@ namespace ProyectoNET.Views
 
         private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
+
+        // Método para mostrar el reporte de un usuario
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            if (dgvUsuarios.SelectedRows.Count > 0)
+            {
+                var selectedUserFile = dgvUsuarios.SelectedRows[0].Cells["File"].Value.ToString();
+                var user = _users.FirstOrDefault(u => u.File == selectedUserFile);
+
+                if (user != null)
+                {
+                    try
+                    {
+                        // Crear las instancias de los repositorios necesarios usando DI
+                        var enrollmentRepository = new EnrollmentRepository(_context); // Usamos el contexto inyectado
+                        var courseRepository = new CourseRepository(_context); // Instancia de CourseRepository
+
+                        // Crear una instancia de EnrollmentController pasando ambos repositorios
+                        var enrollmentController = new EnrollmentController(enrollmentRepository, courseRepository);
+
+                        // Crear una instancia de AttendanceController
+                        var attendanceController = new AttendanceController(new AttendanceRepository(_context));
+
+                        // Crear una nueva instancia de UserReportForm y pasarle los parámetros necesarios
+                        var userReportForm = new UserReportForm(user.File, _userController, enrollmentController, attendanceController);
+
+                        // Abrir el formulario de reporte de usuario
+                        userReportForm.ShowDialog();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al abrir el reporte del usuario: {ex.Message}");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor selecciona un usuario para ver el reporte.");
+            }
         }
     }
 }

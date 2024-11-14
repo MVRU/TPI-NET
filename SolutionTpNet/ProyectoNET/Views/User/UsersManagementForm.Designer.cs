@@ -34,6 +34,7 @@
             btnModificarUsuario = new Button();
             btnEliminarUsuario = new Button();
             allowNullCourseIdBindingSource1 = new BindingSource(components);
+            btnReport = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)allowNullCourseIdBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)allowNullCourseIdBindingSource1).BeginInit();
@@ -58,13 +59,13 @@
             btnModificarUsuario.Name = "btnModificarUsuario";
             btnModificarUsuario.Size = new Size(75, 23);
             btnModificarUsuario.TabIndex = 2;
-            btnModificarUsuario.Text = "Modificar";
+            btnModificarUsuario.Text = "Editar";
             btnModificarUsuario.UseVisualStyleBackColor = true;
             btnModificarUsuario.Click += btnModificarUsuario_Click;
             // 
             // btnEliminarUsuario
             // 
-            btnEliminarUsuario.Location = new Point(127, 352);
+            btnEliminarUsuario.Location = new Point(150, 352);
             btnEliminarUsuario.Name = "btnEliminarUsuario";
             btnEliminarUsuario.Size = new Size(75, 23);
             btnEliminarUsuario.TabIndex = 3;
@@ -76,12 +77,23 @@
             // 
             allowNullCourseIdBindingSource1.DataSource = typeof(Migrations.AllowNullCourseId);
             // 
+            // btnReport
+            // 
+            btnReport.Location = new Point(267, 352);
+            btnReport.Name = "btnReport";
+            btnReport.Size = new Size(75, 23);
+            btnReport.TabIndex = 4;
+            btnReport.Text = "Reporte";
+            btnReport.UseVisualStyleBackColor = true;
+            btnReport.Click += btnReport_Click;
+            // 
             // UsersManagementForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(841, 509);
+            Controls.Add(btnReport);
             Controls.Add(btnEliminarUsuario);
             Controls.Add(btnModificarUsuario);
             Controls.Add(dgvUsuarios);
@@ -104,5 +116,6 @@
         private Button btnModificarUsuario;
         private Button btnEliminarUsuario;
         private BindingSource allowNullCourseIdBindingSource1;
+        private Button btnReport;
     }
 }
