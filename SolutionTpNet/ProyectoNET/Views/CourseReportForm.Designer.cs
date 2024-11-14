@@ -1,4 +1,6 @@
-﻿namespace ProyectoNET.Views
+﻿using System.Windows.Forms.DataVisualization.Charting;
+
+namespace ProyectoNET.Views
 {
     partial class CourseReportForm
     {

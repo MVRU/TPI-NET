@@ -2,6 +2,7 @@
 using ProyectoNET.Models;
 using ProyectoNET.Repositories; // Asegúrate de incluir los repositorios
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ProyectoNET.Views
@@ -39,6 +40,7 @@ namespace ProyectoNET.Views
             // Cargar las estadísticas de estado de los estudiantes
             LoadEnrollmentStats();
             LoadTotalAttendance();  // Mostrar el total de clases
+            LoadEnrollmentTreeView();  // Cargar el TreeView con los estudiantes por Status
         }
 
         public void SetCourseId(int courseId)
@@ -134,7 +136,6 @@ namespace ProyectoNET.Views
             }
         }
 
-        // Método para cargar el total de clases
         private void LoadTotalAttendance()
         {
             try
@@ -148,6 +149,49 @@ namespace ProyectoNET.Views
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al cargar el total de asistencias: {ex.Message}");
+            }
+        }
+
+        // Método para cargar el TreeView con los estudiantes por Status
+        private void LoadEnrollmentTreeView()
+        {
+            try
+            {
+                // Limpiar el TreeView antes de agregar nuevos nodos
+                tvEnrollments.Nodes.Clear();
+
+                // Obtener todos los enrollments del curso con los estudiantes y su status
+                var enrollments = _enrollmentController.GetEnrollmentsWithUsersByCourse(_courseId);
+
+                // Agrupar los estudiantes por Status
+                var groupedByStatus = enrollments
+                    .GroupBy(e => e.StatusDescription)
+                    .OrderBy(g => g.Key);
+
+                // Crear nodos para cada Status y agregar los estudiantes como nodos hijos
+                foreach (var group in groupedByStatus)
+                {
+                    // Crear el nodo para el Status (Aprobado, Regular, Pendiente, Libre)
+                    TreeNode statusNode = new TreeNode(group.Key);
+
+                    // Agregar los estudiantes como nodos hijos
+                    foreach (var enrollment in group)
+                    {
+                        // Crear un nodo hijo con el nombre y apellido del estudiante
+                        string studentName = $"{enrollment.User.Name} {enrollment.User.LastName}";
+                        TreeNode studentNode = new TreeNode(studentName);
+
+                        // Agregar el nodo hijo al nodo del Status
+                        statusNode.Nodes.Add(studentNode);
+                    }
+
+                    // Agregar el nodo del Status al TreeView
+                    tvEnrollments.Nodes.Add(statusNode);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar el TreeView de matrículas: {ex.Message}");
             }
         }
     }

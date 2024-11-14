@@ -66,7 +66,7 @@ namespace ProyectoNET.Controllers
                 if (enrollment != null)
                 {
                     enrollment.EnrollmentDate = enrollmentDate;
-                    enrollment.CourseId = courseId; 
+                    enrollment.CourseId = courseId;
                     enrollment.StatusId = statusId;
 
                     _enrollmentRepository.UpdateEnrollment(enrollment);
@@ -180,6 +180,35 @@ namespace ProyectoNET.Controllers
             {
                 Console.WriteLine($"Error al obtener las estadísticas de matrícula para el curso con Id {courseId}: {ex.Message}");
                 throw;
+            }
+        }
+
+        // Método agregado: Obtener matrículas con usuarios (estudiantes) por curso
+        public List<EnrollmentWithUser> GetEnrollmentsWithUsersByCourse(int courseId)
+        {
+            var enrollments = _enrollmentRepository.GetEnrollmentsByCourse(courseId)
+                .Select(e => new EnrollmentWithUser
+                {
+                    Enrollment = e,
+                    User = e.Student // Cambié Student a User aquí
+                })
+                .ToList();
+
+            return enrollments;
+        }
+    }
+
+    // Clase auxiliar para devolver matrícula junto con el usuario (estudiante)
+    public class EnrollmentWithUser
+    {
+        public Enrollment Enrollment { get; set; }
+        public User User { get; set; }
+
+        public string StatusDescription
+        {
+            get
+            {
+                return Enrollment?.Status?.Description; // Acceso al estado de la matrícula
             }
         }
     }
