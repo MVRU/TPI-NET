@@ -40,7 +40,7 @@
             dgvHorarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvHorarios.Location = new Point(31, 34);
             dgvHorarios.Name = "dgvHorarios";
-            dgvHorarios.Size = new Size(557, 241);
+            dgvHorarios.Size = new Size(696, 241);
             dgvHorarios.TabIndex = 0;
             dgvHorarios.CellClick += dgvHorarios_CellClick;
             // 

@@ -67,7 +67,7 @@
             // lblTotalApprovedCourses
             // 
             lblTotalApprovedCourses.AutoSize = true;
-            lblTotalApprovedCourses.Location = new Point(29, 78);
+            lblTotalApprovedCourses.Location = new Point(20, 106);
             lblTotalApprovedCourses.Name = "lblTotalApprovedCourses";
             lblTotalApprovedCourses.Size = new Size(144, 15);
             lblTotalApprovedCourses.TabIndex = 2;
@@ -76,7 +76,7 @@
             // lblTotalEnrollments
             // 
             lblTotalEnrollments.AutoSize = true;
-            lblTotalEnrollments.Location = new Point(32, 53);
+            lblTotalEnrollments.Location = new Point(20, 67);
             lblTotalEnrollments.Name = "lblTotalEnrollments";
             lblTotalEnrollments.Size = new Size(132, 15);
             lblTotalEnrollments.TabIndex = 1;
@@ -85,7 +85,7 @@
             // lblTotalAttendances
             // 
             lblTotalAttendances.AutoSize = true;
-            lblTotalAttendances.Location = new Point(32, 22);
+            lblTotalAttendances.Location = new Point(20, 25);
             lblTotalAttendances.Name = "lblTotalAttendances";
             lblTotalAttendances.Size = new Size(107, 15);
             lblTotalAttendances.TabIndex = 0;

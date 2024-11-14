@@ -41,12 +41,12 @@
             dataGridViewCourses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCourses.Location = new Point(33, 36);
             dataGridViewCourses.Name = "dataGridViewCourses";
-            dataGridViewCourses.Size = new Size(502, 226);
+            dataGridViewCourses.Size = new Size(908, 259);
             dataGridViewCourses.TabIndex = 0;
             // 
             // btnAddCourse
             // 
-            btnAddCourse.Location = new Point(33, 287);
+            btnAddCourse.Location = new Point(33, 323);
             btnAddCourse.Name = "btnAddCourse";
             btnAddCourse.Size = new Size(75, 23);
             btnAddCourse.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             // btnEditCourse
             // 
-            btnEditCourse.Location = new Point(142, 287);
+            btnEditCourse.Location = new Point(135, 323);
             btnEditCourse.Name = "btnEditCourse";
             btnEditCourse.Size = new Size(75, 23);
             btnEditCourse.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             // btnDeleteCourse
             // 
-            btnDeleteCourse.Location = new Point(256, 287);
+            btnDeleteCourse.Location = new Point(235, 323);
             btnDeleteCourse.Name = "btnDeleteCourse";
             btnDeleteCourse.Size = new Size(75, 23);
             btnDeleteCourse.TabIndex = 3;
@@ -76,7 +76,7 @@
             // 
             // btnReport
             // 
-            btnReport.Location = new Point(374, 291);
+            btnReport.Location = new Point(340, 323);
             btnReport.Name = "btnReport";
             btnReport.Size = new Size(75, 23);
             btnReport.TabIndex = 4;
@@ -89,7 +89,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(953, 450);
             Controls.Add(btnReport);
             Controls.Add(btnDeleteCourse);
             Controls.Add(btnEditCourse);

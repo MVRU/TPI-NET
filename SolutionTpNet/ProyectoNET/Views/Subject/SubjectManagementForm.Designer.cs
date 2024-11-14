@@ -40,7 +40,7 @@
             dgvSubjects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSubjects.Location = new Point(45, 44);
             dgvSubjects.Name = "dgvSubjects";
-            dgvSubjects.Size = new Size(650, 290);
+            dgvSubjects.Size = new Size(743, 290);
             dgvSubjects.TabIndex = 0;
             dgvSubjects.CellClick += dgvSubjects_CellClick;
             // 

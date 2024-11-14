@@ -45,7 +45,7 @@
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(89, 308);
+            btnAdd.Location = new Point(44, 275);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(75, 23);
             btnAdd.TabIndex = 1;
@@ -55,7 +55,7 @@
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(202, 295);
+            btnEdit.Location = new Point(146, 275);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(75, 23);
             btnEdit.TabIndex = 2;
@@ -65,7 +65,7 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(368, 317);
+            btnDelete.Location = new Point(239, 275);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(75, 23);
             btnDelete.TabIndex = 3;
