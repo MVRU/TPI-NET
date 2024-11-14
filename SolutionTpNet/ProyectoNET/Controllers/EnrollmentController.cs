@@ -156,5 +156,31 @@ namespace ProyectoNET.Controllers
                 enrollmentDate >= course.StartDate && enrollmentDate <= course.EndDate // Fecha de matrícula entre el rango de fechas del curso
             ).ToList();
         }
+
+        public List<StudentEnrollmentStatus> GetEnrollmentStatsByCourse(int courseId)
+        {
+            try
+            {
+                return _enrollmentRepository.GetEnrollmentStatsByCourse(courseId).ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener las estadísticas de matrícula para el curso con Id {courseId}: {ex.Message}");
+                throw;
+            }
+        }
+
+        public List<StudentEnrollmentStatus> GetEnrollmentStatsByCourseEF(int courseId)
+        {
+            try
+            {
+                return _enrollmentRepository.GetEnrollmentStatsByCourseEF(courseId).ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener las estadísticas de matrícula para el curso con Id {courseId}: {ex.Message}");
+                throw;
+            }
+        }
     }
 }

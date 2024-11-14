@@ -32,6 +32,7 @@
             btnAddCourse = new Button();
             btnEditCourse = new Button();
             btnDeleteCourse = new Button();
+            btnReport = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCourses).BeginInit();
             SuspendLayout();
             // 
@@ -73,12 +74,23 @@
             btnDeleteCourse.UseVisualStyleBackColor = true;
             btnDeleteCourse.Click += btnDeleteCourse_Click;
             // 
+            // btnReport
+            // 
+            btnReport.Location = new Point(374, 291);
+            btnReport.Name = "btnReport";
+            btnReport.Size = new Size(75, 23);
+            btnReport.TabIndex = 4;
+            btnReport.Text = "Reporte";
+            btnReport.UseVisualStyleBackColor = true;
+            btnReport.Click += btnReport_Click;
+            // 
             // CourseManagementForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnReport);
             Controls.Add(btnDeleteCourse);
             Controls.Add(btnEditCourse);
             Controls.Add(btnAddCourse);
@@ -99,5 +111,6 @@
         private Button btnAddCourse;
         private Button btnEditCourse;
         private Button btnDeleteCourse;
+        private Button btnReport;
     }
 }

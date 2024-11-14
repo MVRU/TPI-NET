@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using ProyectoNET.Views;
 using System.IO;
 
+
 namespace ProyectoNET
 {
     internal static class Program
@@ -60,7 +61,11 @@ namespace ProyectoNET
                 .AddTransient<EnrollmentManagementForm>()
                 .AddTransient<EditEnrollmentForm>()
                 .AddTransient<AttendanceManagementForm>()
-                .AddTransient<EditAttendanceForm>();
+                .AddTransient<EditAttendanceForm>()
+                .AddTransient<CourseReportForm>()
+                .AddScoped<EnrollmentRepository>()
+                .AddScoped<AttendanceRepository>();
+
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
 

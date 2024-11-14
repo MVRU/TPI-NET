@@ -113,5 +113,173 @@ namespace ProyectoNET.Repositories
                 _context.SaveChanges();
             }
         }
+
+        public int GetTotalAttendanceByCourseEF(int courseId)
+        {
+            // Obtener el total de enrollments asociados al curso
+            var totalAttendances = _context.Enrollments
+                .Where(e => e.CourseId == courseId)
+                .Count();
+
+            return totalAttendances;
+        }
+
+        // Método para obtener el cumplimiento de cupo de un curso
+        public (int totalEnrollments, int quota, double percentageFulfilled, double percentageAvailable) GetQuotaComplianceByCourse(int courseId)
+        {
+            // Obtener el curso junto con la cuota asignada
+            var course = _context.Courses
+                .FirstOrDefault(c => c.Id == courseId);
+
+            if (course == null)
+            {
+                throw new Exception("Curso no encontrado.");
+            }
+
+            // Obtener el total de inscripciones (enrollments) para este curso
+            var totalEnrollments = _context.Enrollments
+                .Where(e => e.CourseId == courseId)
+                .Count();
+
+            // Calcular el porcentaje de cumplimiento del cupo
+            double percentageFulfilled = 0;
+            if (course.Quota > 0)
+            {
+                percentageFulfilled = (double)totalEnrollments / course.Quota * 100;
+            }
+
+            // Calcular el porcentaje de cupo disponible
+            double percentageAvailable = 0;
+            if (course.Quota > 0)
+            {
+                percentageAvailable = ((double)(course.Quota - totalEnrollments) / course.Quota) * 100;
+            }
+
+            // Retornar los resultados en una tupla
+            return (totalEnrollments, course.Quota, percentageFulfilled, percentageAvailable);
+        }
+
+
+//// Método para calcular el total de clases con ADO.NET
+//public int GetTotalClassesByCourse(int courseId)
+//{
+//    // Mapeo de los días de la semana a valores numéricos
+//    var daysOfWeek = new Dictionary<string, int>
+//    {
+//        { "Lunes", 1 },
+//        { "Martes", 2 },
+//        { "Miércoles", 3 },
+//        { "Jueves", 4 },
+//        { "Viernes", 5 },
+//        { "Sábado", 6 },
+//        { "Domingo", 7 }
+//    };
+
+//    string query = @"
+//        SELECT COUNT(DISTINCT s.Day) AS UniqueDaysCount
+//        FROM Courses c
+//        JOIN Schedules s ON c.Id = s.CourseId
+//        WHERE c.Id = @CourseId
+//        AND s.Day BETWEEN @StartDate AND @EndDate
+//    ";
+
+//    using (var connection = new SqlConnection(_connectionString))
+//    {
+//        SqlCommand command = new SqlCommand(query, connection);
+//        command.Parameters.AddWithValue("@CourseId", courseId);
+
+//        // Obtener la fecha de inicio y fin del curso
+//        var course = _context.Courses.FirstOrDefault(c => c.Id == courseId);
+//        if (course == null)
+//        {
+//            throw new Exception("Curso no encontrado.");
+//        }
+
+//        command.Parameters.AddWithValue("@StartDate", course.StartDate);
+//        command.Parameters.AddWithValue("@EndDate", course.EndDate);
+
+//        try
+//        {
+//            connection.Open();
+//            int totalClasses = 0;
+//            using (var reader = command.ExecuteReader())
+//            {
+//                if (reader.Read())
+//                {
+//                    totalClasses = reader.GetInt32(reader.GetOrdinal("UniqueDaysCount"));
+//                }
+//            }
+//            return totalClasses;
+//        }
+//        catch (Exception ex)
+//        {
+//            Console.WriteLine($"Error al calcular las clases del curso: {ex.Message}");
+//            throw;
+//        }
+//    }
+//}
+
+
+// Método para calcular el total de clases con Entity Framework (EF)
+public int GetTotalClassesByCourseEF(int courseId)
+        {
+            // Mapeo de los días de la semana a valores numéricos (en español)
+            var daysOfWeek = new Dictionary<string, int>
+    {
+        { "Lunes", 1 },
+        { "Martes", 2 },
+        { "Miércoles", 3 },
+        { "Jueves", 4 },
+        { "Viernes", 5 },
+        { "Sábado", 6 },
+        { "Domingo", 7 }
+    };
+
+            var course = _context.Courses
+                .Include(c => c.Schedules)
+                .FirstOrDefault(c => c.Id == courseId);
+
+            if (course == null)
+            {
+                throw new Exception("Curso no encontrado.");
+            }
+
+            // Convertir el DayOfWeek de C# (que es en inglés) al nombre en español
+            string startDay = course.StartDate.DayOfWeek.ToString();
+            string endDay = course.EndDate.DayOfWeek.ToString();
+
+            // Mapeo para obtener el nombre en español
+            string startDayInSpanish = GetDayInSpanish(startDay);
+            string endDayInSpanish = GetDayInSpanish(endDay);
+
+            // Filtramos los días únicos en los que se imparten clases (convertimos Day a número)
+            var uniqueDays = course.Schedules
+                .Where(s =>
+                    daysOfWeek.ContainsKey(s.Day) &&
+                    daysOfWeek[s.Day] >= daysOfWeek[startDayInSpanish] &&
+                    daysOfWeek[s.Day] <= daysOfWeek[endDayInSpanish]
+                )
+                .Select(s => s.Day)
+                .Distinct()
+                .ToList();
+
+            return uniqueDays.Count();
+        }
+
+        // Función para mapear el DayOfWeek de C# (en inglés) al día en español
+        private string GetDayInSpanish(string day)
+        {
+            switch (day)
+            {
+                case "Monday": return "Lunes";
+                case "Tuesday": return "Martes";
+                case "Wednesday": return "Miércoles";
+                case "Thursday": return "Jueves";
+                case "Friday": return "Viernes";
+                case "Saturday": return "Sábado";
+                case "Sunday": return "Domingo";
+                default: throw new ArgumentException("Día no válido");
+            }
+        }
     }
 }

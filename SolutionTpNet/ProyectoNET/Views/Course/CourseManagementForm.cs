@@ -1,4 +1,5 @@
-﻿using ProyectoNET.Controllers;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ProyectoNET.Controllers;
 using ProyectoNET.Models;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,17 @@ namespace ProyectoNET.Views
         private readonly CourseController _courseController;
         private readonly SubjectController _subjectController;
         private readonly ScheduleController _scheduleController;
+        private readonly AttendanceController _attendanceController;
+        private readonly EnrollmentController _enrollmentController;
 
-        public CourseManagementForm(CourseController courseController, SubjectController subjectController, ScheduleController scheduleController)
+        public CourseManagementForm(CourseController courseController, SubjectController subjectController, ScheduleController scheduleController, AttendanceController attendanceController, EnrollmentController enrollmentController)
         {
             InitializeComponent();
             _courseController = courseController;
             _subjectController = subjectController;
             _scheduleController = scheduleController;
+            _attendanceController = attendanceController; 
+            _enrollmentController = enrollmentController;
 
             // Configurar el DataGridView
             dataGridViewCourses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -153,6 +158,25 @@ namespace ProyectoNET.Views
         private void CourseManagementForm_Load(object sender, EventArgs e)
         {
             // Este evento se puede utilizar si necesitas hacer alguna acción al cargar el formulario
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewCourses.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor seleccione un curso para generar el reporte.");
+                return;
+            }
+
+            // Obtener el ID del curso seleccionado
+            var selectedRow = dataGridViewCourses.SelectedRows[0];
+            var courseId = (int)selectedRow.Cells["Id"].Value;
+
+            // Crear la instancia manualmente y pasarle las dependencias y el courseId
+            var courseReportForm = new CourseReportForm(courseId, _courseController, _enrollmentController, _attendanceController);
+
+            // Mostrar el formulario de reportes
+            courseReportForm.ShowDialog();
         }
     }
 }
