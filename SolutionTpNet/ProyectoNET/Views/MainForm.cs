@@ -247,5 +247,12 @@ namespace ProyectoNET
             enrollmentManagementForm.MdiParent = this;
             enrollmentManagementForm.Show();
         }
+
+        private void gestionarAsistenciasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var attendanceManagementForm = Program.ServiceProvider.GetRequiredService<AttendanceManagementForm>();
+            attendanceManagementForm.MdiParent = this;
+            attendanceManagementForm.Show();
+        }
     }
 }

@@ -5,49 +5,82 @@ using ProyectoNET.Models;
 
 namespace ProyectoNET.Controllers
 {
-    internal class AttendanceController
+    public class AttendanceController
     {
         private readonly AttendanceRepository _attendanceRepository;
 
+        // Constructor con inyección de dependencias
         public AttendanceController(AttendanceRepository attendanceRepository)
         {
             _attendanceRepository = attendanceRepository;
         }
 
-        public void CreateAttendance(DateTime timestamp, int enrollmentId)
+        // Crear nueva asistencia
+        public void CreateAttendance(DateTime attendanceDate, int enrollmentId)
         {
-            _attendanceRepository.CreateAttendance(timestamp, enrollmentId);
-            Console.WriteLine("Asistencia creada con éxito.");
-        }
-
-        public void GetAttendanceById(int id)
-        {
-            var attendance = _attendanceRepository.GetAttendanceById(id);
-
-            if (attendance != null)
+            try
             {
-                Console.WriteLine($"Asistencia encontrada: Id {attendance.Id}");
-                Console.WriteLine($"Fecha y Hora: {attendance.Timestamp}");
-                Console.WriteLine($"Inscripción asociada: {attendance.EnrollmentId}");
+                var attendance = new Attendance
+                {
+                    Timestamp = attendanceDate,
+                    EnrollmentId = enrollmentId
+                };
+
+                _attendanceRepository.CreateAttendance(attendance);
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Asistencia no encontrada.");
+                throw new Exception($"Error al registrar la asistencia: {ex.Message}");
             }
         }
 
-        public void UpdateAttendance(int id, DateTime newTimestamp)
+        // Actualizar una asistencia existente
+        public void UpdateAttendance(int attendanceId, DateTime attendanceDate, int enrollmentId)
         {
-            _attendanceRepository.UpdateAttendance(id, newTimestamp);
-            Console.WriteLine("Asistencia actualizada con éxito.");
+            try
+            {
+                // Buscar la asistencia existente por su ID utilizando el repositorio
+                var attendance = _attendanceRepository.GetAttendanceById(attendanceId);
+
+                if (attendance == null)
+                {
+                    throw new Exception("La asistencia no existe.");
+                }
+
+                // Actualizar los campos necesarios de la asistencia
+                attendance.Timestamp = attendanceDate;
+                attendance.EnrollmentId = enrollmentId;
+
+                // Guardar los cambios utilizando el repositorio
+                _attendanceRepository.Update(attendance);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al actualizar la asistencia: {ex.Message}");
+            }
         }
 
+        // Obtener una asistencia por ID
+        public Attendance GetAttendanceById(int attendanceId)
+        {
+            try
+            {
+                return _attendanceRepository.GetAttendanceById(attendanceId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al obtener la asistencia: {ex.Message}");
+            }
+        }
+
+        // Eliminar una asistencia
         public void DeleteAttendance(int id)
         {
             _attendanceRepository.DeleteAttendance(id);
             Console.WriteLine("Asistencia eliminada con éxito.");
         }
 
+        // Obtener todas las asistencias de una inscripción
         public void GetAttendancesByEnrollmentId(int enrollmentId)
         {
             var attendances = _attendanceRepository.GetAttendancesByEnrollmentId(enrollmentId);
@@ -64,6 +97,12 @@ namespace ProyectoNET.Controllers
             {
                 Console.WriteLine($"No se encontraron asistencias para la inscripción {enrollmentId}.");
             }
+        }
+
+        // Obtener todas las asistencias
+        public IEnumerable<Attendance> GetAllAttendances()
+        {
+            return _attendanceRepository.GetAllAttendances();
         }
     }
 }

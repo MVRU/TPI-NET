@@ -44,6 +44,7 @@
             gestionarCursosToolStripMenuItem = new ToolStripMenuItem();
             gestionarAsignaturasToolStripMenuItem = new ToolStripMenuItem();
             gestionarHorariosToolStripMenuItem = new ToolStripMenuItem();
+            gestionarMatriculasToolStripMenuItem = new ToolStripMenuItem();
             usuariosToolStripMenuItem = new ToolStripMenuItem();
             listaDeUsuariosToolStripMenuItem = new ToolStripMenuItem();
             configuraciónToolStripMenuItem = new ToolStripMenuItem();
@@ -51,7 +52,7 @@
             ayudaToolStripMenuItem = new ToolStripMenuItem();
             guíaDeAyudaToolStripMenuItem = new ToolStripMenuItem();
             acercaDeToolStripMenuItem = new ToolStripMenuItem();
-            gestionarMatriculasToolStripMenuItem = new ToolStripMenuItem();
+            gestionarAsistenciasToolStripMenuItem = new ToolStripMenuItem();
             msnMainMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -120,7 +121,7 @@
             // 
             // asistenciaToolStripMenuItem
             // 
-            asistenciaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tomarAsistenciaToolStripMenuItem, historialAsistenciaToolStripMenuItem });
+            asistenciaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { gestionarAsistenciasToolStripMenuItem, tomarAsistenciaToolStripMenuItem, historialAsistenciaToolStripMenuItem });
             asistenciaToolStripMenuItem.Name = "asistenciaToolStripMenuItem";
             asistenciaToolStripMenuItem.Size = new Size(72, 22);
             asistenciaToolStripMenuItem.Text = "Asistencia";
@@ -166,6 +167,13 @@
             gestionarHorariosToolStripMenuItem.Size = new Size(187, 22);
             gestionarHorariosToolStripMenuItem.Text = "Gestionar horarios";
             gestionarHorariosToolStripMenuItem.Click += gestionarHorariosToolStripMenuItem_Click;
+            // 
+            // gestionarMatriculasToolStripMenuItem
+            // 
+            gestionarMatriculasToolStripMenuItem.Name = "gestionarMatriculasToolStripMenuItem";
+            gestionarMatriculasToolStripMenuItem.Size = new Size(187, 22);
+            gestionarMatriculasToolStripMenuItem.Text = "Gestionar matrículas";
+            gestionarMatriculasToolStripMenuItem.Click += gestionarMatriculasToolStripMenuItem_Click;
             // 
             // usuariosToolStripMenuItem
             // 
@@ -213,12 +221,12 @@
             acercaDeToolStripMenuItem.Size = new Size(156, 22);
             acercaDeToolStripMenuItem.Text = "Acerca de";
             // 
-            // gestionarMatriculasToolStripMenuItem
+            // gestionarAsistenciasToolStripMenuItem
             // 
-            gestionarMatriculasToolStripMenuItem.Name = "gestionarMatriculasToolStripMenuItem";
-            gestionarMatriculasToolStripMenuItem.Size = new Size(187, 22);
-            gestionarMatriculasToolStripMenuItem.Text = "Gestionar matrículas";
-            gestionarMatriculasToolStripMenuItem.Click += gestionarMatriculasToolStripMenuItem_Click;
+            gestionarAsistenciasToolStripMenuItem.Name = "gestionarAsistenciasToolStripMenuItem";
+            gestionarAsistenciasToolStripMenuItem.Size = new Size(188, 22);
+            gestionarAsistenciasToolStripMenuItem.Text = "Gestionar asistencias";
+            gestionarAsistenciasToolStripMenuItem.Click += gestionarAsistenciasToolStripMenuItem_Click;
             // 
             // MainForm
             // 
@@ -266,5 +274,6 @@
         private ToolStripMenuItem gestionarAsignaturasToolStripMenuItem;
         private ToolStripMenuItem gestionarHorariosToolStripMenuItem;
         private ToolStripMenuItem gestionarMatriculasToolStripMenuItem;
+        private ToolStripMenuItem gestionarAsistenciasToolStripMenuItem;
     }
 }

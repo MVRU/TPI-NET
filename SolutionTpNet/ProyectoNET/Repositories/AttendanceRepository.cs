@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using ProyectoNET.Data;
@@ -6,49 +7,61 @@ using ProyectoNET.Models;
 
 namespace ProyectoNET.Repositories
 {
-    internal class AttendanceRepository
+    public class AttendanceRepository
     {
         private readonly UniversityContext _context;
 
+        // Constructor con inyección de dependencias
         public AttendanceRepository(UniversityContext context)
         {
             _context = context;
         }
 
-        public void CreateAttendance(DateTime timestamp, int enrollmentId)
+        // Crear nueva asistencia
+        public void CreateAttendance(Attendance attendance)
         {
-            var attendance = new Attendance
-            {
-                Timestamp = timestamp,
-                EnrollmentId = enrollmentId
-            };
-
             _context.Attendances.Add(attendance);
             _context.SaveChanges();
         }
 
+        // Obtener una asistencia por ID
         public Attendance GetAttendanceById(int id)
         {
             return _context.Attendances
-                .Include(a => a.Enrollment) // Incluir Enrollment para la navegación
-                .FirstOrDefault(a => a.Id == id);
+                .Include(a => a.Enrollment)  // Incluir la relación de inscripción (Enrollment)
+                .FirstOrDefault(a => a.Id == id);  // Buscar por ID
         }
 
-        public void UpdateAttendance(int id, DateTime newTimestamp)
+        // Actualizar una asistencia
+        public void Update(Attendance attendance)
         {
-            var attendance = _context.Attendances.FirstOrDefault(a => a.Id == id);
-
-            if (attendance != null)
+            try
             {
-                attendance.Timestamp = newTimestamp;
-                _context.SaveChanges();
+                // Verificar que la asistencia existe
+                var existingAttendance = _context.Attendances.FirstOrDefault(a => a.Id == attendance.Id);
+                if (existingAttendance != null)
+                {
+                    // Actualizar los datos de la asistencia
+                    existingAttendance.Timestamp = attendance.Timestamp;
+                    existingAttendance.EnrollmentId = attendance.EnrollmentId; // Asegurarse de que la relación sea correcta
+
+                    _context.SaveChanges(); // Guardar cambios en la base de datos
+                }
+                else
+                {
+                    throw new Exception("Asistencia no encontrada.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al actualizar la asistencia: {ex.Message}");
             }
         }
 
+        // Eliminar una asistencia por ID
         public void DeleteAttendance(int id)
         {
             var attendance = _context.Attendances.FirstOrDefault(a => a.Id == id);
-
             if (attendance != null)
             {
                 _context.Attendances.Remove(attendance);
@@ -56,10 +69,19 @@ namespace ProyectoNET.Repositories
             }
         }
 
+        // Obtener asistencias de una inscripción específica
         public IEnumerable<Attendance> GetAttendancesByEnrollmentId(int enrollmentId)
         {
             return _context.Attendances
                 .Where(a => a.EnrollmentId == enrollmentId)
+                .ToList();
+        }
+
+        // Obtener todas las asistencias
+        public IEnumerable<Attendance> GetAllAttendances()
+        {
+            return _context.Attendances
+                .Include(a => a.Enrollment)  // Incluir la relación de inscripción
                 .ToList();
         }
     }
