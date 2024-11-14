@@ -5,9 +5,9 @@ using ProyectoNET.Models;
 
 namespace ProyectoNET.Repositories
 {
-    internal class StatusRepository
+    public class StatusRepository
     {
-        private readonly UniversityContext _context;
+        public readonly UniversityContext _context;
 
         public StatusRepository(UniversityContext context)
         {

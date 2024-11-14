@@ -1,101 +1,160 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using ProyectoNET.Models;
+﻿using ProyectoNET.Models;
 using ProyectoNET.Repositories;
 
 namespace ProyectoNET.Controllers
 {
-    internal class EnrollmentController
+    public class EnrollmentController
     {
         private readonly EnrollmentRepository _enrollmentRepository;
+        private readonly CourseRepository _courseRepository;
 
-        public EnrollmentController(EnrollmentRepository enrollmentRepository)
+        public EnrollmentController(EnrollmentRepository enrollmentRepository, CourseRepository courseRepository)
         {
             _enrollmentRepository = enrollmentRepository;
+            _courseRepository = courseRepository;
         }
 
         public void CreateEnrollment(string studentId, int courseId, DateTime enrollmentDate, int statusId)
         {
-            var enrollment = new Enrollment
+            try
             {
-                CourseId = courseId,
-                EnrollmentDate = enrollmentDate,
-                StatusId = statusId,
-                StudentId = studentId // Asocia el legajo del estudiante
-            };
+                var enrollment = new Enrollment
+                {
+                    StudentId = studentId,
+                    CourseId = courseId,
+                    EnrollmentDate = enrollmentDate,
+                    StatusId = statusId
+                };
 
-            _enrollmentRepository.CreateEnrollment(enrollment);
-            Console.WriteLine($"Inscripción creada con éxito para el curso con Id {courseId} y estudiante con Legajo {studentId}.");
+                _enrollmentRepository.CreateEnrollment(enrollment);
+                Console.WriteLine($"Inscripción creada con éxito para el curso con Id {courseId} y estudiante con Legajo {studentId}.");
+            }
+            catch (Exception ex)
+            {
+                // Loguear error y manejar la excepción
+                Console.WriteLine($"Error al crear la inscripción: {ex.Message}");
+                throw;
+            }
         }
 
-        public void GetEnrollmentById(int id)
+        public Enrollment GetEnrollmentById(int id)
         {
-            var enrollment = _enrollmentRepository.GetEnrollmentById(id);
-
-            if (enrollment != null)
+            try
             {
-                Console.WriteLine($"Inscripción encontrada con Id {enrollment.Id}:");
-                Console.WriteLine($"Fecha de inscripción: {enrollment.EnrollmentDate}");
-                Console.WriteLine($"Curso: {enrollment.Course?.Year}");
-                Console.WriteLine($"Estado: {enrollment.Status?.Description}");
+                var enrollment = _enrollmentRepository.GetEnrollmentById(id);
 
-                // Mostrar detalles del estudiante
-                Console.WriteLine($"Estudiante: {enrollment.Student?.Name} {enrollment.Student?.LastName} (Legajo: {enrollment.Student?.File})");
-
-                Console.WriteLine("Asistencias asociadas:");
-                foreach (var attendance in enrollment.Attendances)
+                if (enrollment != null)
                 {
-                    Console.WriteLine($"Fecha: {attendance.Timestamp}, Asistió: {(attendance.IsPresent ? "Sí" : "No")}");
+                    return enrollment;
+                }
+
+                Console.WriteLine("Inscripción no encontrada.");
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener la inscripción: {ex.Message}");
+                throw;
+            }
+        }
+
+        public void UpdateEnrollment(int enrollmentId, DateTime enrollmentDate, int courseId, int statusId)
+        {
+            try
+            {
+                var enrollment = _enrollmentRepository.GetEnrollmentById(enrollmentId); // Usamos enrollmentId aquí
+                if (enrollment != null)
+                {
+                    enrollment.EnrollmentDate = enrollmentDate;
+                    enrollment.CourseId = courseId; 
+                    enrollment.StatusId = statusId;
+
+                    _enrollmentRepository.UpdateEnrollment(enrollment);
+                    Console.WriteLine($"Inscripción con Id {enrollmentId} actualizada con éxito.");
+                }
+                else
+                {
+                    Console.WriteLine("Inscripción no encontrada.");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Inscripción no encontrada.");
-            }
-        }
-
-        public void UpdateEnrollment(int id, DateTime newEnrollmentDate, int newCourseId, int newStatusId)
-        {
-            var enrollment = _enrollmentRepository.GetEnrollmentById(id);
-
-            if (enrollment != null)
-            {
-                enrollment.EnrollmentDate = newEnrollmentDate;
-                enrollment.CourseId = newCourseId;
-                enrollment.StatusId = newStatusId;
-                _enrollmentRepository.UpdateEnrollment(enrollment);
-
-                Console.WriteLine($"Inscripción con Id {id} actualizada con éxito.");
-            }
-            else
-            {
-                Console.WriteLine("Inscripción no encontrada.");
+                Console.WriteLine($"Error al actualizar la inscripción: {ex.Message}");
+                throw;
             }
         }
 
         public void DeleteEnrollment(int id)
         {
-            _enrollmentRepository.DeleteEnrollment(id);
-            Console.WriteLine($"Inscripción con Id {id} eliminada con éxito.");
+            try
+            {
+                _enrollmentRepository.DeleteEnrollment(id);
+                Console.WriteLine($"Inscripción con Id {id} eliminada con éxito.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al eliminar la inscripción: {ex.Message}");
+                throw;
+            }
         }
 
-        public void GetAttendancesByEnrollmentId(int enrollmentId)
+        public List<Enrollment> GetEnrollmentsByStudentId(string studentId)
         {
-            var attendances = _enrollmentRepository.GetAttendancesByEnrollmentId(enrollmentId);
+            try
+            {
+                return _enrollmentRepository.GetEnrollmentsByStudentId(studentId).ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener las matrículas: {ex.Message}");
+                throw;
+            }
+        }
 
-            if (attendances.Any())
+        public Enrollment GetEnrollmentByStudentAndCourse(string studentId, int courseId, DateTime enrollmentDate)
+        {
+            // Utilizamos el repositorio para obtener las inscripciones del estudiante en el curso específico
+            return _enrollmentRepository.GetEnrollmentsByStudentAndCourse(studentId, courseId);
+        }
+
+        // Método que obtiene todas las matrículas
+        public List<Enrollment> GetAllEnrollments()
+        {
+            try
             {
-                Console.WriteLine($"Asistencias para la inscripción con Id {enrollmentId}:");
-                foreach (var attendance in attendances)
-                {
-                    Console.WriteLine($"Fecha: {attendance.Timestamp}, Asistió: {(attendance.IsPresent ? "Sí" : "No")}");
-                }
+                return _enrollmentRepository.GetAllEnrollments().ToList();
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine($"No se encontraron asistencias para la inscripción con Id {enrollmentId}.");
+                Console.WriteLine($"Error al obtener las matrículas: {ex.Message}");
+                throw;
             }
+        }
+
+        // Método que obtiene matrícula por curso (sin necesidad de estudiante específico)
+        public Enrollment GetEnrollmentByCourse(int courseId)
+        {
+            try
+            {
+                return _enrollmentRepository.GetEnrollmentsByCourse(courseId).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al verificar matrícula para el curso: {ex.Message}");
+                throw;
+            }
+        }
+
+        // Todos los cursos habilitados para inscripción
+        public List<Course> GetAllCourses(DateTime enrollmentDate)
+        {
+            var allCourses = _courseRepository.GetAllCourses();
+
+            // Filtrar los cursos en base al cupo y al rango de fechas
+            return allCourses.Where(course =>
+                course.Quota > _enrollmentRepository.GetEnrollmentsByCourse(course.Id).Count() && // Asegura que no se exceda el cupo
+                enrollmentDate >= course.StartDate && enrollmentDate <= course.EndDate // Fecha de matrícula entre el rango de fechas del curso
+            ).ToList();
         }
     }
 }

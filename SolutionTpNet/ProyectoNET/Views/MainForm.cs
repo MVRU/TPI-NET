@@ -240,5 +240,12 @@ namespace ProyectoNET
             courseManagementForm.MdiParent = this;
             courseManagementForm.Show();
         }
+
+        private void gestionarMatriculasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var enrollmentManagementForm = Program.ServiceProvider.GetRequiredService<EnrollmentManagementForm>();
+            enrollmentManagementForm.MdiParent = this;
+            enrollmentManagementForm.Show();
+        }
     }
 }

@@ -51,6 +51,7 @@
             ayudaToolStripMenuItem = new ToolStripMenuItem();
             guíaDeAyudaToolStripMenuItem = new ToolStripMenuItem();
             acercaDeToolStripMenuItem = new ToolStripMenuItem();
+            gestionarMatriculasToolStripMenuItem = new ToolStripMenuItem();
             msnMainMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -139,7 +140,7 @@
             // 
             // cursosToolStripMenuItem
             // 
-            cursosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { gestionarCursosToolStripMenuItem, gestionarAsignaturasToolStripMenuItem, gestionarHorariosToolStripMenuItem });
+            cursosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { gestionarCursosToolStripMenuItem, gestionarAsignaturasToolStripMenuItem, gestionarHorariosToolStripMenuItem, gestionarMatriculasToolStripMenuItem });
             cursosToolStripMenuItem.Name = "cursosToolStripMenuItem";
             cursosToolStripMenuItem.Size = new Size(55, 22);
             cursosToolStripMenuItem.Text = "Cursos";
@@ -212,6 +213,13 @@
             acercaDeToolStripMenuItem.Size = new Size(156, 22);
             acercaDeToolStripMenuItem.Text = "Acerca de";
             // 
+            // gestionarMatriculasToolStripMenuItem
+            // 
+            gestionarMatriculasToolStripMenuItem.Name = "gestionarMatriculasToolStripMenuItem";
+            gestionarMatriculasToolStripMenuItem.Size = new Size(187, 22);
+            gestionarMatriculasToolStripMenuItem.Text = "Gestionar matrículas";
+            gestionarMatriculasToolStripMenuItem.Click += gestionarMatriculasToolStripMenuItem_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -257,5 +265,6 @@
         private ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private ToolStripMenuItem gestionarAsignaturasToolStripMenuItem;
         private ToolStripMenuItem gestionarHorariosToolStripMenuItem;
+        private ToolStripMenuItem gestionarMatriculasToolStripMenuItem;
     }
 }

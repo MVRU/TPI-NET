@@ -5,9 +5,9 @@ using ProyectoNET.Models;
 
 namespace ProyectoNET.Controllers
 {
-    internal class StatusController
+    public class StatusController
     {
-        private readonly StatusRepository _statusRepository;
+        public readonly StatusRepository _statusRepository;
 
         public StatusController(StatusRepository statusRepository)
         {
