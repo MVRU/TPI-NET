@@ -41,6 +41,9 @@ namespace ProyectoNET.Views
             LoadEnrollmentStats();
             LoadTotalAttendance();  // Mostrar el total de clases
             LoadEnrollmentTreeView();  // Cargar el TreeView con los estudiantes por Status
+
+            // Cargar la métrica de mejor y peor asistencia
+            LoadBestAndWorstAttendance();
         }
 
         public void SetCourseId(int courseId)
@@ -192,6 +195,31 @@ namespace ProyectoNET.Views
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al cargar el TreeView de matrículas: {ex.Message}");
+            }
+        }
+
+        // Método para cargar la información del mejor y peor asistencia
+        private void LoadBestAndWorstAttendance()
+        {
+            try
+            {
+                // Obtener el estudiante con la mejor y peor asistencia
+                var (bestAttendanceUser, worstAttendanceUser) = _attendanceController.GetBestAndWorstAttendance(_courseId);
+
+                if (bestAttendanceUser != null && worstAttendanceUser != null)
+                {
+                    lblBestAttendance.Text = $"Mejor asistencia: {bestAttendanceUser.Name} {bestAttendanceUser.LastName}";
+                    lblWorstAttendance.Text = $"Peor asistencia: {worstAttendanceUser.Name} {worstAttendanceUser.LastName}";
+                }
+                else
+                {
+                    lblBestAttendance.Text = "No se pudo determinar el estudiante con mejor asistencia.";
+                    lblWorstAttendance.Text = "No se pudo determinar el estudiante con peor asistencia.";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar las métricas de asistencia: {ex.Message}");
             }
         }
     }

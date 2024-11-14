@@ -41,10 +41,12 @@ namespace ProyectoNET.Views
             tabPage2 = new TabPage();
             lblTotalAttendances = new Label();
             tabPage6 = new TabPage();
-            lblQuota = new Label();
-            lblTotalEnrollments = new Label();
-            lblPercentageFulfilled = new Label();
             lblPercentageAvailable = new Label();
+            lblPercentageFulfilled = new Label();
+            lblTotalEnrollments = new Label();
+            lblQuota = new Label();
+            lblWorstAttendance = new Label();
+            lblBestAttendance = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -131,6 +133,8 @@ namespace ProyectoNET.Views
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(lblBestAttendance);
+            tabPage2.Controls.Add(lblWorstAttendance);
             tabPage2.Controls.Add(lblTotalAttendances);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
@@ -162,23 +166,14 @@ namespace ProyectoNET.Views
             tabPage6.Text = "Cupos";
             tabPage6.UseVisualStyleBackColor = true;
             // 
-            // lblQuota
+            // lblPercentageAvailable
             // 
-            lblQuota.AutoSize = true;
-            lblQuota.Location = new Point(61, 50);
-            lblQuota.Name = "lblQuota";
-            lblQuota.Size = new Size(41, 15);
-            lblQuota.TabIndex = 0;
-            lblQuota.Text = "Cupos";
-            // 
-            // lblTotalEnrollments
-            // 
-            lblTotalEnrollments.AutoSize = true;
-            lblTotalEnrollments.Location = new Point(61, 75);
-            lblTotalEnrollments.Name = "lblTotalEnrollments";
-            lblTotalEnrollments.Size = new Size(156, 15);
-            lblTotalEnrollments.TabIndex = 1;
-            lblTotalEnrollments.Text = "Cantidad total de matrículas";
+            lblPercentageAvailable.AutoSize = true;
+            lblPercentageAvailable.Location = new Point(69, 115);
+            lblPercentageAvailable.Name = "lblPercentageAvailable";
+            lblPercentageAvailable.Size = new Size(177, 15);
+            lblPercentageAvailable.TabIndex = 3;
+            lblPercentageAvailable.Text = "Porcentaje de cupos disponibles";
             // 
             // lblPercentageFulfilled
             // 
@@ -189,14 +184,41 @@ namespace ProyectoNET.Views
             lblPercentageFulfilled.TabIndex = 2;
             lblPercentageFulfilled.Text = "Porcentaje de cupos ocupados";
             // 
-            // lblPercentageAvailable
+            // lblTotalEnrollments
             // 
-            lblPercentageAvailable.AutoSize = true;
-            lblPercentageAvailable.Location = new Point(69, 115);
-            lblPercentageAvailable.Name = "lblPercentageAvailable";
-            lblPercentageAvailable.Size = new Size(177, 15);
-            lblPercentageAvailable.TabIndex = 3;
-            lblPercentageAvailable.Text = "Porcentaje de cupos disponibles";
+            lblTotalEnrollments.AutoSize = true;
+            lblTotalEnrollments.Location = new Point(61, 75);
+            lblTotalEnrollments.Name = "lblTotalEnrollments";
+            lblTotalEnrollments.Size = new Size(156, 15);
+            lblTotalEnrollments.TabIndex = 1;
+            lblTotalEnrollments.Text = "Cantidad total de matrículas";
+            // 
+            // lblQuota
+            // 
+            lblQuota.AutoSize = true;
+            lblQuota.Location = new Point(61, 50);
+            lblQuota.Name = "lblQuota";
+            lblQuota.Size = new Size(41, 15);
+            lblQuota.TabIndex = 0;
+            lblQuota.Text = "Cupos";
+            // 
+            // lblWorstAttendance
+            // 
+            lblWorstAttendance.AutoSize = true;
+            lblWorstAttendance.Location = new Point(30, 93);
+            lblWorstAttendance.Name = "lblWorstAttendance";
+            lblWorstAttendance.Size = new Size(169, 15);
+            lblWorstAttendance.TabIndex = 1;
+            lblWorstAttendance.Text = "Estudiante con peor asistencia:";
+            // 
+            // lblBestAttendance
+            // 
+            lblBestAttendance.AutoSize = true;
+            lblBestAttendance.Location = new Point(30, 59);
+            lblBestAttendance.Name = "lblBestAttendance";
+            lblBestAttendance.Size = new Size(176, 15);
+            lblBestAttendance.TabIndex = 2;
+            lblBestAttendance.Text = "Estudiante con mejor asistencia:";
             // 
             // CourseReportForm
             // 
@@ -238,5 +260,7 @@ namespace ProyectoNET.Views
         private Label lblTotalEnrollments;
         private Label lblPercentageFulfilled;
         private Label lblPercentageAvailable;
+        private Label lblBestAttendance;
+        private Label lblWorstAttendance;
     }
 }

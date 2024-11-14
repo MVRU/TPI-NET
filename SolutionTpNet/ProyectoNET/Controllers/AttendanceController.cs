@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ProyectoNET.Repositories;
 using ProyectoNET.Models;
 
@@ -81,9 +82,9 @@ namespace ProyectoNET.Controllers
         }
 
         // Obtener todas las asistencias de una inscripción
-        public void GetAttendancesByEnrollmentId(int enrollmentId)
+        public List<Attendance> GetAttendancesByEnrollmentId(int enrollmentId)
         {
-            var attendances = _attendanceRepository.GetAttendancesByEnrollmentId(enrollmentId);
+            var attendances = _attendanceRepository.GetAttendancesByEnrollmentId(enrollmentId).ToList();
 
             if (attendances.Any())
             {
@@ -97,12 +98,49 @@ namespace ProyectoNET.Controllers
             {
                 Console.WriteLine($"No se encontraron asistencias para la inscripción {enrollmentId}.");
             }
+
+            return attendances;
         }
 
         // Obtener todas las asistencias
         public IEnumerable<Attendance> GetAllAttendances()
         {
             return _attendanceRepository.GetAllAttendances();
+        }
+
+        // Obtener al User con la mejor y peor asistencia en un curso
+        public (User bestAttendanceUser, User worstAttendanceUser) GetBestAndWorstAttendance(int courseId)
+        {
+            try
+            {
+                // Obtener todas las inscripciones para el curso
+                var enrollments = _attendanceRepository.GetEnrollmentsByCourse(courseId);
+
+                // Creamos un diccionario para almacenar la cantidad de asistencias por estudiante
+                var userAttendanceCounts = new Dictionary<User, int>();
+
+                foreach (var enrollment in enrollments)
+                {
+                    // Obtener las asistencias de un estudiante para esta inscripción
+                    var attendances = _attendanceRepository.GetAttendancesByEnrollmentId(enrollment.Id).ToList();
+
+                    // Contamos las asistencias de este estudiante
+                    int attendanceCount = attendances.Count();
+
+                    // Asociamos la cantidad de asistencias con el estudiante (User)
+                    userAttendanceCounts[enrollment.Student] = attendanceCount; // Suponemos que `Enrollment.Student` es el User del estudiante
+                }
+
+                // Encontramos el estudiante con más y el estudiante con menos asistencias
+                var bestAttendanceUser = userAttendanceCounts.OrderByDescending(x => x.Value).FirstOrDefault().Key;
+                var worstAttendanceUser = userAttendanceCounts.OrderBy(x => x.Value).FirstOrDefault().Key;
+
+                return (bestAttendanceUser, worstAttendanceUser);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al calcular la mejor y peor asistencia: {ex.Message}");
+            }
         }
     }
 }

@@ -84,5 +84,14 @@ namespace ProyectoNET.Repositories
                 .Include(a => a.Enrollment)  // Incluir la relación de inscripción
                 .ToList();
         }
+
+        // Obtener todas las inscripciones para un curso
+        public IEnumerable<Enrollment> GetEnrollmentsByCourse(int courseId)
+        {
+            return _context.Enrollments
+                .Where(e => e.CourseId == courseId)
+                .Include(e => e.Student)  // Incluir al estudiante en la inscripción
+                .ToList();
+        }
     }
 }
