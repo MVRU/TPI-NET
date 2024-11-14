@@ -40,6 +40,9 @@
             lblQuota = new Label();
             lblSubject = new Label();
             tvSchedules = new TreeView();
+            clbProfessors = new CheckedListBox();
+            lblSchedules = new Label();
+            lblProfessors = new Label();
             SuspendLayout();
             // 
             // txtYear
@@ -82,7 +85,7 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(45, 346);
+            btnSave.Location = new Point(27, 510);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 5;
@@ -137,17 +140,46 @@
             // 
             // tvSchedules
             // 
-            tvSchedules.Location = new Point(185, 286);
+            tvSchedules.Location = new Point(27, 328);
             tvSchedules.Name = "tvSchedules";
-            tvSchedules.Size = new Size(281, 151);
+            tvSchedules.Size = new Size(318, 166);
             tvSchedules.TabIndex = 13;
+            // 
+            // clbProfessors
+            // 
+            clbProfessors.FormattingEnabled = true;
+            clbProfessors.Location = new Point(367, 328);
+            clbProfessors.Name = "clbProfessors";
+            clbProfessors.Size = new Size(332, 166);
+            clbProfessors.TabIndex = 14;
+            // 
+            // lblSchedules
+            // 
+            lblSchedules.AutoSize = true;
+            lblSchedules.Location = new Point(27, 301);
+            lblSchedules.Name = "lblSchedules";
+            lblSchedules.Size = new Size(52, 15);
+            lblSchedules.TabIndex = 15;
+            lblSchedules.Text = "Horarios";
+            // 
+            // lblProfessors
+            // 
+            lblProfessors.AutoSize = true;
+            lblProfessors.Location = new Point(367, 301);
+            lblProfessors.Name = "lblProfessors";
+            lblProfessors.Size = new Size(62, 15);
+            lblProfessors.TabIndex = 16;
+            lblProfessors.Text = "Profesores";
             // 
             // EditCourseForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(731, 482);
+            ClientSize = new Size(731, 546);
+            Controls.Add(lblProfessors);
+            Controls.Add(lblSchedules);
+            Controls.Add(clbProfessors);
             Controls.Add(tvSchedules);
             Controls.Add(lblSubject);
             Controls.Add(lblQuota);
@@ -182,5 +214,8 @@
         private Label lblQuota;
         private Label lblSubject;
         private TreeView tvSchedules;
+        private CheckedListBox clbProfessors;
+        private Label lblSchedules;
+        private Label lblProfessors;
     }
 }

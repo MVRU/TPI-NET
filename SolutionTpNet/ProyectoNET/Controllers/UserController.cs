@@ -110,5 +110,19 @@ namespace ProyectoNET.Controllers
                 return false;
             }
         }
+
+        public async Task<List<User>> GetUsersByRole(string role)
+        {
+            try
+            {
+                var allUsers = await _userRepository.GetAllUsersAsync(); // Asumiendo que tienes este método en tu repositorio
+                return allUsers.Where(u => u.Role == role).ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener usuarios por rol: {ex.Message}");
+                return new List<User>();
+            }
+        }
     }
 }

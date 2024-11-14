@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using ProyectoNET.Controllers;
+using ProyectoNET.Data;
 using ProyectoNET.Models;
 using ProyectoNET.Repositories;
 
@@ -12,7 +13,7 @@ namespace ProyectoNET.Views
     {
         private readonly EnrollmentController _enrollmentController;
         private readonly CourseController _courseController;
-        private readonly StatusRepository _statusRepository;  // Asegúrate de tener acceso a StatusRepository
+        private readonly StatusRepository _statusRepository;
 
         public EnrollmentManagementForm(EnrollmentController enrollmentController, CourseController courseController, StatusRepository statusRepository)
         {
@@ -78,8 +79,15 @@ namespace ProyectoNET.Views
                 return;
             }
 
+            // Obtener el contexto de la base de datos (esto debería estar en algún lugar del código, como un servicio o contexto global)
+            var context = new UniversityContext(); // Asegúrate de que esto se pase correctamente.
+
             // Crear una nueva matrícula
-            var editEnrollmentForm = new EditEnrollmentForm(_enrollmentController, _statusRepository, courseId: courseId);
+            var editEnrollmentForm = new EditEnrollmentForm(
+                context,        // Pasamos el contexto aquí
+                enrollment: null, // No hay matrícula para crear
+                courseId: courseId // Solo pasamos courseId cuando se crea una nueva matrícula
+            );
 
             // Suscribirse al evento de creación o edición de matrícula
             editEnrollmentForm.OnEnrollmentCreatedOrEdited += () =>
@@ -102,7 +110,13 @@ namespace ProyectoNET.Views
 
                 if (enrollment != null)
                 {
-                    var editEnrollmentForm = new EditEnrollmentForm(_enrollmentController, _statusRepository, enrollment: enrollment);  // Llamada al constructor adecuado
+                    var context = new UniversityContext(); // Asegúrate de que esto se pase correctamente.
+
+                    var editEnrollmentForm = new EditEnrollmentForm(
+                        context,       // Pasamos el contexto aquí
+                        enrollment: enrollment, // Pasamos la matrícula para editarla
+                        courseId: null // No necesitamos courseId al editar
+                    );
 
                     // Suscribirse al evento de creación o edición de matrícula
                     editEnrollmentForm.OnEnrollmentCreatedOrEdited += () =>

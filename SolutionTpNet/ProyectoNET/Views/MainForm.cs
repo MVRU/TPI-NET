@@ -39,6 +39,9 @@ namespace ProyectoNET
             gestionarAsignaturasToolStripMenuItem.Visible = false;
             gestionarHorariosToolStripMenuItem.Visible = false;
             gestionarMatriculasToolStripMenuItem.Visible = false;
+            asistenciaToolStripMenuItem.Visible = false;
+            cursosToolStripMenuItem.Visible = false;
+            usuariosToolStripMenuItem.Visible = false;
 
             // Cargar usuario de sesión solo si está guardado y si se debería mantener la sesión
             string savedUserId = LoadUserSession();
@@ -73,6 +76,13 @@ namespace ProyectoNET
                 gestionarAsignaturasToolStripMenuItem.Visible = true;
                 gestionarHorariosToolStripMenuItem.Visible = true;
                 gestionarMatriculasToolStripMenuItem.Visible = true;
+            }
+
+            if (user.Role == "Student")
+            {
+                asistenciaToolStripMenuItem.Visible = false;
+                cursosToolStripMenuItem.Visible = false;
+                usuariosToolStripMenuItem.Visible = false;
             }
 
             dashboardToolStripMenuItem.Enabled = true;

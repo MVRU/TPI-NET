@@ -15,8 +15,9 @@ namespace ProyectoNET.Views
         private readonly ScheduleController _scheduleController;
         private readonly AttendanceController _attendanceController;
         private readonly EnrollmentController _enrollmentController;
+        private readonly UserController _userController;
 
-        public CourseManagementForm(CourseController courseController, SubjectController subjectController, ScheduleController scheduleController, AttendanceController attendanceController, EnrollmentController enrollmentController)
+        public CourseManagementForm(CourseController courseController, SubjectController subjectController, ScheduleController scheduleController, AttendanceController attendanceController, EnrollmentController enrollmentController, UserController userController)
         {
             InitializeComponent();
             _courseController = courseController;
@@ -24,6 +25,7 @@ namespace ProyectoNET.Views
             _scheduleController = scheduleController;
             _attendanceController = attendanceController; 
             _enrollmentController = enrollmentController;
+            _userController = userController;
 
             // Configurar el DataGridView
             dataGridViewCourses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -115,7 +117,7 @@ namespace ProyectoNET.Views
 
         private void btnAddCourse_Click(object sender, EventArgs e)
         {
-            var addCourseForm = new EditCourseForm(_courseController, _subjectController, _scheduleController);
+            var addCourseForm = new EditCourseForm(_courseController, _subjectController, _scheduleController, _userController);
             addCourseForm.OnCourseAddedOrEdited += LoadCourses;
             addCourseForm.ShowDialog();
         }
@@ -131,7 +133,7 @@ namespace ProyectoNET.Views
             var selectedRow = dataGridViewCourses.SelectedRows[0];
             var courseId = (int)selectedRow.Cells["Id"].Value;
 
-            var editCourseForm = new EditCourseForm(_courseController, _subjectController, _scheduleController, courseId);
+            var editCourseForm = new EditCourseForm(_courseController, _subjectController, _scheduleController, _userController, courseId);
             editCourseForm.OnCourseAddedOrEdited += LoadCourses;
             editCourseForm.ShowDialog();
         }

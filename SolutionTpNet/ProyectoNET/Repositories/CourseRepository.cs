@@ -28,7 +28,7 @@ namespace ProyectoNET.Repositories
                        && (!excludedId.HasValue || c.Id != excludedId.Value));
         }
 
-        public int? CreateCourse(int year, DateTime startDate, DateTime endDate, int quota, int? subjectId, List<int> scheduleIds)
+        public int? CreateCourse(int year, DateTime startDate, DateTime endDate, int quota, int? subjectId, List<int> scheduleIds, List<string> professorFiles)
         {
             // Verificar si ya existe un curso con los mismos parámetros
             if (CourseExists(year, startDate, endDate, quota, subjectId))
@@ -55,6 +55,12 @@ namespace ProyectoNET.Repositories
             var schedules = _context.Schedules.Where(s => scheduleIds.Contains(s.Id)).ToList();
             course.Schedules = schedules;
 
+            // Obtener los profesores (usuarios con el rol 'Professor') asociados al curso
+            var professors = _context.Users
+                                      .Where(u => professorFiles.Contains(u.File) && u.Role == "Professor")
+                                      .ToList();
+            course.Users = professors; // Asignar los profesores al curso
+
             _context.Courses.Add(course);
             _context.SaveChanges();
 
@@ -78,7 +84,7 @@ namespace ProyectoNET.Repositories
                 .ToList();
         }
 
-        public void UpdateCourse(int courseId, int year, DateTime startDate, DateTime endDate, int quota, int? subjectId, List<int> scheduleIds)
+        public void UpdateCourse(int courseId, int year, DateTime startDate, DateTime endDate, int quota, int? subjectId, List<int> scheduleIds, List<string> professorFiles)
         {
             var course = GetCourseById(courseId);
             if (course != null)
@@ -99,10 +105,17 @@ namespace ProyectoNET.Repositories
                 var schedules = _context.Schedules.Where(s => scheduleIds.Contains(s.Id)).ToList();
                 course.Schedules = schedules; // Actualizar la relación de horarios
 
+                // Obtener los profesores (usuarios con el rol 'Professor') asociados al curso
+                var professors = _context.Users
+                                          .Where(u => professorFiles.Contains(u.File) && u.Role == "Professor")
+                                          .ToList();
+                course.Users = professors; // Asignar los profesores al curso
+
                 _context.Courses.Update(course);
                 _context.SaveChanges();
             }
         }
+
 
         public void DeleteCourse(int id)
         {

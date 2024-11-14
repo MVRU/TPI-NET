@@ -1,58 +1,32 @@
-﻿using ProyectoNET.Controllers;
-using ProyectoNET.Models;
-using ProyectoNET.Repositories;
+﻿using ProyectoNET.Models;
+using ProyectoNET.Data;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProyectoNET.Views
 {
     public partial class EditEnrollmentForm : Form
     {
-        private readonly EnrollmentController _enrollmentController;
-        private readonly StatusRepository _statusRepository;
-        private readonly UserController _userController;
-        private Enrollment _enrollmentToEdit; // Matrícula a editar, si aplica
+        private readonly UniversityContext _context;
+        private Enrollment _enrollmentToEdit;
         private int? _courseId;
 
         // Evento que se dispara cuando se crea o edita una matrícula
         public event Action OnEnrollmentCreatedOrEdited;
 
         // Constructor para crear nueva matrícula
-        public EditEnrollmentForm(EnrollmentController enrollmentController, StatusRepository statusRepository, Enrollment enrollment = null, int? courseId = null)
+        public EditEnrollmentForm(UniversityContext context, Enrollment enrollment = null, int? courseId = null)
         {
-            _enrollmentController = enrollmentController;
-            _statusRepository = statusRepository;
+            _context = context;
             _enrollmentToEdit = enrollment;
             _courseId = courseId;
             InitializeComponent();
 
-            this.Text = "Crear Matrícula"; // Cambiar título a crear matrícula
-
-            // Llenar los campos con la información de la matrícula existente si se está editando
-            if (_enrollmentToEdit != null)
-            {
-                this.Text = "Editar Matrícula"; // Cambiar título a editar matrícula
-            }
-
+            this.Text = enrollment == null ? "Crear Matrícula" : "Editar Matrícula";
             LoadCourses();
-            LoadStatuses();  // Cargar los estados
-            FillEnrollmentDetails();
-        }
-
-        // Constructor para editar una matrícula existente
-        public EditEnrollmentForm(EnrollmentController enrollmentController, StatusRepository statusRepository, UserController userController, Enrollment enrollment)
-        {
-            InitializeComponent();
-            _enrollmentController = enrollmentController;
-            _statusRepository = statusRepository;
-            _userController = userController;
-            _enrollmentToEdit = enrollment;
-
-            this.Text = "Editar Matrícula"; // Cambiar título a editar matrícula
-
-            LoadCourses();
-            LoadStatuses();  // Cargar los estados
+            LoadStatuses();
             FillEnrollmentDetails();
         }
 
@@ -61,7 +35,7 @@ namespace ProyectoNET.Views
         {
             try
             {
-                var courses = _enrollmentController.GetAllCourses(dtpEnrollmentDate.Value); // Obtener todos los cursos disponibles
+                var courses = _context.Courses.Where(c => c.StartDate <= dtpEnrollmentDate.Value).ToList();  // Usar el DBContext para cargar cursos
                 if (courses == null || !courses.Any())
                 {
                     MessageBox.Show("No se encontraron cursos disponibles para esta fecha.");
@@ -89,7 +63,7 @@ namespace ProyectoNET.Views
         {
             try
             {
-                var statuses = _statusRepository.GetAllStatuses(); // Obtener todos los estados disponibles
+                var statuses = _context.Statuses.ToList();  // Usar el DBContext para cargar estados
                 if (statuses == null || !statuses.Any())
                 {
                     MessageBox.Show("No se encontraron estados disponibles.");
@@ -159,17 +133,8 @@ namespace ProyectoNET.Views
                     return;
                 }
 
-                // Verificar si _userController está correctamente inicializado
-                if (_userController == null)
-                {
-                    MessageBox.Show("El controlador de usuario no está inicializado correctamente.", "Error de inicialización", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Intentar obtener el usuario
-                var user = await _userController.GetUserByIdAsync(studentFile);
-
-                // Verificar si el usuario fue encontrado
+                // Verificar si ya existe un estudiante con el legajo
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.File == studentFile);
                 if (user == null)
                 {
                     MessageBox.Show("El legajo ingresado no corresponde a un usuario válido.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -187,7 +152,9 @@ namespace ProyectoNET.Views
                 }
 
                 // Verificar si ya existe una matrícula
-                var existingEnrollment = _enrollmentController.GetEnrollmentByStudentAndCourse(studentFile, courseId, enrollmentDate);
+                var existingEnrollment = await _context.Enrollments
+                    .FirstOrDefaultAsync(e => e.Student.File == studentFile && e.CourseId == courseId && e.EnrollmentDate == enrollmentDate);
+
                 if (existingEnrollment != null && existingEnrollment.Id != _enrollmentToEdit?.Id)
                 {
                     MessageBox.Show("Ya existe una matrícula para este estudiante en este curso con la misma fecha.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -197,22 +164,26 @@ namespace ProyectoNET.Views
                 // Crear o editar la matrícula
                 if (_enrollmentToEdit != null)
                 {
-                    // Si estamos editando, actualizamos la matrícula
-                    if (_enrollmentToEdit.Status == null || _enrollmentToEdit.Status.Id != statusId)
-                    {
-                        var newStatus = _statusRepository.GetStatusById(statusId);
-                        if (newStatus != null)
-                        {
-                            _enrollmentToEdit.Status = newStatus; // Asociamos el nuevo estado
-                        }
-                    }
+                    _enrollmentToEdit.CourseId = courseId;
+                    _enrollmentToEdit.StatusId = statusId;
+                    _enrollmentToEdit.EnrollmentDate = enrollmentDate;
 
-                    _enrollmentController.UpdateEnrollment(_enrollmentToEdit.Id, enrollmentDate, courseId, statusId);
+                    _context.Enrollments.Update(_enrollmentToEdit);  // Actualizamos el registro
+                    await _context.SaveChangesAsync();  // Guardamos los cambios
                     MessageBox.Show("Matrícula editada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    _enrollmentController.CreateEnrollment(studentFile, courseId, enrollmentDate, statusId);
+                    var newEnrollment = new Enrollment
+                    {
+                        CourseId = courseId,
+                        StatusId = statusId,
+                        EnrollmentDate = enrollmentDate,
+                        StudentId = user.File // Asociamos el estudiante
+                    };
+
+                    _context.Enrollments.Add(newEnrollment);  // Creamos una nueva matrícula
+                    await _context.SaveChangesAsync();  // Guardamos los cambios
                     MessageBox.Show("Matrícula creada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 

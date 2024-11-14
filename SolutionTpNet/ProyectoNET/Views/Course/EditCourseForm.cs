@@ -1,5 +1,9 @@
 ﻿using ProyectoNET.Controllers;
 using ProyectoNET.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace ProyectoNET.Views
 {
@@ -8,24 +12,27 @@ namespace ProyectoNET.Views
         private readonly CourseController _courseController;
         private readonly SubjectController _subjectController;
         private readonly ScheduleController _scheduleController;
+        private readonly UserController _userController; // Agregado para obtener los usuarios
         private int? _courseId;
 
         public event Action OnCourseAddedOrEdited;
 
-        public EditCourseForm(CourseController courseController, SubjectController subjectController, ScheduleController scheduleController)
+        public EditCourseForm(CourseController courseController, SubjectController subjectController, ScheduleController scheduleController, UserController userController)
         {
             InitializeComponent();
             _courseController = courseController;
             _subjectController = subjectController;
-            _scheduleController = scheduleController; // Asigna el controlador de horarios
+            _scheduleController = scheduleController;
+            _userController = userController; // Inicializar el controlador de usuarios
 
             LoadSubjects();
-            LoadSchedules(); // Cargar los horarios en el TreeView
+            LoadSchedules();
+            LoadProfessors(); // Cargar los profesores
             ConfigureControls();
         }
 
-        public EditCourseForm(CourseController courseController, SubjectController subjectController, ScheduleController scheduleController, int courseId)
-            : this(courseController, subjectController, scheduleController)
+        public EditCourseForm(CourseController courseController, SubjectController subjectController, ScheduleController scheduleController, UserController userController, int courseId)
+            : this(courseController, subjectController, scheduleController, userController)
         {
             _courseId = courseId;
             LoadCourseDetails(courseId);
@@ -46,37 +53,52 @@ namespace ProyectoNET.Views
         {
             var schedules = _scheduleController.GetAllSchedules();
 
-            // Agrupar horarios por día
             var schedulesByDay = schedules
                 .GroupBy(s => s.Day)
-                .OrderBy(g => g.Key) // Ordenar los días
+                .OrderBy(g => g.Key)
                 .ToList();
 
-            tvSchedules.Nodes.Clear(); // Limpiar el TreeView antes de cargar los datos
+            tvSchedules.Nodes.Clear();
 
             foreach (var dayGroup in schedulesByDay)
             {
-                var dayNode = new TreeNode(dayGroup.Key.ToString()) // Crear un nodo para el día
+                var dayNode = new TreeNode(dayGroup.Key.ToString())
                 {
-                    Tag = dayGroup.Key, // Guardar el día como un valor (Tag) en el nodo
-                    Checked = false, // Asegurar que la casilla de verificación del día esté desmarcada
-                    ForeColor = Color.Gray // Desactivar visualmente el nodo "Day"
+                    Tag = dayGroup.Key,
+                    Checked = false,
+                    ForeColor = Color.Gray
                 };
 
                 foreach (var schedule in dayGroup)
                 {
                     var scheduleNode = new TreeNode($"{schedule.StartTime:hh\\:mm} - {schedule.EndTime:hh\\:mm} ({schedule.Day})")
                     {
-                        Tag = schedule.Id // Guardar el Id del horario en el nodo
+                        Tag = schedule.Id
                     };
-                    dayNode.Nodes.Add(scheduleNode); // Agregar el horario como un nodo hijo
+                    dayNode.Nodes.Add(scheduleNode);
                 }
 
-                tvSchedules.Nodes.Add(dayNode); // Agregar el nodo del día al TreeView
+                tvSchedules.Nodes.Add(dayNode);
             }
 
-            tvSchedules.FullRowSelect = true; // Permitir seleccionar toda la fila
-            tvSchedules.CheckBoxes = true; // Activar casillas de verificación para la selección
+            tvSchedules.FullRowSelect = true;
+            tvSchedules.CheckBoxes = true;
+        }
+
+        private async void LoadProfessors()
+        {
+            var professors = await _userController.GetUsersByRole("Professor"); // Obtener solo los usuarios con rol 'Professor'
+            clbProfessors.Items.Clear();
+
+            foreach (var professor in professors)
+            {
+                var item = new CheckedListBoxItem
+                {
+                    Value = professor.File,
+                    Display = $"{professor.File} - {professor.Name} {professor.LastName}"
+                };
+                clbProfessors.Items.Add(item);
+            }
         }
 
         private void ConfigureControls()
@@ -110,19 +132,30 @@ namespace ProyectoNET.Views
 
                 cmbSubject.SelectedValue = course.SubjectId ?? 0;
 
-                // Seleccionar los horarios del curso si están asociados a alguno
+                // Seleccionar los horarios del curso
                 foreach (var schedule in course.Schedules)
                 {
                     var dayNode = tvSchedules.Nodes.Cast<TreeNode>()
-                        .FirstOrDefault(node => node.Tag.ToString() == schedule.Day); // Comparar como string
+                        .FirstOrDefault(node => node.Tag.ToString() == schedule.Day);
                     if (dayNode != null)
                     {
                         var scheduleNode = dayNode.Nodes.Cast<TreeNode>()
-                            .FirstOrDefault(node => (int)node.Tag == schedule.Id); // Buscar el horario correspondiente
+                            .FirstOrDefault(node => (int)node.Tag == schedule.Id);
                         if (scheduleNode != null)
                         {
-                            scheduleNode.Checked = true; // Marcar el horario como seleccionado
+                            scheduleNode.Checked = true;
                         }
+                    }
+                }
+
+                // Cargar los profesores asignados al curso
+                foreach (var professor in course.Users.Where(u => u.Role == "Professor"))
+                {
+                    var item = clbProfessors.Items.Cast<CheckedListBoxItem>()
+                        .FirstOrDefault(i => i.Value == professor.File);
+                    if (item != null)
+                    {
+                        item.Checked = true;
                     }
                 }
             }
@@ -135,21 +168,18 @@ namespace ProyectoNET.Views
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Validar campos obligatorios
             if (string.IsNullOrWhiteSpace(txtQuota.Text) || cmbSubject.SelectedIndex == 0 || !tvSchedules.Nodes.Cast<TreeNode>().Any(dayNode => dayNode.Nodes.Cast<TreeNode>().Any(scheduleNode => scheduleNode.Checked)))
             {
                 MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Validar año
             if (!int.TryParse(txtYear.Text, out int year))
             {
                 MessageBox.Show("El año no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Validar cuota
             if (string.IsNullOrWhiteSpace(txtQuota.Text) || !int.TryParse(txtQuota.Text, out int quota))
             {
                 MessageBox.Show("La cuota no es válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -165,9 +195,8 @@ namespace ProyectoNET.Views
                 return;
             }
 
-            // Obtener los horarios seleccionados
             var selectedScheduleIds = tvSchedules.Nodes.Cast<TreeNode>()
-                .Where(dayNode => dayNode.Nodes.Cast<TreeNode>().Any(scheduleNode => scheduleNode.Checked)) // Verificar solo los horarios seleccionados
+                .Where(dayNode => dayNode.Nodes.Cast<TreeNode>().Any(scheduleNode => scheduleNode.Checked))
                 .SelectMany(dayNode => dayNode.Nodes.Cast<TreeNode>())
                 .Where(scheduleNode => scheduleNode.Checked)
                 .Select(scheduleNode => (int)scheduleNode.Tag)
@@ -181,14 +210,20 @@ namespace ProyectoNET.Views
 
             try
             {
+                // Obtener los usuarios seleccionados como profesores
+                var selectedProfessorFiles = clbProfessors.Items.Cast<CheckedListBoxItem>()
+                    .Where(item => item.Checked)
+                    .Select(item => item.Value)
+                    .ToList();
+
                 // Crear o actualizar el curso
                 if (_courseId.HasValue)
                 {
-                    _courseController.UpdateCourse(_courseId.Value, year, startDate, endDate, quota, (int?)cmbSubject.SelectedValue, selectedScheduleIds);
+                    _courseController.UpdateCourse(_courseId.Value, year, startDate, endDate, quota, (int?)cmbSubject.SelectedValue, selectedScheduleIds, selectedProfessorFiles);
                 }
                 else
                 {
-                    _courseId = _courseController.CreateCourse(year, startDate, endDate, quota, (int?)cmbSubject.SelectedValue, selectedScheduleIds);
+                    _courseId = _courseController.CreateCourse(year, startDate, endDate, quota, (int?)cmbSubject.SelectedValue, selectedScheduleIds, selectedProfessorFiles);
                 }
 
                 OnCourseAddedOrEdited?.Invoke();
@@ -199,5 +234,13 @@ namespace ProyectoNET.Views
                 MessageBox.Show($"Error al guardar el curso: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+    }
+
+    // Clase auxiliar para los items del CheckedListBox
+    public class CheckedListBoxItem
+    {
+        public string Value { get; set; }
+        public string Display { get; set; }
+        public bool Checked { get; set; }
     }
 }

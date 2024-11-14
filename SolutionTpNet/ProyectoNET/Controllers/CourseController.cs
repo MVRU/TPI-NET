@@ -13,9 +13,9 @@ namespace ProyectoNET.Controllers
         }
 
         // Método para crear un nuevo curso
-        public int? CreateCourse(int year, DateTime startDate, DateTime endDate, int quota, int? subjectId, List<int> scheduleIds)
+        public int? CreateCourse(int year, DateTime startDate, DateTime endDate, int quota, int? subjectId, List<int> scheduleIds, List<string> professorFiles)
         {
-            return _repository.CreateCourse(year, startDate, endDate, quota, subjectId, scheduleIds);
+            return _repository.CreateCourse(year, startDate, endDate, quota, subjectId, scheduleIds, professorFiles);
         }
 
         // Método para obtener un curso por ID
@@ -25,9 +25,9 @@ namespace ProyectoNET.Controllers
         }
 
         // Método para actualizar un curso
-        public void UpdateCourse(int courseId, int year, DateTime startDate, DateTime endDate, int quota, int? subjectId, List<int> scheduleIds)
+        public void UpdateCourse(int courseId, int year, DateTime startDate, DateTime endDate, int quota, int? subjectId, List<int> scheduleIds, List<string> professorFiles)
         {
-            _repository.UpdateCourse(courseId, year, startDate, endDate, quota, subjectId, scheduleIds);
+            _repository.UpdateCourse(courseId, year, startDate, endDate, quota, subjectId, scheduleIds, professorFiles);
         }
 
         // Método para eliminar un curso
