@@ -1,11 +1,11 @@
-﻿namespace SharedModels.Interfaces
+﻿namespace SharedModels.Interfaces;
+
+public interface IUser
 {
-    public interface IUser
-    {
-        int Id { get; set; }
-        string Name { get; set; }
-        string LastName { get; set; }
-        string Email { get; set; }
-        string Password { get; set; }
-    }
+    int Id { get; set; } // Legajo
+    string Name { get; set; }
+    string LastName { get; set; }
+    string Email { get; set; }
+    string PasswordHash { get; set; }
+    string Role { get; set; }
 }
