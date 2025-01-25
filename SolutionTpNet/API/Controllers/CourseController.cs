@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using BusinessLogic.Services;
-using SharedModels.Models;
+using BusinessLogic.Interfaces;
+using SharedModels.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers;
 
@@ -8,43 +10,77 @@ namespace API.Controllers;
 [ApiController]
 public class CourseController : ControllerBase
 {
-    private readonly CourseService _courseService;
+    private readonly ICourseService _courseService;
 
-    public CourseController(CourseService courseService)
+    public CourseController(ICourseService courseService)
     {
         _courseService = courseService;
     }
 
+    /// <summary>
+    /// Obtiene todos los cursos.
+    /// </summary>
+    /// <returns>Una lista de cursos.</returns>
     [HttpGet]
-    public async Task<ActionResult<List<Course>>> GetAll()
+    public async Task<ActionResult<IEnumerable<CourseResponse>>> GetAll()
     {
-        return await _courseService.GetAllCoursesAsync();
+        var courses = await _courseService.GetAllCoursesAsync();
+        return Ok(courses);
     }
 
+    /// <summary>
+    /// Obtiene un curso por su ID.
+    /// </summary>
+    /// <param name="id">El ID del curso.</param>
+    /// <returns>El curso correspondiente al ID.</returns>
     [HttpGet("{id}")]
-    public async Task<ActionResult<Course>> GetById(int id)
+    public async Task<ActionResult<CourseResponse>> GetById(int id)
     {
         var course = await _courseService.GetCourseByIdAsync(id);
         if (course == null) return NotFound();
-        return course;
+        return Ok(course);
     }
 
+    /// <summary>
+    /// Crea un nuevo curso.
+    /// </summary>
+    /// <param name="course">Los datos del curso a crear.</param>
+    /// <returns>El curso creado.</returns>
     [HttpPost]
-    public async Task<ActionResult> Add(Course course)
+    [Authorize(Roles = "Admin,Professor")]  // Solo los roles Admin y Professor pueden crear cursos
+    public async Task<ActionResult<CourseResponse>> Add(CourseRequest request)
     {
-        await _courseService.AddCourseAsync(course);
+        if (!ModelState.IsValid) return BadRequest(ModelState);
+
+        var course = await _courseService.AddCourseAsync(request);
         return CreatedAtAction(nameof(GetById), new { id = course.Id }, course);
     }
 
+    /// <summary>
+    /// Actualiza un curso existente.
+    /// </summary>
+    /// <param name="id">El ID del curso a actualizar.</param>
+    /// <param name="course">Los nuevos datos del curso.</param>
+    /// <returns>Respuesta sin contenido.</returns>
     [HttpPut("{id}")]
-    public async Task<ActionResult> Update(int id, Course course)
+    [Authorize(Roles = "Admin,Professor")]  // Solo los roles Admin y Professor pueden actualizar cursos
+    public async Task<ActionResult> Update(int id, CourseRequest request)
     {
-        if (id != course.Id) return BadRequest();
-        await _courseService.UpdateCourseAsync(course);
+        if (id != request.Id) return BadRequest("El ID del curso no coincide.");
+
+        if (!ModelState.IsValid) return BadRequest(ModelState);
+
+        await _courseService.UpdateCourseAsync(request);
         return NoContent();
     }
 
+    /// <summary>
+    /// Elimina el curso por su ID.
+    /// </summary>
+    /// <param name="id">El ID del curso a eliminar.</param>
+    /// <returns>Respuesta sin contenido.</returns>
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin,Professor")]  // Solo los roles Admin y Professor pueden eliminar cursos
     public async Task<ActionResult> Delete(int id)
     {
         await _courseService.DeleteCourseAsync(id);

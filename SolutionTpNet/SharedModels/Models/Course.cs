@@ -8,8 +8,8 @@
         required public int Quota { get; set; }
 
         // Relación con Subject
-        required public int SubjectId { get; set; }
-        required public Subject Subject { get; set; }
+        public int SubjectId { get; set; }
+        public Subject Subject { get; set; }
 
         // Relación muchos a muchos con Professor
         public ICollection<Professor> Professors { get; set; } = new List<Professor>();

@@ -12,7 +12,7 @@ namespace DataAccess.Repositories
             _context = context;
         }
 
-        public async Task<List<Course>> GetAllAsync()
+        public async Task<IEnumerable<Course>> GetAllAsync()
         {
             return await _context.Courses.ToListAsync();
         }
