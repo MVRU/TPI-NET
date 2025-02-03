@@ -99,5 +99,10 @@ namespace ProyectoNET.Controllers
                 Console.WriteLine($"No se encontraron cursos para la asignatura con Id {subjectId}.");
             }
         }
+
+        /*public async Task<IEnumerable<Subject>> GetAllSubjectsAsync()
+        {
+            return await _subjectRepository.GetAllSubjectsAsync();
+        }*/
     }
 }
